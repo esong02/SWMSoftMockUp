@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:rowCount="1"
+    android:layout_margin="10sp"
+    android:background="@drawable/side_nav_bar">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="90sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"
+        android:padding="5sp"
+        android:gravity="start|center_vertical"
+        android:textSize="15sp"
+        android:id="@+id/assetName"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="80sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginLeft="10sp"
+        android:padding="5sp"
+        android:gravity="start|center_vertical"
+        android:id="@+id/progressTrack"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10sp"
+        android:padding="5sp"
+        android:gravity="start|center_vertical"
+        android:id="@+id/location"/>
+
+
+</GridLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_view_list_white"
+        android:id="@+id/action_list_view"
+        android:title="List View"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_sync_db"
+        android:icon="@drawable/ic_sync_white"
+        android:title="Sync to Database"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_white"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+
+
+</menu>

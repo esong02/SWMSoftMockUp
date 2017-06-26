@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@drawable/info_background"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="142dp"
+        android:layout_height="55dp"
+        android:layout_gravity="start"
+        android:contentDescription="Logo"
+        android:src="@drawable/logo" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:id="@+id/userBtn"
+        android:background="@color/transparent"
+        android:contentDescription="User Icon"
+        android:layout_marginBottom="20sp"
+        android:src="@drawable/user_icon3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="User Name"
+        android:id="@+id/userName"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="20sp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/passCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:inputType="textPassword"
+        android:hint="Enter Password"
+        android:maxLength="80"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50sp"
+        android:layout_marginTop="30sp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Confirm"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+</LinearLayout>

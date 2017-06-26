@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/inspection"
+            android:title="Inspections"
+            android:icon="@drawable/inspection" />
+
+    <item
+            android:id="@+id/p_inspection"
+            android:title="Past Inspections"
+            android:icon="@drawable/p_inspection" />
+
+    <item
+            android:id="@+id/general_info"
+            android:title="General Info"
+            android:icon="@drawable/ic_info_outline_black_24dp"/>
+
+</menu>

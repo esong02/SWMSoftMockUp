@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/user_info"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="User Info" />
+        <item
+            android:id="@+id/inspection_tasks"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="My Inspection Tasks" />
+        <item
+            android:id="@+id/photos"
+            android:icon="@drawable/ic_photo_library_black_24dp"
+            android:title="Photos" />
+    </group>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="About" />
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/ic_help_black_24dp"
+                android:title="Help" />
+            <item
+                android:id="@+id/feedback"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="Feedback"
+                />
+
+        </menu>
+    </item>
+
+</menu>

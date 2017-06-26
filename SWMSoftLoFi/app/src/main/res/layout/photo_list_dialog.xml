@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="left|top"
+        android:padding="10sp"
+        android:text="Previous Photos"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        />
+
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <GridLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:columnCount="2">
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-09"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:gravity="bottom|right"
+                        android:layout_rowWeight="1"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-10"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:layout_rowWeight="1"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-11"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:layout_rowWeight="1"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-12"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:layout_rowWeight="1"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-13"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-14"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-15"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-16"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-17"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                    <TextView
+                        android:background="@drawable/drainage_example"
+                        android:text="2007-10-18"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:gravity="bottom|right"
+                        android:textStyle="italic|bold"
+                        android:layout_columnWeight="1"/>
+
+                </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
