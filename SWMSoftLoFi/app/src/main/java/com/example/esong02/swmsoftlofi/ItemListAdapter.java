@@ -88,6 +88,16 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
         completeIcn = (ImageView) convertView.findViewById(R.id.completeIcon);
+        //completeIcn.setBackgroundResource(R.color.transparent);
+
+        if (checkComplete(headerTitle)){
+            //Log.d("If Name exists: ",iTask.getName());
+            //Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
+            Log.d("Group Check: ",headerTitle);
+            completeIcn.setBackgroundResource(R.drawable.green_button);
+        }else{
+            completeIcn.setBackgroundResource(R.color.transparent);
+        }
 
         return convertView;
     }
@@ -143,7 +153,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_item,null);
-
         }
 
         if (grey == false) {
@@ -215,12 +224,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             photoBtn.setBackgroundResource(R.drawable.green_button);
         }
 
-
+        /*
         if (iTask.isComplete()){
             completeIcn.setBackgroundResource(R.drawable.green_button);
         }else{
             completeIcn.setBackgroundResource(R.color.transparent);
         }
+        */
 
         rating1.setOnClickListener(new View.OnClickListener() {
             @Override
