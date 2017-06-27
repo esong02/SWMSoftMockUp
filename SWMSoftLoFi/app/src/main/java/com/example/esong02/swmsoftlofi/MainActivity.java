@@ -1,87 +1,63 @@
 package com.example.esong02.swmsoftlofi;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cocosw.bottomsheet.BottomSheet;
-
-import org.w3c.dom.Text;
-
-public class MainActivity extends AppCompatActivity {
-    private static final User currentU = new User("Sample","civica",false);
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static final User currentU = new User("Civica","1234",false);
+    private DrawerLayout mdrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.property_window);
-        //setContentView(R.layout.inspection_form);
         setContentView(R.layout.activity_main);
-        //setContentView(R.layout.photo_list_dialog);
-        //setContentView(R.layout.lid_inspection);
-        //setContentView(R.layout.inspection_list);
-        //setContentView(R.layout.inspection_assignment);
-        //setContentView(R.layout.gis_view);
-        //setContentView(R.layout.photo_list_dialog);
-        //setContentView(R.layout.intro_dialog);
 
         Context context;
-
-
 
         if (!currentU.getLogin()){
 
             //User Login
             final Dialog alertDialog = new Dialog(MainActivity.this);
             alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            alertDialog.setContentView(R.layout.intro_dialog);
+            alertDialog.setContentView(R.layout.login_dialog);
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             alertDialog.setCancelable(false);
 
             final EditText pass = (EditText) alertDialog.findViewById(R.id.passField);
             final Button loginBtn = (Button) alertDialog.findViewById(R.id.loginBtn);
-            final TextView uName = (TextView) alertDialog.findViewById(R.id.userName);
-            String welcomeMsg = "Welcome Back, " + currentU.getName();
-            uName.setText(welcomeMsg);
-            //final String password = "civica";
-            // if button is clicked, close the custom dialog
+            final EditText uName = (EditText) alertDialog.findViewById(R.id.userField);
+
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (pass.getText().toString().equals(currentU.getPass())){
-                        Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                        alertDialog.dismiss();
+                    if (uName.getText().toString().equals(currentU.getName())) {
+                        if (pass.getText().toString().equals(currentU.getPass())) {
+                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                            alertDialog.dismiss();
+                        } else {
+                            pass.setText("Invalid Password");
+                        }
                     }else{
-                        uName.setText("Invalid Password");
-                        uName.setTextColor(Color.RED);
+                        uName.setText("Invalid Username");
                     }
                 }
             });
@@ -93,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setHomeButtonEnabled(true);
+
+        mdrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Facility"));
@@ -122,130 +102,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-        //Inspection Form
-
-        //Bottom Sheet for Activities
-        /*
-        new BottomSheet.Builder(this)
-                .title("Activities")
-                .grid() // <-- important part
-                .sheet(R.menu.bottom_sheet_inspection)
-                .listener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-
-                            //Filter by local favourites
-                            case R.id.inspection:
-
-                                break;
-
-                            //Filter by drinks with ratings
-                            case R.id.p_inspection:
-
-                                //filter all drinks that have a rating of at least 1
-                                //'test is dummy string'
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }).show();
-                */
-
-
-        //Listview of Past Inspections
-        /*
-        AlertDialog.Builder builderSingle = new AlertDialog.Builder(MainActivity.this);
-        builderSingle.setIcon(R.drawable.ic_search_white);
-        builderSingle.setTitle("Completed Inspections");
-
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.select_dialog_item);
-        arrayAdapter.add("Inspection Date: 7/9/2003");
-        arrayAdapter.add("Inspection Date: 8/19/2016");
-
-        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String strName = arrayAdapter.getItem(which);
-                AlertDialog.Builder builderInner = new AlertDialog.Builder(MainActivity.this);
-                builderInner.setMessage(strName);
-                builderInner.setTitle("Your Selected Item is");
-                builderInner.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog,int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builderInner.show();
-            }
-        });
-
-        builderSingle.show();
-        */
-
-        //User Login
-        // get prompts.xml view
-        /*
-        LayoutInflater li = LayoutInflater.from(this);
-        View promptsView = li.inflate(R.layout.intro_dialog, null);
-
-        android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
-
-        // set prompts.xml to alertdialog builder
-        alertDialogBuilder.setView(promptsView);
-
-        // create alert dialog
-        android.app.AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        alertDialog.setCancelable(false);
-        */
-
-        // show it
-        //alertDialog.show();
-
-        //New Intro Dialog
-
-        /*
-        Dialog alertDialog = new Dialog(this);
-        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        alertDialog.setContentView(R.layout.intro_dialog);
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        alertDialog.show();
-        */
-
-        //User Icon
-        /*
-        Dialog alertDialog = new Dialog(this);
-        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        alertDialog.setContentView(R.layout.login_list);
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        alertDialog.show();
-        */
-
-        /*
-        ITasks myDataArray[] = new ITasks[]{
-                new ITasks("Pondview2","Complete", "Northeast corner\nof Hwy 400 (15km)"),
-                new ITasks("Lakeview\nEstates", "Pending", "Btwn Dundurn Cr &\nRosedale Heights (5km)"),
-                new ITasks("Oakbank\nThornbank", "Pending", "N side of Centre St btwn\nErica & Oakbank (3km)"),
-                new ITasks("Trullwrook\nInvestment", "Complete", "Part Lot 7\nConcession (50km)")
-        };
-
-        InspectionAdapter myAdapter = new InspectionAdapter(this, R.layout.item_task, myDataArray);
-        ListView myList = (ListView) findViewById(R.id.inspections_todo);
-        myList.setAdapter(myAdapter);
-        */
     }
 
+
+    public void openDrawer(){
+        mdrawerLayout.openDrawer(Gravity.START);
+    }
+
+    public void closeDrawer(){
+        mdrawerLayout.closeDrawer(Gravity.START);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -260,7 +126,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_gis_view:
+                openDrawer();
+                return true;
+            case R.id.action_sync_db:
+                Dialog alertDialog = new Dialog(this);
+                alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                alertDialog.setContentView(R.layout.sync_db);
+                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                alertDialog.show();
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -270,11 +153,12 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.user_info) {
             // Handle the camera action
         } else if (id == R.id.inspection_tasks) {
-
+            Intent intent = new Intent(MainActivity.this, MyTasksActivity.class);
+            startActivity(intent);
         } else if (id == R.id.photos) {
 
-        } else if (id == R.id.help) {
-
+        } else if (id == R.id.closeNavBar) {
+            closeDrawer();
         } else if (id == R.id.about) {
 
         } else if (id == R.id.feedback) {
@@ -285,6 +169,6 @@ public class MainActivity extends AppCompatActivity {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    */
+
 
 }

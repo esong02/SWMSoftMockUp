@@ -24,6 +24,13 @@
             android:windowSoftInputMode="stateHidden">
         </activity>
 
+        <activity
+            android:name=".MyTasksActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
     </application>
 
 </manifest>

@@ -48,33 +48,12 @@ public class InspectionActivity extends AppCompatActivity{
         //public Item(String name, String description, String comments, int rating){
 
         listView = (ExpandableListView) findViewById(R.id.iListview);
-        View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.inspection_footer, null, false);
-        listView.addFooterView(footerView);
+        //View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.inspection_footer, null, false);
+        //listView.addFooterView(footerView);
         initData();
         listAdapter = new ItemListAdapter(InspectionActivity.this,componentHeader,listHash);
         listView.setAdapter(listAdapter);
 
-        /*
-
-        // components from main.xml
-        rButton1 = (Button) findViewById(R.id.rButton1);
-
-        // add button listener
-        rButton1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                // get prompts.xml view
-                Dialog alertDialog = new Dialog(mActivity);
-                alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alertDialog.setContentView(R.layout.condition_dialog);
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                alertDialog.show();
-
-            }
-        });
-        */
     }
 
 
@@ -87,7 +66,7 @@ public class InspectionActivity extends AppCompatActivity{
         componentHeader.add("Pretreatment");//3
         componentHeader.add("Perimeter");//4
         componentHeader.add("Filter Bed");//5
-        componentHeader.add("Vegatation");//6
+        componentHeader.add("Vegetation");//6
         componentHeader.add("Overflow Outlets");//7
         componentHeader.add("Monitoring Well");//8
 
@@ -102,13 +81,13 @@ public class InspectionActivity extends AppCompatActivity{
 
 
         //component1.add(new Item("Contributing Drainage Area",new String[]{"Check for Contributing Drainage Area Conditon","Check for Trash and Debris"}, "Not much trash and debris", 2));
-        component1.add(new Item("Contributing Drainage Area","Check for Contributing Drainage Area Conditon", "Very few trash and debris", 0, false));
-        component1.add(new Item("Contributing Drainage Area","Trash and Debris", "Very few trash and debris", 0, false));
+        component1.add(new Item("Contributing Drainage Area","Check for Contributing Drainage Area Conditon", "", 0, false));
+        component1.add(new Item("Contributing Drainage Area","Trash and Debris", "", 0, false));
 
         //component2.add(new Item("Inlet",new String[]{"Check for Structural Integrity","Check for Obstruction", "Check for Inlet Erosion","Check for Trash and Debris"},"Where is it",3));
-        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Structural Integrity","Where is it",0, false));
-        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Obstruction","Where is it",0, false));
-        component2.add(new Item("Inlet","Inlet Erosion", "Looks good",0, false));
+        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Structural Integrity","",0, false));
+        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Obstruction","",0, false));
+        component2.add(new Item("Inlet","Inlet Erosion", "",0, false));
         component2.add(new Item("Inlet","Trash and Debris", "",0, false));
 
         //component3.add(new Item("Pretreatment",new String[]{"Check for Sediment Accumulation","Check for Trash and Debris"},  "",0));
@@ -122,7 +101,7 @@ public class InspectionActivity extends AppCompatActivity{
         component5.add(new Item("Filter Bed","Standing Water", "",0, false));
         component5.add(new Item("Filter Bed","Trash and Debris", "",0, false));
         component5.add(new Item("Filter Bed","Filter Bed Erosion", "",0, false));
-        component5.add(new Item("Filter Bed","Mulch Depth", "Looks good",0, false));
+        component5.add(new Item("Filter Bed","Mulch Depth", "",0, false));
         component5.add(new Item("Filter Bed","Filter Bed Sediment Accumulation", "",0, false));
         component5.add(new Item("Filter Bed","Filter Bed Surface Sinking", "",0, false));
         component5.add(new Item("Filter Bed","Check Dams", "",0, false));
@@ -133,11 +112,11 @@ public class InspectionActivity extends AppCompatActivity{
         component6.add(new Item("Vegetation","Vegetation Condition", "",0, false));
         component6.add(new Item("Vegetation","Vegetation Composition",  "",0, false));
 
-        //component7.add(new Item("Monitoring Well",new String[]{"Monitoring Well Condition"}, "",0));
-        component7.add(new Item("Monitoring","Monitoring Well Condition", "",0, false));
-
         //component8.add(new Item("Overflow Outlets",new String[]{"Overflow Outlet Obstruction"}, "",0));
-        component8.add(new Item("Overflow Outlets","Overflow Outlet Obstruction", "",0, false));
+        component7.add(new Item("Overflow Outlets","Overflow Outlet Obstruction", "",0, false));
+
+        //component7.add(new Item("Monitoring Well",new String[]{"Monitoring Well Condition"}, "",0));
+        component8.add(new Item("Monitoring Well","Monitoring Well Condition", "",0, false));
 
         listHash.put(componentHeader.get(0),component1);
         listHash.put(componentHeader.get(1),component2);

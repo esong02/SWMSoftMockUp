@@ -36,37 +36,6 @@ public class LIDTab extends Fragment{
         listAdapter = new ExpandableListAdapter(context,listSiteHeader,listHash);
         listView.setAdapter(listAdapter);
 
-        /*
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
-      // You must make use of the View v, find the view by id and extract the text as below
-
-                TextView tv= (TextView) v.findViewById(R.id.lblListItem);
-                String data= tv.getText().toString();
-                Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
-
-                ImageButton inspect = (ImageButton)v.findViewById(R.id.inspectAction);
-
-                inspect.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View arg0) {
-                        Toast.makeText(context, "Inspect Selected . . ", Toast.LENGTH_SHORT).show();
-                        //Intent intent = new Intent(getActivity(), InspectionActivity.class);
-                        //startActivity(intent);
-
-                    }
-                });
-
-
-                return true;
-            }
-        });
-        */
-
         return rootView;
     }
 

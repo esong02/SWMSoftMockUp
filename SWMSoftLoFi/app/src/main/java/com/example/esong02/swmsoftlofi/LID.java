@@ -8,12 +8,6 @@ public class LID {
 
     public String name;
     public String type;
-    //public String description;
-    //public String comments;
-    //public int rating;
-    //public boolean hasPhoto;
-    //private ArrayList photoList;
-    //private int photoIds;
 
     public LID(){
         super();

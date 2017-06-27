@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.support.design.widget.BottomSheetDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.component_item,null);
-
         }
 
         TextView lblListHeader = (TextView) convertView.findViewById(R.id.componentName);
@@ -126,6 +126,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     }
 
     public boolean checkComplete(String gName){
+        //Log.d("If Name exists: ",gName);
+
         List<Item> g = listHashMap.get(gName);
         for (int i = 0; i < g.size(); i++){
             if(g.get(i).isComplete() == false){
@@ -146,8 +148,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
         if (grey == false) {
             convertView.setBackgroundColor(Color.argb(100, 255, 255, 255));
-            //LinearLayout taskField = (LinearLayout) convertView.findViewById(R.id.task_field);
-            //taskField.setBackgroundColor(Color.argb(100, 100, 100, 100));
             grey = true;
         }else{
             convertView.setBackgroundColor(Color.argb(25, 0, 0, 0));
@@ -158,15 +158,9 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
         final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
         EditText cText = (EditText) convertView.findViewById(R.id.commentText);
-        //final Button ratingBtn = (Button) convertView.findViewById(R.id.rButton);
-        //ImageButton commentBtn = (ImageButton) convertView.findViewById(R.id.commentBtn);
         ImageButton helpBtn = (ImageButton) convertView.findViewById(R.id.helpButton);
-        boolean hasPhoto;
-        int cRating;
 
         description.setText((String)iTask.getDescription());
-        final String commentTxt = iTask.getComments();
-        cText.setText("Insert comment here");
 
         // add button listener for Help Button
         helpBtn.setOnClickListener(new View.OnClickListener() {
@@ -184,7 +178,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 subCBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
                     }
                 });
@@ -199,9 +192,12 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         final Button rating5 = (Button) convertView.findViewById(R.id.rButton5);
         final ImageButton photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
 
-        //iTask.setComplete(false);
+        //reset field
         clearAllRatingBtn(rating1, rating2, rating3, rating4, rating5);
-        clearPhotoBtn(photoBtn,iTask);
+        //clearPhotoBtn(photoBtn,iTask);
+        photoBtn.setBackgroundResource(R.drawable.rating_button);
+        Log.d("Current btn mapped to:", iTask.getName());
+        //completeIcn.setBackgroundResource(R.color.transparent);
 
         if (iTask.getRating() == 1){
             rating1.setBackgroundResource(R.drawable.green_button);
@@ -219,10 +215,16 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             photoBtn.setBackgroundResource(R.drawable.green_button);
         }
 
+
+        if (iTask.isComplete()){
+            completeIcn.setBackgroundResource(R.drawable.green_button);
+        }else{
+            completeIcn.setBackgroundResource(R.color.transparent);
+        }
+
         rating1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
                 iTask.setRating(1);
                 rating1.setBackgroundResource(R.drawable.green_button);
                 clearRatingBtn(rating2,rating3,rating4, rating5);
@@ -271,127 +273,22 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             public void onClick(View v) {
                 iTask.setPhoto(true);
                 photoBtn.setBackgroundResource(R.drawable.green_button);
+                Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
+                //List<Item> g = listHashMap.get(iTask.getName());
+                //Toast.makeText(context,iTask.getName() + g.size(),Toast.LENGTH_SHORT).show();
 
                 if (iTask.getRating() == 0){
                     Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
                 }else{
                     iTask.setComplete(true);
                     if (checkComplete(iTask.getName())){
+                        //Log.d("If Name exists: ",iTask.getName());
                         Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
-                        completeIcn.setBackgroundResource(R.drawable.green_button);
+                        //completeIcn.setBackgroundResource(R.drawable.green_button);
                     }
                 }
-
             }
         });
-
-        /*
-        description.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                final BottomSheetDialog task_sheet = new BottomSheetDialog(context);
-                task_sheet.setContentView(R.layout.task_dialog);
-                final Button rating1 = (Button) task_sheet.findViewById(R.id.rButton1);
-                final Button rating2 = (Button) task_sheet.findViewById(R.id.rButton2);
-                final Button rating3 = (Button) task_sheet.findViewById(R.id.rButton3);
-                final Button rating4 = (Button) task_sheet.findViewById(R.id.rButton4);
-                final Button rating5 = (Button) task_sheet.findViewById(R.id.rButton5);
-                final ImageButton photoBtn = (ImageButton) task_sheet.findViewById(R.id.photoButton);
-
-                if (iTask.getRating() == 1){
-                    rating1.setBackgroundResource(R.drawable.green_button);
-                }else if (iTask.getRating() == 2){
-                    rating2.setBackgroundResource(R.drawable.green_button);
-                }else if (iTask.getRating() == 3){
-                    rating3.setBackgroundResource(R.drawable.green_button);
-                }else if (iTask.getRating() == 4){
-                    rating4.setBackgroundResource(R.drawable.green_button);
-                }else if (iTask.getRating() == 5){
-                    rating5.setBackgroundResource(R.drawable.green_button);
-                }
-
-                if (iTask.getPhoto()){
-                    photoBtn.setBackgroundResource(R.drawable.green_button);
-                }
-
-                rating1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
-                        iTask.setRating(1);
-                        rating1.setBackgroundResource(R.drawable.green_button);
-                        clearRatingBtn(rating2,rating3,rating4, rating5);
-                        clearPhotoBtn(photoBtn,iTask);
-                    }
-                });
-                rating2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
-                        iTask.setRating(2);
-                        rating2.setBackgroundResource(R.drawable.green_button);
-                        clearRatingBtn(rating1,rating3,rating4, rating5);
-                        clearPhotoBtn(photoBtn,iTask);
-                    }
-                });
-                rating3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
-                        iTask.setRating(3);
-                        rating3.setBackgroundResource(R.drawable.green_button);
-                        clearRatingBtn(rating1,rating2,rating4, rating5);
-                        clearPhotoBtn(photoBtn,iTask);
-                    }
-                });
-                rating4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
-                        iTask.setRating(4);
-                        rating4.setBackgroundResource(R.drawable.green_button);
-                        clearRatingBtn(rating1,rating2,rating3, rating5);
-                        clearPhotoBtn(photoBtn,iTask);
-                    }
-                });
-                rating5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
-                        iTask.setRating(5);
-                        rating5.setBackgroundResource(R.drawable.green_button);
-                        clearRatingBtn(rating1,rating2,rating3, rating4);
-                        clearPhotoBtn(photoBtn,iTask);
-                    }
-                });
-
-                photoBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
-                        iTask.setPhoto(true);
-                        photoBtn.setBackgroundResource(R.drawable.green_button);
-
-                        if (iTask.getRating() != 0){
-                            description.setTextColor(Color.BLACK);
-                            description.setTypeface(Typeface.DEFAULT);
-                            description.setTextSize(14);
-                            task_sheet.dismiss();
-                        }else{
-                            Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-
-                Toast.makeText(context,"Select a rating between 1 to 5",Toast.LENGTH_SHORT).show();
-                task_sheet.show();
-            }
-        });
-        */
-
         return convertView;
     }
 

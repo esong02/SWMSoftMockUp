@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:background="@drawable/info_background"
@@ -23,15 +23,20 @@
         android:layout_marginBottom="20sp"
         android:src="@drawable/user_icon3" />
 
-    <TextView
+    <EditText
+        android:id="@+id/userField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="User Name"
-        android:id="@+id/userName"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
         android:textColor="@color/colorPrimaryDark"
-        android:layout_marginBottom="20sp"
-        android:textSize="16sp"/>
+        android:textAlignment="center"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:inputType="text"
+        android:hint="Username"
+        android:maxLength="80"
+        android:textStyle="bold"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/passField"
@@ -43,7 +48,7 @@
         android:textAlignment="center"
         android:backgroundTint="@color/colorPrimaryDark"
         android:inputType="textPassword"
-        android:hint="Enter Password"
+        android:hint="Password"
         android:maxLength="80"
         android:textStyle="bold"
         android:textSize="20sp" />
