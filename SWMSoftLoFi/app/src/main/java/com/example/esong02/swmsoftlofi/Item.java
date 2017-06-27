@@ -6,11 +6,12 @@ package com.example.esong02.swmsoftlofi;
 
 public class Item {
 
-    public String name;
-    public String description;
-    public String comments;
-    public int rating;
-    public boolean hasPhoto;
+    private String name;
+    private String description;
+    private String comments;
+    private int rating;
+    private boolean hasPhoto;
+    private boolean complete = false;
     //private ArrayList photoList;
     //private int photoIds;
 
@@ -27,11 +28,11 @@ public class Item {
     }//end constructor
 
 
-    private String getName(){
+    public String getName(){
         return name;
     }
 
-    private void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
 
@@ -67,5 +68,8 @@ public class Item {
         this.hasPhoto = hasPhoto;
     }
 
+    public boolean isComplete(){ return complete; }
+
+    public void setComplete(boolean c){ complete = c; }
 
 }//end class

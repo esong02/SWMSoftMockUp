@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if (currentU.getLogin() == false){
+        if (!currentU.getLogin()){
 
             //User Login
             final Dialog alertDialog = new Dialog(MainActivity.this);
@@ -66,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             alertDialog.setCancelable(false);
 
-            final EditText pass = (EditText) alertDialog.findViewById(R.id.passCode);
+            final EditText pass = (EditText) alertDialog.findViewById(R.id.passField);
             final Button loginBtn = (Button) alertDialog.findViewById(R.id.loginBtn);
             final TextView uName = (TextView) alertDialog.findViewById(R.id.userName);
-            uName.setText("Welcome Back, " + currentU.getName());
+            String welcomeMsg = "Welcome Back, " + currentU.getName();
+            uName.setText(welcomeMsg);
             //final String password = "civica";
             // if button is clicked, close the custom dialog
             loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -94,9 +95,10 @@ public class MainActivity extends AppCompatActivity {
         //getSupportActionBar().setHomeButtonEnabled(true);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Facilities"));
-        tabLayout.addTab(tabLayout.newTab().setText("Structures"));
-        tabLayout.addTab(tabLayout.newTab().setText("Low Impact Developments"));
+        tabLayout.addTab(tabLayout.newTab().setText("Facility"));
+        tabLayout.addTab(tabLayout.newTab().setText("Structure"));
+        tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
+
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

@@ -2,14 +2,12 @@ package com.example.esong02.swmsoftlofi;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ExpandableListView;
 
@@ -38,44 +36,16 @@ public class InspectionActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lid_form2);
-
-        // Get the widget reference from XML layout
-        mCLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
-
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+        setContentView(R.layout.lid_form);
 
         // Set the support action bar
+        mToolbar = (Toolbar) findViewById(R.id.inspectionBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Elm Drive");
 
-        // Set a title for collapsing toolbar layout
-        mCollapsingToolbarLayout.setTitle(" ");
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    mCollapsingToolbarLayout.setTitle("Elm Drive");
-                    isShow = true;
-                } else if (isShow) {
-                    mCollapsingToolbarLayout.setTitle(" ");//carefull there should a space between double quote otherwise it wont work
-                    isShow = false;
-                }
-            }
-        });
 
         //public Item(String name, String description, String comments, int rating){
-
-
-
 
         listView = (ExpandableListView) findViewById(R.id.iListview);
         View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.inspection_footer, null, false);

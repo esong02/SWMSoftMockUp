@@ -19,7 +19,7 @@ public class StructureTab extends Fragment{
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
     private List<String> listPropertyHeader;
-    private HashMap<String, List<String>> listHash;
+    private HashMap<String, List<LID>> listHash;
     private Context context;
 
     @Override
@@ -61,16 +61,16 @@ public class StructureTab extends Fragment{
         listPropertyHeader.add("Structure 2");
         listPropertyHeader.add("Structure 3");
 
-        List<String> lid1 = new ArrayList<>();  //Bioretention LID
-        List<String> lid2 = new ArrayList<>(); //Permeable LID
-        List<String> lid3 = new ArrayList<>(); //Green Roof LID
+        List<LID> lid1 = new ArrayList<>();  //Bioretention LID
+        List<LID> lid2 = new ArrayList<>(); //Permeable LID
+        List<LID> lid3 = new ArrayList<>(); //Green Roof LID
 
-        lid1.add("Outlet 1");
-        lid1.add("Spillway 1");
-        lid1.add("Channel 1");
+        lid1.add(new LID("Outlet 1","Outlet"));
+        lid1.add(new LID("Spillway 1","Spillway"));
+        lid1.add(new LID("Channel 1","SWM Channel"));
 
-        lid2.add("Manhole 1");
-        lid2.add("Head Wall 1");
+        lid2.add(new LID("Manhole 1","Manhole"));
+        lid2.add(new LID("Head Wall 1","HeadWall"));
 
         listHash.put(listPropertyHeader.get(0),lid1);
         listHash.put(listPropertyHeader.get(1),lid2);

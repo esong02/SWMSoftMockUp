@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.support.design.widget.BottomSheetDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private HashMap<String,List<Item>> listHashMap;
+    private static boolean grey = false;
+    private ImageView completeIcn;
 
     public ItemListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Item>> listHashMap) {
         this.context = context;
@@ -43,26 +48,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
         return listHashMap.get(listDataHeader.get(groupPosition)).size();
-    }
-
-    public String getDescription(Object task){
-        Item iTask = (Item) task;
-        return iTask.description;
-    }
-
-    public int getRating(Object task){
-        Item iTask = (Item) task;
-        return iTask.rating;
-    }
-
-    public void setRating(Object task, int r){
-        Item iTask = (Item) task;
-        iTask.rating = r;
-    }
-
-    public String getComment(Object task){
-        Item iTask = (Item) task;
-        return iTask.comments;
     }
 
     @Override
@@ -102,7 +87,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         TextView lblListHeader = (TextView) convertView.findViewById(R.id.componentName);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
-        //convertView.setBackgroundResource(R.drawable.property_header);
+        completeIcn = (ImageView) convertView.findViewById(R.id.completeIcon);
 
         return convertView;
     }
@@ -119,11 +104,35 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         b4.setBackgroundResource(R.drawable.rating_button);
     }
 
+    public void clearAllRatingBtn(View r1, View r2, View r3, View r4, View r5){
+        Button b1 = (Button) r1;
+        Button b2 = (Button) r2;
+        Button b3 = (Button) r3;
+        Button b4 = (Button) r4;
+        Button b5 = (Button) r5;
+
+        b1.setBackgroundResource(R.drawable.rating_button);
+        b2.setBackgroundResource(R.drawable.rating_button);
+        b3.setBackgroundResource(R.drawable.rating_button);
+        b4.setBackgroundResource(R.drawable.rating_button);
+        b5.setBackgroundResource(R.drawable.rating_button);
+    }
+
     public void clearPhotoBtn(View v, Object object){
         ImageButton i1 = (ImageButton) v;
         Item iTask = (Item) object;
         iTask.setPhoto(false);
-        i1.setBackgroundResource(R.drawable.photo_button);
+        i1.setBackgroundResource(R.drawable.rating_button);
+    }
+
+    public boolean checkComplete(String gName){
+        List<Item> g = listHashMap.get(gName);
+        for (int i = 0; i < g.size(); i++){
+            if(g.get(i).isComplete() == false){
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -133,6 +142,16 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.task_item,null);
 
+        }
+
+        if (grey == false) {
+            convertView.setBackgroundColor(Color.argb(100, 255, 255, 255));
+            //LinearLayout taskField = (LinearLayout) convertView.findViewById(R.id.task_field);
+            //taskField.setBackgroundColor(Color.argb(100, 100, 100, 100));
+            grey = true;
+        }else{
+            convertView.setBackgroundColor(Color.argb(25, 0, 0, 0));
+            grey = false;
         }
 
         final Item iTask = (Item) getChild(groupPosition,childPosition);
@@ -147,12 +166,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
         description.setText((String)iTask.getDescription());
         final String commentTxt = iTask.getComments();
-
-        if (!commentTxt.equals("")){
-            cText.setText(commentTxt);
-        }else{
-            cText.setText("Comments");
-        }
+        cText.setText("Insert comment here");
 
         // add button listener for Help Button
         helpBtn.setOnClickListener(new View.OnClickListener() {
@@ -160,14 +174,118 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View arg0) {
 
-                Dialog alertDialog = new Dialog(context);
+                final Dialog alertDialog = new Dialog(context);
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.condition_dialog);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                final ImageButton subCBtn = (ImageButton)alertDialog.findViewById(R.id.subCancelButton);
                 alertDialog.show();
+
+                subCBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                    }
+                });
+
             }
         });
 
+        final Button rating1 = (Button) convertView.findViewById(R.id.rButton1);
+        final Button rating2 = (Button) convertView.findViewById(R.id.rButton2);
+        final Button rating3 = (Button) convertView.findViewById(R.id.rButton3);
+        final Button rating4 = (Button) convertView.findViewById(R.id.rButton4);
+        final Button rating5 = (Button) convertView.findViewById(R.id.rButton5);
+        final ImageButton photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
+
+        //iTask.setComplete(false);
+        clearAllRatingBtn(rating1, rating2, rating3, rating4, rating5);
+        clearPhotoBtn(photoBtn,iTask);
+
+        if (iTask.getRating() == 1){
+            rating1.setBackgroundResource(R.drawable.green_button);
+        }else if (iTask.getRating() == 2){
+            rating2.setBackgroundResource(R.drawable.green_button);
+        }else if (iTask.getRating() == 3){
+            rating3.setBackgroundResource(R.drawable.green_button);
+        }else if (iTask.getRating() == 4){
+            rating4.setBackgroundResource(R.drawable.green_button);
+        }else if (iTask.getRating() == 5){
+            rating5.setBackgroundResource(R.drawable.green_button);
+        }
+
+        if (iTask.getPhoto()){
+            photoBtn.setBackgroundResource(R.drawable.green_button);
+        }
+
+        rating1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context,"Take a Picture",Toast.LENGTH_SHORT).show();
+                iTask.setRating(1);
+                rating1.setBackgroundResource(R.drawable.green_button);
+                clearRatingBtn(rating2,rating3,rating4, rating5);
+                clearPhotoBtn(photoBtn,iTask);
+            }
+        });
+        rating2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iTask.setRating(2);
+                rating2.setBackgroundResource(R.drawable.green_button);
+                clearRatingBtn(rating1,rating3,rating4, rating5);
+                clearPhotoBtn(photoBtn,iTask);
+            }
+        });
+        rating3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iTask.setRating(3);
+                rating3.setBackgroundResource(R.drawable.green_button);
+                clearRatingBtn(rating1,rating2,rating4, rating5);
+                clearPhotoBtn(photoBtn,iTask);
+            }
+        });
+        rating4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iTask.setRating(4);
+                rating4.setBackgroundResource(R.drawable.green_button);
+                clearRatingBtn(rating1,rating2,rating3, rating5);
+                clearPhotoBtn(photoBtn,iTask);
+            }
+        });
+        rating5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iTask.setRating(5);
+                rating5.setBackgroundResource(R.drawable.green_button);
+                clearRatingBtn(rating1,rating2,rating3, rating4);
+                clearPhotoBtn(photoBtn,iTask);
+            }
+        });
+
+        photoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iTask.setPhoto(true);
+                photoBtn.setBackgroundResource(R.drawable.green_button);
+
+                if (iTask.getRating() == 0){
+                    Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
+                }else{
+                    iTask.setComplete(true);
+                    if (checkComplete(iTask.getName())){
+                        Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
+                        completeIcn.setBackgroundResource(R.drawable.green_button);
+                    }
+                }
+
+            }
+        });
+
+        /*
         description.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -272,7 +390,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 task_sheet.show();
             }
         });
-
+        */
 
         return convertView;
     }

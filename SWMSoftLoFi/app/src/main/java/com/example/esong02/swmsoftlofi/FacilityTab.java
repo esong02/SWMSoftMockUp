@@ -21,7 +21,7 @@ public class FacilityTab extends Fragment{
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
     private List<String> listPropertyHeader;
-    private HashMap<String, List<String>> listHash;
+    private HashMap<String, List<LID>> listHash;
     private Context context;
 
     @Override
@@ -62,22 +62,22 @@ public class FacilityTab extends Fragment{
         listPropertyHeader.add("Facility 2");
         listPropertyHeader.add("Facility 3");
 
-        List<String> lid1 = new ArrayList<>();
-        List<String> lid2 = new ArrayList<>();
-        List<String> lid3 = new ArrayList<>();
+        List<LID> lid1 = new ArrayList<>();
+        List<LID> lid2 = new ArrayList<>();
+        List<LID> lid3 = new ArrayList<>();
 
-        lid1.add("Outlet 1");
-        lid1.add("Spillway 1");
-        lid1.add("Channel 1");
+        lid1.add(new LID("Outlet 1","Outlet"));
+        lid1.add(new LID("Spillway 1","Spillway"));
+        lid1.add(new LID("Channel 1","Channel"));
 
-        lid2.add("Manhole 1");
-        lid2.add("Channel 2");
-        lid2.add("Manhole 2");
-        lid2.add("Outlet 2");
+        lid2.add(new LID("Manhole 1","Manhole"));
+        lid2.add(new LID("Channel 2","SWM Channel"));
+        lid2.add(new LID("Manhole 2","Manhole"));
+        lid2.add(new LID("Outlet 2","Outlet"));
 
-        lid3.add("Spillway 2");
-        lid3.add("Spillway 3");
-        lid3.add("Channel 3");
+        lid3.add(new LID("Spillway 2","Spillway"));
+        lid3.add(new LID("Spillway 3","Spillway"));
+        lid3.add(new LID("Channel 3","Channel"));
 
         listHash.put(listPropertyHeader.get(0),lid1);
         listHash.put(listPropertyHeader.get(1),lid2);
