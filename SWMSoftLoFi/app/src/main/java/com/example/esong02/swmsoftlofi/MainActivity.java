@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
     private static final User inspectorU = new User("Inspector","pass",false);
+    //Test
     private DrawerLayout mdrawerLayout;
 
     @Override
