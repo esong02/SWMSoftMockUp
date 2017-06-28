@@ -100,8 +100,8 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
             LID lid = (LID) getChild(groupPosition,childPosition);
             txtListChild.setText(lid.getName());
             type.setText(lid.getType());
-            convertView.setBackgroundResource(R.drawable.info_background);
-            convertView.setPadding(20,5,0,5);
+            convertView.setBackgroundResource(R.drawable.sub_info_background);
+            convertView.setPadding(20,10,0,10);
         }
 
         inspect.setOnClickListener(new View.OnClickListener() {

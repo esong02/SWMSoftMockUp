@@ -1,117 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/type"
-        android:paddingTop="5dp"
-        android:gravity="right|bottom"
-        android:textSize="12dp"
-        android:text="Type"
-        android:textStyle="normal|italic"
-        android:textColor="@color/red"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:paddingLeft="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"/>
-
-
-    <TextView
-        android:id="@+id/lblListItem"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:paddingTop="5sp"
-        android:gravity="left|top"
-        android:textSize="18dp"
-        android:text="LID Name"
-        android:layout_toLeftOf="@id/type"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:paddingLeft="10dp"
-        android:paddingBottom="5dp"
-        />
-
-    <GridLayout
-        android:layout_height="wrap_content"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:columnCount="3"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:layout_below="@id/lblListItem"
-        android:gravity="center_horizontal"
-        android:id="@+id/activityRow">
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:id="@+id/inspectAction"
-            android:layout_columnWeight="1"
-            android:scaleType="centerInside"
-            android:background="@color/transparent"
-            android:src="@drawable/inspection"/>
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:layout_columnWeight="1"
-            android:id="@+id/pInspectAction"
-            android:background="@color/transparent"
-            android:scaleType="centerInside"
-            android:src="@drawable/p_inspection"/>
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:paddingLeft="10dp"
-            android:layout_columnWeight="1"
-            android:paddingRight="10dp"
-            android:id="@+id/infoAction"
-            android:scaleType="fitCenter"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_info_outline_black_24dp"/>
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
 
         <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Inspect"
-            android:gravity="center_horizontal"
-            android:layout_columnWeight="1"
-            android:textColor="@color/black"
-            android:textSize="14dp"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/type"
+            android:paddingTop="5dp"
+            android:gravity="right|bottom"
+            android:textSize="12dp"
+            android:text="Type"
+            android:textStyle="normal|italic"
+            android:textColor="@color/red"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"/>
+
 
         <TextView
+            android:id="@+id/lblListItem"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Past Inspects"
-            android:gravity="center_horizontal"
-            android:layout_columnWeight="1"
+            android:paddingTop="5sp"
+            android:gravity="left|top"
+            android:textSize="18dp"
+            android:text="LID Name"
+            android:layout_toLeftOf="@id/type"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="normal"
             android:textColor="@color/black"
-            android:textSize="14dp"/>
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
+            />
 
-        <TextView
+        <GridLayout
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Info"
+            android:layout_width="match_parent"
+            android:columnCount="3"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_below="@id/lblListItem"
             android:gravity="center_horizontal"
-            android:layout_columnWeight="1"
-            android:textColor="@color/black"
-            android:textSize="14dp"/>
+            android:id="@+id/activityRow">
 
-    </GridLayout>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/inspectAction"
+                android:layout_columnWeight="1"
+                android:scaleType="centerInside"
+                android:background="@color/transparent"
+                android:src="@drawable/inspection"/>
 
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_columnWeight="1"
+                android:id="@+id/pInspectAction"
+                android:background="@color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/p_inspection"/>
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:layout_columnWeight="1"
+                android:paddingRight="10dp"
+                android:id="@+id/infoAction"
+                android:scaleType="fitCenter"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_info_outline_black_24dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Inspect"
+                android:gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Past Inspects"
+                android:gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Info"
+                android:gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:textColor="@color/black"
+                android:textSize="14dp"/>
+
+        </GridLayout>
+
+    </RelativeLayout>
 </RelativeLayout>

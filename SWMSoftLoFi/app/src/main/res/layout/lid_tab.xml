@@ -9,12 +9,11 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:background="@color/colorPrimary"
         android:divider="@android:color/transparent"
         android:dividerHeight="5.0sp">
-
     </ExpandableListView>
 
 </RelativeLayout>

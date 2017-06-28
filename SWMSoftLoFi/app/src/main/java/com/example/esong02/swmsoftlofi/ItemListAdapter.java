@@ -156,6 +156,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.task_item,null);
         }
 
+
+        /*
         if (grey == false) {
             convertView.setBackgroundColor(Color.argb(100, 255, 255, 255));
             grey = true;
@@ -163,6 +165,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView.setBackgroundColor(Color.argb(25, 0, 0, 0));
             grey = false;
         }
+        */
 
         final Item iTask = (Item) getChild(groupPosition,childPosition);
 
