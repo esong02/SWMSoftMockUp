@@ -1,37 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:rowCount="1"
-    android:layout_margin="10sp"
-    android:background="@drawable/side_nav_bar">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/info_background"
+    android:layout_margin="10sp">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="Check Complete. Will turn green if task is complete."
+        android:id="@+id/completeIcon"
+        />
 
     <TextView
         android:layout_height="wrap_content"
-        android:layout_width="90sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"
-        android:padding="5sp"
-        android:gravity="start|center_vertical"
-        android:textSize="15sp"
-        android:id="@+id/assetName"/>
+        android:layout_width="50dp"
+        android:layout_toLeftOf="@id/completeIcon"
+        android:gravity="start|left"
+        android:paddingRight="5dp"
+        android:text="100"
+        android:id="@+id/distance"
+        android:layout_columnWeight="1"
+        android:textColor="@color/black"
+        android:textStyle="normal"
+        android:textSize="16sp"/>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="80sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginLeft="10sp"
-        android:padding="5sp"
-        android:gravity="start|center_vertical"
-        android:id="@+id/progressTrack"/>
+        <LinearLayout
+            android:layout_columnWeight="1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/assetLayer"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Asset"
+                android:id="@+id/assetName"
+                android:gravity="start|left"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10sp"
-        android:padding="5sp"
-        android:gravity="start|center_vertical"
-        android:id="@+id/location"/>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_toLeftOf="@id/distance"
+            android:paddingRight="10dp"
+            android:layout_gravity="start|left"
+            android:layout_columnWeight="1">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Location"
+                android:id="@+id/location"
+                android:gravity="start|left"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:maxLines="5"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
 
 
-</GridLayout>
+
+
+</RelativeLayout>

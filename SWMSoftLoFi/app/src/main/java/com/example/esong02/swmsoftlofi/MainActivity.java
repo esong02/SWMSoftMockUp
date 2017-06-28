@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Handle the camera action
         } else if (id == R.id.inspection_tasks) {
             Intent intent = new Intent(MainActivity.this, MyTasksActivity.class);
-            intent.putExtra("Activity","My Inspection Task");
+            intent.putExtra("Activity","My Inspection Tasks");
             startActivity(intent);
         } else if (id == R.id.photos) {
 

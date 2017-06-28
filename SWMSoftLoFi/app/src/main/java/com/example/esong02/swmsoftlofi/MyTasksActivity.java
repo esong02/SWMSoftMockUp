@@ -33,11 +33,11 @@ public class MyTasksActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
 
-        ITasks myDataArray[] = new ITasks[]{
-                new ITasks("Pondview2","Complete", "Northeast corner\nof Hwy 400 (15km)"),
-                new ITasks("Lakeview\nEstates", "Pending", "Btwn Dundurn Cr &\nRosedale Heights (5km)"),
-                new ITasks("Oakbank\nThornbank", "Pending", "N side of Centre St btwn\nErica & Oakbank (3km)"),
-                new ITasks("Trullwrook\nInvestment", "Complete", "Part Lot 7\nConcession (50km)")
+        MyTasks myDataArray[] = new MyTasks[]{
+                new MyTasks("Pondview2","Complete", "Northeast corner\nof Hwy 400", 5),
+                new MyTasks("Lakeview\nEstates", "Pending", "Btwn Dundurn Cr &\nRosedale Heights", 15),
+                new MyTasks("Oakbank\nThornbank", "Pending", "N side of Centre St btwn\nErica & Oakbank ", 30),
+                new MyTasks("Trullwrook\nInvestment", "Complete", "Part Lot 7\nConcession", 50)
         };
 
         MyTasksAdapter myAdapter = new MyTasksAdapter(this, R.layout.item_task, myDataArray);

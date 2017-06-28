@@ -58,13 +58,10 @@ public class InspectionActivity extends AppCompatActivity{
         if (assetType.equals("LID")){
             lidData();
         }else if (assetType.equals("Facility")){
-            //lidData();
             facilityData();
         }else if (assetType.equals("Structure")){
-            //lidData();
             structureData();
         }else{
-            //lidData();
             error();
         }
 
@@ -78,7 +75,7 @@ public class InspectionActivity extends AppCompatActivity{
         componentHeader = new ArrayList<>();
         componentHeader.add("ERROR");//1
 
-        List<Item> component1 = new ArrayList<>();//Bench Mark
+        List<Item> component1 = new ArrayList<>();//Error
 
         component1.add(new Item("Error","Not Working", "", 0, false));
 
