@@ -20,12 +20,12 @@ import java.util.List;
  * Created by esong02 on 2017-06-10.
  */
 
-public class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class LIDListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private HashMap<String,List<LID>> listHashMap;
 
-    public ExpandableListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<LID>> listHashMap) {
+    public LIDListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<LID>> listHashMap) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listHashMap = listHashMap;
@@ -90,7 +90,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.lst_item,null);
         }
 
-        TextView txtListChild = (TextView)convertView.findViewById(R.id.lblListItem);
+        final TextView txtListChild = (TextView)convertView.findViewById(R.id.lblListItem);
         TextView type = (TextView)convertView.findViewById(R.id.type);
         ImageButton inspect = (ImageButton)convertView.findViewById(R.id.inspectAction);
         ImageButton pInspect = (ImageButton)convertView.findViewById(R.id.pInspectAction);
@@ -110,6 +110,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             public void onClick(View arg0) {
                 //Toast.makeText(context, "Inspect Selected . . ", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, InspectionActivity.class);
+                intent.putExtra("Activity",txtListChild.getText());
                 context.startActivity(intent);
             }
         });

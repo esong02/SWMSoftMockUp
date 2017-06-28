@@ -93,12 +93,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         if (checkComplete(headerTitle)){
             //Log.d("If Name exists: ",iTask.getName());
             //Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
-            Log.d("Group Check: ",headerTitle);
+            //Log.d("Group Check: ",headerTitle);
             completeIcn.setBackgroundResource(R.drawable.green_button);
         }else{
             completeIcn.setBackgroundResource(R.color.transparent);
         }
 
+        //convertView.setBackgroundResource(R.drawable.info_background);
         return convertView;
     }
 
@@ -224,14 +225,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             photoBtn.setBackgroundResource(R.drawable.green_button);
         }
 
-        /*
-        if (iTask.isComplete()){
-            completeIcn.setBackgroundResource(R.drawable.green_button);
-        }else{
-            completeIcn.setBackgroundResource(R.color.transparent);
-        }
-        */
-
         rating1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -299,6 +292,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 }
             }
         });
+
+        //convertView.setBackgroundResource(R.drawable.info_background);
         return convertView;
     }
 

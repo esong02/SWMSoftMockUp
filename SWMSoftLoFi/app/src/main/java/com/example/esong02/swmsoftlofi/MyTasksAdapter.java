@@ -17,12 +17,12 @@ import org.w3c.dom.Text;
  * Created by esong02 on 2017-06-12.
  */
 
-public class InspectionAdapter extends ArrayAdapter {
+public class MyTasksAdapter extends ArrayAdapter {
     private Context context;
     private int resource;
     private ITasks[] objects;
 
-    public InspectionAdapter(Context context, int resource, ITasks[] objects) {
+    public MyTasksAdapter(Context context, int resource, ITasks[] objects) {
         super(context, resource, objects);
         this.context=context;
         this.resource=resource;

@@ -15,7 +15,7 @@ import java.util.List;
 public class LIDTab extends Fragment{
 
     private ExpandableListView listView;
-    private ExpandableListAdapter listAdapter;
+    private LIDListAdapter listAdapter;
     private List<String> listSiteHeader;
     private HashMap<String, List<LID>> listHash;
     private Context context;
@@ -29,7 +29,7 @@ public class LIDTab extends Fragment{
 
         listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         initData();
-        listAdapter = new ExpandableListAdapter(context,listSiteHeader,listHash);
+        listAdapter = new LIDListAdapter(context,listSiteHeader,listHash);
         listView.setAdapter(listAdapter);
 
         return rootView;
