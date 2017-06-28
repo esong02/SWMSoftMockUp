@@ -120,10 +120,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             public void onClick(View arg0) {
             //Listview of Past Inspections
 
-                Dialog alertDialog = new Dialog(context);
+                final Dialog alertDialog = new Dialog(context);
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.past_inspections);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                ImageButton cancelInfoBtn = (ImageButton)alertDialog.findViewById(R.id.cancelAssetInfoButton);
+                cancelInfoBtn.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+                        alertDialog.dismiss();
+                    }
+                });
                 alertDialog.show();
             }
         });
