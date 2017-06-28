@@ -1,6 +1,7 @@
 package com.example.esong02.swmsoftlofi;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -34,16 +35,22 @@ public class InspectionActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lid_form);
         setContentView(R.layout.inspection_form);
 
+        Intent i= getIntent();
+        Bundle b = i.getExtras();
+        String title = "";
 
+        if (b != null)
+        {
+            title = (String) b.get("Activity");
+        }
 
         // Set the support action bar
         mToolbar = (Toolbar) findViewById(R.id.inspectionBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Elm Drive");
+        getSupportActionBar().setTitle(title);
 
 
         //public Item(String name, String description, String comments, int rating){

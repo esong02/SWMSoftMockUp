@@ -36,7 +36,7 @@ public class FSListAdapter extends ArrayAdapter {
         LayoutInflater inflater= ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(resource,parent,false);
 
-        TextView title = (TextView) row.findViewById(R.id.lblListItem);
+        final TextView title = (TextView) row.findViewById(R.id.lblListItem);
         TextView type = (TextView) row.findViewById(R.id.type);
         ImageButton inspect = (ImageButton)row.findViewById(R.id.inspectAction);
         ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
@@ -53,6 +53,7 @@ public class FSListAdapter extends ArrayAdapter {
             public void onClick(View arg0) {
                 //Toast.makeText(context, "Inspect Selected . . ", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, InspectionActivity.class);
+                intent.putExtra("Activity",title.getText());
                 context.startActivity(intent);
             }
         });
