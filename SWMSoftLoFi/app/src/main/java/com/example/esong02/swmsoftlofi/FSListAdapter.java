@@ -51,7 +51,6 @@ public class FSListAdapter extends ArrayAdapter {
 
             @Override
             public void onClick(View arg0) {
-                //Toast.makeText(context, "Inspect Selected . . ", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, InspectionActivity.class);
                 intent.putExtra("Activity",title.getText());
                 context.startActivity(intent);
@@ -68,7 +67,7 @@ public class FSListAdapter extends ArrayAdapter {
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.past_inspections);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                ImageButton cancelInfoBtn = (ImageButton)alertDialog.findViewById(R.id.cancelAssetInfoButton);
+                ImageButton cancelInfoBtn = (ImageButton)alertDialog.findViewById(R.id.cancelPastInspectionButton);
                 cancelInfoBtn.setOnClickListener(new View.OnClickListener() {
 
                     @Override

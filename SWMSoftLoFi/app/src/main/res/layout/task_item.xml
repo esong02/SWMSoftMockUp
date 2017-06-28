@@ -170,23 +170,23 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/photoButton"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rating_button"
+            android:src="@drawable/ic_photo_camera_white_48dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Take a Picture"
-            android:paddingTop="5dp"
+            android:paddingBottom="30dp"
             android:textSize="15dp"/>
-
-        <ImageButton
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/photoButton"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/rating_button"
-            android:src="@drawable/ic_photo_camera_white_48dp"/>
 
     </LinearLayout>
 </LinearLayout>

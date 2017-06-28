@@ -9,14 +9,10 @@ public class ITasks {
     public String progress;
     public String location;
 
-    public ITasks(){
-        super();
-    }//end constructor
-
     public ITasks(String aName,String progress, String location) {
         super();
         this.aName = aName;
         this.progress = progress;
         this.location = location;
-    }
+    }//end constructor
 }

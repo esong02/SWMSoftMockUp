@@ -62,8 +62,6 @@ public class LIDTab extends Fragment{
         listHash.put(listSiteHeader.get(1),lid2);
         listHash.put(listSiteHeader.get(2),lid3);
 
-
     }
-
 
 }

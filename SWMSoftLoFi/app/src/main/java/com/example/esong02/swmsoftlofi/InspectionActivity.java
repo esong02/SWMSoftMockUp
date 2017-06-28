@@ -51,17 +51,10 @@ public class InspectionActivity extends AppCompatActivity{
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
-
-
-        //public Item(String name, String description, String comments, int rating){
-
         listView = (ExpandableListView) findViewById(R.id.iListview);
-        //View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.inspection_footer, null, false);
-        //listView.addFooterView(footerView);
         lidData();
         listAdapter = new ItemListAdapter(InspectionActivity.this,componentHeader,listHash);
         listView.setAdapter(listAdapter);
-
     }
 
     private void facilityData(){

@@ -18,7 +18,6 @@ import java.util.List;
 public class FacilityTab extends Fragment{
 
     private ListView listView;
-    //private ListAdapter listAdapter;
     private List<String> listPropertyHeader;
     private HashMap<String, List<LID>> listHash;
     private Context context;

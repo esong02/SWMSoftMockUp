@@ -100,15 +100,13 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
             LID lid = (LID) getChild(groupPosition,childPosition);
             txtListChild.setText(lid.getName());
             type.setText(lid.getType());
-            convertView.setBackgroundResource(R.drawable.sub_info_background);
-            convertView.setPadding(20,10,0,10);
+            convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
         }
 
         inspect.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                //Toast.makeText(context, "Inspect Selected . . ", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, InspectionActivity.class);
                 intent.putExtra("Activity",txtListChild.getText());
                 context.startActivity(intent);
@@ -125,7 +123,7 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.past_inspections);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                ImageButton cancelInfoBtn = (ImageButton)alertDialog.findViewById(R.id.cancelAssetInfoButton);
+                ImageButton cancelInfoBtn = (ImageButton)alertDialog.findViewById(R.id.cancelPastInspectionButton);
                 cancelInfoBtn.setOnClickListener(new View.OnClickListener() {
 
                     @Override

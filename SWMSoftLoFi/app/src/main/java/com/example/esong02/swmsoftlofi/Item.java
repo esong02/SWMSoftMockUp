@@ -15,10 +15,6 @@ public class Item {
     //private ArrayList photoList;
     //private int photoIds;
 
-    public Item(){
-        super();
-    }
-
     public Item(String name, String description, String comments, int rating, boolean hasPhoto){
         this.name= name;
         this.description = description;
@@ -26,7 +22,6 @@ public class Item {
         this.rating = rating;
         this.hasPhoto = hasPhoto;
     }//end constructor
-
 
     public String getName(){
         return name;

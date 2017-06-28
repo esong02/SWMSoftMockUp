@@ -88,18 +88,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
         completeIcn = (ImageView) convertView.findViewById(R.id.completeIcon);
-        //completeIcn.setBackgroundResource(R.color.transparent);
 
         if (checkComplete(headerTitle)){
-            //Log.d("If Name exists: ",iTask.getName());
-            //Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
-            //Log.d("Group Check: ",headerTitle);
             completeIcn.setBackgroundResource(R.drawable.green_button);
         }else{
             completeIcn.setBackgroundResource(R.color.transparent);
         }
 
-        //convertView.setBackgroundResource(R.drawable.info_background);
         return convertView;
     }
 
@@ -137,7 +132,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     }
 
     public boolean checkComplete(String gName){
-        //Log.d("If Name exists: ",gName);
 
         List<Item> g = listHashMap.get(gName);
         for (int i = 0; i < g.size(); i++){
@@ -156,8 +150,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.task_item,null);
         }
 
-
-        /*
+        /* //Will keep based on how bad feedback is
         if (grey == false) {
             convertView.setBackgroundColor(Color.argb(100, 255, 255, 255));
             grey = true;
@@ -207,10 +200,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
         //reset field
         clearAllRatingBtn(rating1, rating2, rating3, rating4, rating5);
-        //clearPhotoBtn(photoBtn,iTask);
         photoBtn.setBackgroundResource(R.drawable.rating_button);
-        Log.d("Current btn mapped to:", iTask.getName());
-        //completeIcn.setBackgroundResource(R.color.transparent);
+        //Log.d("Current btn mapped to:", iTask.getName());
 
         if (iTask.getRating() == 1){
             rating1.setBackgroundResource(R.drawable.green_button);
@@ -280,23 +271,18 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 iTask.setPhoto(true);
                 photoBtn.setBackgroundResource(R.drawable.green_button);
                 Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
-                //List<Item> g = listHashMap.get(iTask.getName());
-                //Toast.makeText(context,iTask.getName() + g.size(),Toast.LENGTH_SHORT).show();
 
                 if (iTask.getRating() == 0){
                     Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
                 }else{
                     iTask.setComplete(true);
                     if (checkComplete(iTask.getName())){
-                        //Log.d("If Name exists: ",iTask.getName());
                         Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
-                        //completeIcn.setBackgroundResource(R.drawable.green_button);
                     }
                 }
             }
         });
 
-        //convertView.setBackgroundResource(R.drawable.info_background);
         return convertView;
     }
 

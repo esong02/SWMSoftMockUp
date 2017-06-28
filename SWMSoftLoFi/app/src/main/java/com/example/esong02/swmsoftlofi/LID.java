@@ -9,10 +9,6 @@ public class LID {
     public String name;
     public String type;
 
-    public LID(){
-        super();
-    }
-
     public LID(String name, String type){
         this.name = name;
         this.type = type;
