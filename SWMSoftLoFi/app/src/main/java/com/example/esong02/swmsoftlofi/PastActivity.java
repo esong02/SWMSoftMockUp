@@ -13,7 +13,7 @@ public class PastActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lid_form);
+        setContentView(R.layout.inspection_form);
 
     }
 }

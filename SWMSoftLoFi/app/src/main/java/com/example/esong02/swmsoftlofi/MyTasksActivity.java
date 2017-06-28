@@ -1,5 +1,6 @@
 package com.example.esong02.swmsoftlofi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,17 +14,25 @@ import android.widget.ListView;
 public class MyTasksActivity extends AppCompatActivity {
     private Toolbar mToolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inspection_list);
 
+        Intent i= getIntent();
+        Bundle b = i.getExtras();
+        String title = "";
+
+        if (b != null)
+        {
+            title = (String) b.get("Activity");
+        }
+
         // Set the support action bar
         mToolbar = (Toolbar) findViewById(R.id.myTasksBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("My Tasks");
+        getSupportActionBar().setTitle(title);
 
         ITasks myDataArray[] = new ITasks[]{
                 new ITasks("Pondview2","Complete", "Northeast corner\nof Hwy 400 (15km)"),

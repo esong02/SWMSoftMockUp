@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static final User currentU = new User("Civica","1234",false);
+    private static final User currentU = new User("Civica","pass",false);
     private DrawerLayout mdrawerLayout;
 
     @Override
@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Handle the camera action
         } else if (id == R.id.inspection_tasks) {
             Intent intent = new Intent(MainActivity.this, MyTasksActivity.class);
+            intent.putExtra("Activity","My Inspection Task");
             startActivity(intent);
         } else if (id == R.id.photos) {
 
