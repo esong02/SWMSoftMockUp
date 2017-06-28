@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +17,7 @@ import java.util.List;
 
 public class StructureTab extends Fragment{
 
-    private ExpandableListView listView;
-    private ExpandableListAdapter listAdapter;
+    private ListView listView;
     private List<String> listPropertyHeader;
     private HashMap<String, List<LID>> listHash;
     private Context context;
@@ -27,28 +27,13 @@ public class StructureTab extends Fragment{
 
         context = getContext();
 
-        View rootView = inflater.inflate(R.layout.asset_tab, container, false);
+        View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
-        listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         initData();
-        listAdapter = new ExpandableListAdapter(context,listPropertyHeader,listHash);
-        listView.setAdapter(listAdapter);
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
-      /* You must make use of the View v, find the view by id and extract the text as below*/
-
-                TextView tv= (TextView) v.findViewById(R.id.lblListItem);
-
-                String data= tv.getText().toString();
-
-                Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
-
-                return true;  // i missed this
-            }
-        });
+        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, listPropertyHeader);
+        listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
+        listView.setAdapter(myAdapter);
 
         return rootView;
     }

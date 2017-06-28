@@ -1,16 +1,12 @@
 package com.example.esong02.swmsoftlofi;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +25,7 @@ public class LIDTab extends Fragment{
 
         context = getContext();
 
-        View rootView = inflater.inflate(R.layout.asset_tab, container, false);
+        View rootView = inflater.inflate(R.layout.lid_tab, container, false);
 
         listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         initData();

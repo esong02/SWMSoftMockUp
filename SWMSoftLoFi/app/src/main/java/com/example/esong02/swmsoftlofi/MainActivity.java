@@ -23,7 +23,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static final User currentU = new User("Civica","pass",false);
+
+    private static final User sampleU = new User("Civica","pass",false);
+    private static final User adminU = new User("Admin","pass",false);
+    private static final User inspectorU = new User("Inspector","pass",false);
     private DrawerLayout mdrawerLayout;
 
     @Override
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Context context;
 
-        if (!currentU.getLogin()){
+        if (!sampleU.getLogin()){
 
             //User Login
             final Dialog alertDialog = new Dialog(MainActivity.this);
@@ -49,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (uName.getText().toString().equals(currentU.getName())) {
-                        if (pass.getText().toString().equals(currentU.getPass())) {
+                    if (uName.getText().toString().equals(sampleU.getName())) {
+                        if (pass.getText().toString().equals(sampleU.getPass())) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             alertDialog.dismiss();
                         } else {
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
 
             alertDialog.show();
-            currentU.setLogin(true);
+            sampleU.setLogin(true);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

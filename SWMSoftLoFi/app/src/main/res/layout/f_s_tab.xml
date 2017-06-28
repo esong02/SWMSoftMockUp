@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ExpandableListView
-        android:id="@+id/firstListView"
+    <ListView
+        android:id="@+id/facilityStructureListView"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:paddingTop="10dp"
@@ -13,11 +13,7 @@
         android:paddingRight="10dp"
         android:background="@color/colorPrimary"
         android:divider="@android:color/transparent"
-        android:dividerHeight="5.0sp"
-        >
-
-    </ExpandableListView>
-
-
+        android:dividerHeight="5.0sp" >
+    </ListView>
 
 </RelativeLayout>

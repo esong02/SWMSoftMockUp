@@ -34,6 +34,7 @@ public class InspectionActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.lid_form);
         setContentView(R.layout.inspection_form);
 
 
@@ -50,14 +51,14 @@ public class InspectionActivity extends AppCompatActivity{
         listView = (ExpandableListView) findViewById(R.id.iListview);
         //View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.inspection_footer, null, false);
         //listView.addFooterView(footerView);
-        initData();
+        lidData();
         listAdapter = new ItemListAdapter(InspectionActivity.this,componentHeader,listHash);
         listView.setAdapter(listAdapter);
 
     }
 
 
-    private void initData(){
+    private void lidData(){
         listHash = new HashMap<>();
         componentHeader = new ArrayList<>();
 

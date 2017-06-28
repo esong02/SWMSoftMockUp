@@ -1,14 +1,13 @@
 package com.example.esong02.swmsoftlofi;
 
 import android.content.Context;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +17,8 @@ import java.util.List;
 
 public class FacilityTab extends Fragment{
 
-    private ExpandableListView listView;
-    private ExpandableListAdapter listAdapter;
+    private ListView listView;
+    //private ListAdapter listAdapter;
     private List<String> listPropertyHeader;
     private HashMap<String, List<LID>> listHash;
     private Context context;
@@ -29,38 +28,35 @@ public class FacilityTab extends Fragment{
 
         context = getContext();
 
-        View rootView = inflater.inflate(R.layout.asset_tab, container, false);
+        View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
-        listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         initData();
-        listAdapter = new ExpandableListAdapter(context,listPropertyHeader,listHash);
-        listView.setAdapter(listAdapter);
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, listPropertyHeader);
+        listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
+        listView.setAdapter(myAdapter);
 
-      /* You must make use of the View v, find the view by id and extract the text as below*/
-
-                TextView tv= (TextView) v.findViewById(R.id.lblListItem);
-
-                String data= tv.getText().toString();
-
-                Toast.makeText(context, data, Toast.LENGTH_SHORT).show();
-
-                return true;  // i missed this
-            }
-        });
         return rootView;
+    }
+
+    private void initData(boolean c){
+        listPropertyHeader = new ArrayList<>();
+
+
+        listPropertyHeader.add("Facility 1");
+        listPropertyHeader.add("Facility 2");
+        listPropertyHeader.add("Facility 3");
     }
 
     private void initData(){
         listHash = new HashMap<>();
         listPropertyHeader = new ArrayList<>();
 
+
         listPropertyHeader.add("Facility 1");
         listPropertyHeader.add("Facility 2");
         listPropertyHeader.add("Facility 3");
+
 
         List<LID> lid1 = new ArrayList<>();
         List<LID> lid2 = new ArrayList<>();
