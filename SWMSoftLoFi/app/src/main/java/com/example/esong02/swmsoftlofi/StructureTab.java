@@ -32,6 +32,7 @@ public class StructureTab extends Fragment{
         initData();
 
         FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, listPropertyHeader);
+        myAdapter.setAssetType("Structure");
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
 

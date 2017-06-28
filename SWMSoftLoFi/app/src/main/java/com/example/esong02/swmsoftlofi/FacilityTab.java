@@ -32,6 +32,7 @@ public class FacilityTab extends Fragment{
         initData();
 
         FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, listPropertyHeader);
+        myAdapter.setAssetType("Facility");
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
 

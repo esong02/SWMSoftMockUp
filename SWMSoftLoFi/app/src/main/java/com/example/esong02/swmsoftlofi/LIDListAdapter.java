@@ -109,6 +109,7 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, InspectionActivity.class);
                 intent.putExtra("Activity",txtListChild.getText());
+                intent.putExtra("Asset Type","LID");
                 context.startActivity(intent);
             }
         });

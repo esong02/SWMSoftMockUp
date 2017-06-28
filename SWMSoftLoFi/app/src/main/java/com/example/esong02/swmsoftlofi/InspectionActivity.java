@@ -40,10 +40,12 @@ public class InspectionActivity extends AppCompatActivity{
         Intent i= getIntent();
         Bundle b = i.getExtras();
         String title = "";
+        String assetType = "";
 
         if (b != null)
         {
             title = (String) b.get("Activity");
+            assetType = (String) b.get("Asset Type");
         }
 
         // Set the support action bar
@@ -52,9 +54,56 @@ public class InspectionActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
         listView = (ExpandableListView) findViewById(R.id.iListview);
-        lidData();
+
+        if (assetType.equals("LID")){
+            lidData();
+        }else if (assetType.equals("Facility")){
+            //lidData();
+            facilityData();
+        }else if (assetType.equals("Structure")){
+            //lidData();
+            structureData();
+        }else{
+            //lidData();
+            error();
+        }
+
         listAdapter = new ItemListAdapter(InspectionActivity.this,componentHeader,listHash);
         listView.setAdapter(listAdapter);
+
+    }
+
+    private void error(){
+        listHash = new HashMap<>();
+        componentHeader = new ArrayList<>();
+        componentHeader.add("ERROR");//1
+
+        List<Item> component1 = new ArrayList<>();//Bench Mark
+
+        component1.add(new Item("Error","Not Working", "", 0, false));
+
+        listHash.put(componentHeader.get(0),component1);
+    }
+
+    private void structureData(){
+        listHash = new HashMap<>();
+        componentHeader = new ArrayList<>();
+
+        componentHeader.add("Inlet");//1
+        componentHeader.add("Outlet");//2
+        componentHeader.add("Structure");//3
+
+        List<Item> component1 = new ArrayList<>();//Inlet
+        List<Item> component2 = new ArrayList<>();//Outlet
+        List<Item> component3 = new ArrayList<>();//Structure
+
+        component1.add(new Item("Inlet","No obstruction/debris, standing water or sediment accumulation", "", 0, false));
+        component2.add(new Item("Outlet","No obstruction/debris, standing water or sediment acumulation", "", 0, false));
+        component3.add(new Item("Structure"," ","",0, false));
+
+        listHash.put(componentHeader.get(0),component1);
+        listHash.put(componentHeader.get(1),component2);
+        listHash.put(componentHeader.get(2),component3);
     }
 
     private void facilityData(){
@@ -89,45 +138,31 @@ public class InspectionActivity extends AppCompatActivity{
         List<Item> component8 = new ArrayList<>();//Manhole 2
         List<Item> component9 = new ArrayList<>();//Outlet Back
         List<Item> component10 = new ArrayList<>();//OB: Baffle Blocks
+        List<Item> component11 = new ArrayList<>();//OB: Grate
+        List<Item> component12 = new ArrayList<>();//OB: Headwall
+        List<Item> component13 = new ArrayList<>();//OB: Pipe
+        List<Item> component14 = new ArrayList<>();//OF
+        List<Item> component15 = new ArrayList<>();//OF: Grate
+        List<Item> component16 = new ArrayList<>();//OF: Headwall
+        List<Item> component17 = new ArrayList<>();//OF: Pipe
 
-
-        //component1.add(new Item("Contributing Drainage Area",new String[]{"Check for Contributing Drainage Area Conditon","Check for Trash and Debris"}, "Not much trash and debris", 2));
-        component1.add(new Item("Contributing Drainage Area","Check for Contributing Drainage Area Conditon", "", 0, false));
-        component1.add(new Item("Contributing Drainage Area","Trash and Debris", "", 0, false));
-
-        //component2.add(new Item("Inlet",new String[]{"Check for Structural Integrity","Check for Obstruction", "Check for Inlet Erosion","Check for Trash and Debris"},"Where is it",3));
-        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Structural Integrity","",0, false));
-        component2.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Obstruction","",0, false));
-        component2.add(new Item("Inlet","Inlet Erosion", "",0, false));
-        component2.add(new Item("Inlet","Trash and Debris", "",0, false));
-
-        //component3.add(new Item("Pretreatment",new String[]{"Check for Sediment Accumulation","Check for Trash and Debris"},  "",0));
-        component3.add(new Item("Pretreatment","Check for Sediment Accumulation", "",0, false));
-        component3.add(new Item("Pretreatment","Trash and Debris",  "",0, false));
-
-        //component4.add(new Item("Perimeter",new String[]{"Check for Trash and Debris"}, "I'm lost and stranded in the middle of nowhere",1));
-        component4.add(new Item("Perimeter","Trash and Debris", "",0, false));
-
-        //component5.add(new Item("Filter Bed",new String[]{"Look for Standing Water","Check for Trash and Debris","Check for Filter Bed Erosion","Measure Mulch Depth","Filter Bed Sediment Accumulation","Filter Bed Surface Sinking","Check Dams","Sediment Accumulation Testing"}, "",0));
-        component5.add(new Item("Filter Bed","Standing Water", "",0, false));
-        component5.add(new Item("Filter Bed","Trash and Debris", "",0, false));
-        component5.add(new Item("Filter Bed","Filter Bed Erosion", "",0, false));
-        component5.add(new Item("Filter Bed","Mulch Depth", "",0, false));
-        component5.add(new Item("Filter Bed","Filter Bed Sediment Accumulation", "",0, false));
-        component5.add(new Item("Filter Bed","Filter Bed Surface Sinking", "",0, false));
-        component5.add(new Item("Filter Bed","Check Dams", "",0, false));
-        component5.add(new Item("Filter Bed","Sediment Accumulation Testing", "",0, false));
-
-        //component6.add(new Item("Vegetation",new String[]{"Vegetation Cover","Vegetation Condition","Vegetation Composition"},"",0));
-        component6.add(new Item("Vegetation","Vegetation Cover", "",0, false));
-        component6.add(new Item("Vegetation","Vegetation Condition", "",0, false));
-        component6.add(new Item("Vegetation","Vegetation Composition",  "",0, false));
-
-        //component8.add(new Item("Overflow Outlets",new String[]{"Overflow Outlet Obstruction"}, "",0));
-        component7.add(new Item("Overflow Outlets","Overflow Outlet Obstruction", "",0, false));
-
-        //component7.add(new Item("Monitoring Well",new String[]{"Monitoring Well Condition"}, "",0));
-        component8.add(new Item("Monitoring Well","Monitoring Well Condition", "",0, false));
+        component1.add(new Item("Bench Mark","Make sure to record any offset from the actual bench mark", "", 0, false));
+        component2.add(new Item("Emergency Spillway","Check for structural condition (crackling, flaking, broken seperating, leaning), obstructions", "", 0, false));
+        component3.add(new Item("Emergency Spillway: Grating","Check grate bars for rust, bent, broken, open/closed, lock","",0, false));
+        component4.add(new Item("Facility","Check for garbage, erosion, proper functioning and correct water levels","",0, false));
+        component5.add(new Item("Fence","Check for structural condition (broken, leaning)", "",0, false));
+        component6.add(new Item("Inlet Channel","Check for standing water, structural integrity and in-steam erosion", "",0, false));
+        component7.add(new Item("Manhole 1","Check integrity of cover (rust, bent, broken, open/closed, lock-bolts), selling around erosion", "",0, false));
+        component8.add(new Item("Manhole 2","Check integrity of cover (rust, bent, broken, open/closed, lock-bolts), setting around erosion",  "",0, false));
+        component9.add(new Item("Outlet-Back","Check for obstructions/debris", "",0, false));
+        component10.add(new Item("Outlet-Back: Baffle Blocks","Check for structural condition (crackling,flaking)", "",0, false));
+        component11.add(new Item("Outlet-Back: Grate","Check grate bars for rust, bent, broken, open.close lock", "",0, false));
+        component12.add(new Item("Outlet-Back: Headwall","Filter Bed Erosion", "",0, false));
+        component13.add(new Item("Outlet-Back: Pipe","", "",0, false));
+        component14.add(new Item("Outlet-Front","Check for obstruction/debris", "",0, false));
+        component15.add(new Item("Outlet-Front: Grate","Check grate bars for rust, bent, broken open/closed, lock", "",0, false));
+        component16.add(new Item("Outlet-Front: Headwall","Check for structural condition (crackling/flaking)", "",0, false));
+        component17.add(new Item("Outlet-Front: Pipe","Check for obstructions/debris built up", "",0, false));
 
         listHash.put(componentHeader.get(0),component1);
         listHash.put(componentHeader.get(1),component2);
@@ -137,6 +172,15 @@ public class InspectionActivity extends AppCompatActivity{
         listHash.put(componentHeader.get(5),component6);
         listHash.put(componentHeader.get(6),component7);
         listHash.put(componentHeader.get(7),component8);
+        listHash.put(componentHeader.get(8),component9);
+        listHash.put(componentHeader.get(9),component10);
+        listHash.put(componentHeader.get(10),component11);
+        listHash.put(componentHeader.get(11),component12);
+        listHash.put(componentHeader.get(12),component13);
+        listHash.put(componentHeader.get(13),component14);
+        listHash.put(componentHeader.get(14),component15);
+        listHash.put(componentHeader.get(15),component16);
+        listHash.put(componentHeader.get(16),component17);
     }
 
     private void lidData(){

@@ -23,6 +23,7 @@ public class FSListAdapter extends ArrayAdapter {
     private Context context;
     private int resource;
     private List<String> objects;
+    private String aType;
 
     public FSListAdapter(Context context, int resource,List<String> objects) {
         super(context, resource, objects);
@@ -30,6 +31,11 @@ public class FSListAdapter extends ArrayAdapter {
         this.resource=resource;
         this.objects=objects;
     }//end constructor
+
+    public void setAssetType(String type){
+        this.aType = type;
+    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -53,6 +59,7 @@ public class FSListAdapter extends ArrayAdapter {
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, InspectionActivity.class);
                 intent.putExtra("Activity",title.getText());
+                intent.putExtra("Asset Type",aType);
                 context.startActivity(intent);
             }
         });
