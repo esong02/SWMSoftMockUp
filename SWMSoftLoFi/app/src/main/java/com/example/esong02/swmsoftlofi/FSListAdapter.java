@@ -48,7 +48,7 @@ public class FSListAdapter extends ArrayAdapter {
         ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
 
         title.setText(objects.get(position));
-        type.setText(objects.get(position));
+        type.setText("");
         row.setBackgroundResource(R.drawable.info_background);
         row.setPadding(20,5,0,5);
 

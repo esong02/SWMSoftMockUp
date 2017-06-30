@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
     private static final User inspectorU = new User("Inspector","pass",false);
-    public static List<String> myTasksF = new ArrayList<String>();
-    public static List<String> myTasksS = new ArrayList<String>();
-    public static List<String> myTasksL = new ArrayList<String>();
+    public static List<String> myTaskF = new ArrayList<String>();
+    public static List<String> myTaskS = new ArrayList<String>();
+    public static List<String> myTaskL = new ArrayList<String>();
+    private boolean filter = false;
     //private PagerAdapter adapter;
     //Test
     private DrawerLayout mdrawerLayout;
@@ -93,10 +94,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        //myTasksS.add("Structure 2");
         //Log.d("Filter Name",FacilityTab.filterFS.get(0));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -175,10 +177,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("Activity","My Inspection Tasks");
             startActivity(intent);
         } else if (id == R.id.photos) {
-            Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
-            myTasksF.add("Facility 1");//filter test
-            myTasksS.add("Structure 2");//structure test
-
+            if (filter == false) {
+                //Filtering now
+                filter = true;
+                Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
+                myTaskS.add("Structure 2");//structure test
+                myTaskF.add("Facility 1");//filter test
+                myTaskL.add("Site 3");//lid test
+            }else{
+                //Already Filtered
+                filter = false;
+                Toast.makeText(MainActivity.this,"Defiltering", Toast.LENGTH_SHORT).show();
+                myTaskL.clear();
+                myTaskF.clear();
+                myTaskS.clear();
+            }
         } else if (id == R.id.closeNavBar) {
             closeDrawer();
         } else if (id == R.id.about) {

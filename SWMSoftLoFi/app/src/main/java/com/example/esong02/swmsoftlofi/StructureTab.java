@@ -43,15 +43,10 @@ public class StructureTab extends Fragment{
     }
 
     public void filter(){
-        Log.d("Filter","true");
-        if (!MainActivity.myTasksS.isEmpty()) {
-            Log.d("isEmpty","false");
-            //If Filter isnt empty
+        if (!MainActivity.myTaskS.isEmpty()) {
             clearFilter();
             for (String lph : listPropertyHeader) {
-                //Log.d("Filter Get1", lph);
-                for (String f: MainActivity.myTasksS) {
-                    //Log.d("Filter Get2", f);
+                for (String f: MainActivity.myTaskS) {
                     if (lph.contains(f)) {
                         filteredList.add(f);
                     }

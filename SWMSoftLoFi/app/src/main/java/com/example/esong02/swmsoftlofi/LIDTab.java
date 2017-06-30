@@ -17,6 +17,7 @@ public class LIDTab extends Fragment{
     private ExpandableListView listView;
     private LIDListAdapter listAdapter;
     private List<String> listSiteHeader;
+    private List<String> filteredList = new ArrayList<>();
     private HashMap<String, List<LID>> listHash;
     private Context context;
 
@@ -27,12 +28,33 @@ public class LIDTab extends Fragment{
 
         View rootView = inflater.inflate(R.layout.lid_tab, container, false);
 
-        listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         initData();
-        listAdapter = new LIDListAdapter(context,listSiteHeader,listHash);
+        filter();
+
+        listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
+        listAdapter = new LIDListAdapter(context,filteredList,listHash);
         listView.setAdapter(listAdapter);
 
         return rootView;
+    }
+
+    public void filter(){
+        if (!MainActivity.myTaskL.isEmpty()) {
+            clearFilter();
+            for (String lph : listSiteHeader) {
+                for (String f: MainActivity.myTaskL) {
+                    if (lph.contains(f)) {
+                        filteredList.add(f);
+                    }
+                }
+            }
+        }else{
+            filteredList = listSiteHeader;
+        }
+    }
+
+    public void clearFilter(){
+        filteredList.clear();
     }
 
     private void initData(){

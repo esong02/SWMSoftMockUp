@@ -23,6 +23,7 @@ public class FacilityTab extends Fragment{
     private List<String> filteredList = new ArrayList<>();
     private HashMap<String, List<LID>> listHash;
     private Context context;
+    private FSListAdapter myAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,24 +35,20 @@ public class FacilityTab extends Fragment{
         initData();
         filter();
 
-        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
+        myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
         myAdapter.setAssetType("Facility");
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
 
+        myAdapter.notifyDataSetChanged();
         return rootView;
     }
 
     public void filter(){
-        //Log.d("Filter","true");
-        if (!MainActivity.myTasksF.isEmpty()) {
-            //Log.d("isEmpty","true");
-            //If Filter isnt empty
+        if (!MainActivity.myTaskF.isEmpty()) {
             clearFilter();
             for (String lph : listPropertyHeader) {
-                //Log.d("Filter Get1", lph);
-                for (String f: MainActivity.myTasksF) {
-                    //Log.d("Filter Get2", f);
+                for (String f: MainActivity.myTaskF) {
                     if (lph.contains(f)) {
                         filteredList.add(f);
                     }
