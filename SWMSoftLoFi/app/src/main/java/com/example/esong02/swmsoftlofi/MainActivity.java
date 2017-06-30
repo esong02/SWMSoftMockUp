@@ -58,10 +58,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             alertDialog.dismiss();
                         } else {
-                            pass.setText("Invalid Password");
+                            //pass.setText("Invalid Password");
+                            pass.setText("");
+                            pass.setHint("Invalid Password");
                         }
                     }else{
-                        uName.setText("Invalid Username");
+                        uName.setText("");
+                        uName.setHint("Invalid Username");
+                        //uName.setText("Invalid Username");
                     }
                 }
             });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:background="@drawable/info_background"
@@ -13,11 +13,11 @@
         android:contentDescription="Logo"
         android:src="@drawable/logo" />
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20sp"
-        android:id="@+id/userBtn"
+        android:id="@+id/userIcn"
         android:background="@color/transparent"
         android:contentDescription="User Icon"
         android:layout_marginBottom="20sp"
@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/userField"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"
@@ -40,7 +40,7 @@
 
     <EditText
         android:id="@+id/passField"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginRight="30sp"

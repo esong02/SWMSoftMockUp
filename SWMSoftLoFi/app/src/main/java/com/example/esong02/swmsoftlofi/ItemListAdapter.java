@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -94,6 +95,9 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         }else{
             completeIcn.setBackgroundResource(R.color.transparent);
         }
+
+        //ExpandableListView mExpandableListView = (ExpandableListView) parent;
+        //mExpandableListView.expandGroup(groupPosition);
 
         return convertView;
     }
