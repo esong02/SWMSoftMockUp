@@ -36,6 +36,7 @@ public class FSListAdapter extends ArrayAdapter {
         this.aType = type;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater= ((Activity) context).getLayoutInflater();

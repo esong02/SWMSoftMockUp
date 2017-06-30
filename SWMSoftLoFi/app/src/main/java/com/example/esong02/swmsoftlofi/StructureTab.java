@@ -3,7 +3,6 @@ package com.example.esong02.swmsoftlofi;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ public class StructureTab extends Fragment{
 
     private ListView listView;
     private List<String> listPropertyHeader;
-    private List<String> filteredList = new ArrayList<>();
     private HashMap<String, List<LID>> listHash;
     private Context context;
 
@@ -32,38 +30,13 @@ public class StructureTab extends Fragment{
         View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
         initData();
-        filter();
 
-        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
+        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, listPropertyHeader);
         myAdapter.setAssetType("Structure");
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
 
         return rootView;
-    }
-
-    public void filter(){
-        Log.d("Filter","true");
-        if (!MainActivity.myTasksS.isEmpty()) {
-            Log.d("isEmpty","false");
-            //If Filter isnt empty
-            clearFilter();
-            for (String lph : listPropertyHeader) {
-                //Log.d("Filter Get1", lph);
-                for (String f: MainActivity.myTasksS) {
-                    //Log.d("Filter Get2", f);
-                    if (lph.contains(f)) {
-                        filteredList.add(f);
-                    }
-                }
-            }
-        }else{
-            filteredList = listPropertyHeader;
-        }
-    }
-
-    public void clearFilter(){
-        filteredList.clear();
     }
 
     private void initData(){

@@ -13,7 +13,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,18 +22,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
     private static final User inspectorU = new User("Inspector","pass",false);
-    public static List<String> myTasksF = new ArrayList<String>();
-    public static List<String> myTasksS = new ArrayList<String>();
-    public static List<String> myTasksL = new ArrayList<String>();
-    //private PagerAdapter adapter;
     //Test
     private DrawerLayout mdrawerLayout;
 
@@ -43,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
+        Context context;
 
         if (!sampleU.getLogin()){
 
@@ -78,8 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             sampleU.setLogin(true);
         }
 
-        */
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -93,19 +83,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        //Log.d("Filter Name",FacilityTab.filterFS.get(0));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
-                //adapter.setFilter(myTasksFS);
                 viewPager.setCurrentItem(tab.getPosition());
-                //Toast.makeText(MainActivity.this, tab.getText(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -149,8 +136,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 openDrawer();
                 return true;
             case R.id.action_sync_db:
-
-                //Actual Sync DB function
                 Dialog alertDialog = new Dialog(this);
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 alertDialog.setContentView(R.layout.sync_db);
@@ -175,9 +160,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("Activity","My Inspection Tasks");
             startActivity(intent);
         } else if (id == R.id.photos) {
-            Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
-            myTasksF.add("Facility 1");//filter test
-            myTasksS.add("Structure 2");
 
         } else if (id == R.id.closeNavBar) {
             closeDrawer();
