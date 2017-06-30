@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.photos) {
             Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
             myTasksF.add("Facility 1");//filter test
-            myTasksS.add("Structure 2");
+            myTasksS.add("Structure 2");//structure test
 
         } else if (id == R.id.closeNavBar) {
             closeDrawer();
