@@ -23,7 +23,7 @@ public class FacilityTab extends Fragment{
     private List<String> filteredList = new ArrayList<>();
     private HashMap<String, List<LID>> listHash;
     private Context context;
-    private FSListAdapter myAdapter;
+    public FSListAdapter myAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,35 +33,42 @@ public class FacilityTab extends Fragment{
         View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
         initData();
-        filter();
+        //filter();
+        //filteredList = listPropertyHeader;
+        clearFilter();
 
         myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
         myAdapter.setAssetType("Facility");
+
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
 
-        myAdapter.notifyDataSetChanged();
         return rootView;
-    }
-
-    public void filter(){
-        if (!MainActivity.myTaskF.isEmpty()) {
-            clearFilter();
-            for (String lph : listPropertyHeader) {
-                for (String f: MainActivity.myTaskF) {
-                    if (lph.contains(f)) {
-                        filteredList.add(f);
-                    }
-                }
-            }
-        }else{
-            filteredList = listPropertyHeader;
-        }
     }
 
     public void clearFilter(){
         filteredList.clear();
+        filteredList.addAll(listPropertyHeader);
+        Log.d("Clear"," size: " + filteredList.size());
     }
+
+    public void filterNow(){
+        clearFilter();
+        if (!MainActivity.myTaskF.isEmpty()) {
+            filteredList.clear();
+            for (String lph : listPropertyHeader) {
+                Log.d("Objects",lph);
+                for (String f: MainActivity.myTaskF) {
+                    if (lph.contains(f)) {
+                        Log.d("Tasks",f);
+                        filteredList.add(f);
+                    }
+                }
+            }
+        }
+        myAdapter.notifyDataSetChanged();
+    }
+
 
     private void initData(boolean c){
         listPropertyHeader = new ArrayList<>();

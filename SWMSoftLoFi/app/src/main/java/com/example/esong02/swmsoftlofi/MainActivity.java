@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static List<String> myTaskS = new ArrayList<String>();
     public static List<String> myTaskL = new ArrayList<String>();
     private boolean filter = false;
+    private ViewPager viewPager;
     //private PagerAdapter adapter;
+    List<WeakReference<Fragment>> fragList = new ArrayList<WeakReference<Fragment>>();
     //Test
     private DrawerLayout mdrawerLayout;
 
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //myTasksS.add("Structure 2");
         //Log.d("Filter Name",FacilityTab.filterFS.get(0));
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -122,6 +126,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    public void onAttachFragment (Fragment fragment) {
+        fragList.add(new WeakReference(fragment));
+    }
+
+    public List<Fragment> getActiveFragments() {
+        ArrayList<Fragment> ret = new ArrayList<Fragment>();
+        for(WeakReference<Fragment> ref : fragList) {
+            Fragment f = ref.get();
+            if(f != null) {
+                if(f.isVisible()) {
+                    ret.add(f);
+                }
+            }
+        }
+        return ret;
+    }
 
     public void openDrawer(){
         mdrawerLayout.openDrawer(Gravity.START);
@@ -170,6 +191,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.user_info) {
             // Handle the camera action
         } else if (id == R.id.inspection_tasks) {
@@ -180,10 +202,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (filter == false) {
                 //Filtering now
                 filter = true;
+
+                Fragment page = getSupportFragmentManager().findFragmentById(R.id.pager);
+                // based on the current position you can then cast the page to the correct
+                // class and call the method:
+
                 Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
-                myTaskS.add("Structure 2");//structure test
-                myTaskF.add("Facility 1");//filter test
-                myTaskL.add("Site 3");//lid test
+                Log.d("Page",page.toString());
+                if (viewPager.getCurrentItem() == 0 && page != null) {
+
+                    myTaskF.add("Facility 1");//filter test
+                    //myTaskS.add("Structure 2");//structure test
+                    if (page instanceof FacilityTab) {
+                        Log.d("instanceof","Facility");
+                        FacilityTab fPage = (FacilityTab) page;
+                        fPage.filterNow();
+                    }
+                }
+               // List<Fragment> pages = getActiveFragments();
+
+                //Log.d("Pages",pages.size() + "");
+
+
+                //myTaskS.add("Structure 2");//structure test
+
+                //myTaskL.add("Site 3");//lid test
             }else{
                 //Already Filtered
                 filter = false;

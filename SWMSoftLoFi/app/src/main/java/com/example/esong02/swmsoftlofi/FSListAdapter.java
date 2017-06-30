@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +25,7 @@ public class FSListAdapter extends ArrayAdapter {
     private Context context;
     private int resource;
     private List<String> objects;
+    private List<String> filteredList = new ArrayList<String>();
     private String aType;
 
     public FSListAdapter(Context context, int resource,List<String> objects) {
@@ -30,11 +33,38 @@ public class FSListAdapter extends ArrayAdapter {
         this.context=context;
         this.resource=resource;
         this.objects=objects;
+        //clearFilter();
     }//end constructor
 
     public void setAssetType(String type){
         this.aType = type;
     }
+
+    /*
+    //filter
+    public void filter(){
+        clearFilter();
+        if (!MainActivity.myTaskF.isEmpty()) {
+            filteredList.clear();
+            for (String lph : objects) {
+                Log.d("Objects",lph);
+                for (String f: MainActivity.myTaskF) {
+                    if (lph.contains(f)) {
+                        Log.d("Tasks",f);
+                        filteredList.add(f);
+                    }
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void clearFilter(){
+        filteredList.clear();
+        filteredList.addAll(objects);
+        Log.d("Clear"," size: " + filteredList.size());
+    }
+    */
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -47,7 +77,8 @@ public class FSListAdapter extends ArrayAdapter {
         ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
         ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
 
-        title.setText(objects.get(position));
+        Log.d("Position",position + "");
+        title.setText(objects.get(position));//prevent
         type.setText("");
         row.setBackgroundResource(R.drawable.info_background);
         row.setPadding(20,5,0,5);
