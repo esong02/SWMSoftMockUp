@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static List<String> myTaskL = new ArrayList<String>();
     private boolean filter = false;
     private ViewPager viewPager;
+    private PagerAdapter adapter;
     //private PagerAdapter adapter;
     List<WeakReference<Fragment>> fragList = new ArrayList<WeakReference<Fragment>>();
     //Test
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //filter test
+        myTaskF.add("Facility 1");
+        myTaskS.add("Structure 2");
+        myTaskS.add("Site 3");
         /*
 
         if (!sampleU.getLogin()){
@@ -102,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Log.d("Filter Name",FacilityTab.filterFS.get(0));
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -203,12 +208,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Filtering now
                 filter = true;
 
-                Fragment page = getSupportFragmentManager().findFragmentById(R.id.pager);
+                //Fragment page = getSupportFragmentManager().findFragmentById(R.id.pager);
                 // based on the current position you can then cast the page to the correct
                 // class and call the method:
 
                 Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
-                Log.d("Page",page.toString());
+                //Log.d("Page",page.toString());
+                /*
                 if (viewPager.getCurrentItem() == 0 && page != null) {
 
                     myTaskF.add("Facility 1");//filter test
@@ -219,6 +225,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         fPage.filterNow();
                     }
                 }
+                */
+
+
+                adapter.tab1.filterNow();
+                adapter.tab2.filterNow();
+                adapter.tab3.filterNow();
+
+
                // List<Fragment> pages = getActiveFragments();
 
                 //Log.d("Pages",pages.size() + "");
@@ -231,9 +245,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Already Filtered
                 filter = false;
                 Toast.makeText(MainActivity.this,"Defiltering", Toast.LENGTH_SHORT).show();
-                myTaskL.clear();
-                myTaskF.clear();
-                myTaskS.clear();
+                adapter.tab1.clearFilter();
+                adapter.tab2.clearFilter();
+                adapter.tab3.clearFilter();
             }
         } else if (id == R.id.closeNavBar) {
             closeDrawer();

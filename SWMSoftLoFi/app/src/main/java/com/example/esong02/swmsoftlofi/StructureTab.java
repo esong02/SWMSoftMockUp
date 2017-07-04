@@ -23,6 +23,7 @@ public class StructureTab extends Fragment{
     private List<String> filteredList = new ArrayList<>();
     private HashMap<String, List<LID>> listHash;
     private Context context;
+    private FSListAdapter myAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,9 +33,9 @@ public class StructureTab extends Fragment{
         View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
         initData();
-        filter();
+        clearFilter();
 
-        FSListAdapter myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
+        myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
         myAdapter.setAssetType("Structure");
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);
         listView.setAdapter(myAdapter);
@@ -42,23 +43,28 @@ public class StructureTab extends Fragment{
         return rootView;
     }
 
-    public void filter(){
+    public void clearFilter(){
+        filteredList.clear();
+        filteredList.addAll(listPropertyHeader);
+        Log.d("Clear"," size: " + filteredList.size());
+        //myAdapter.notifyDataSetChanged();
+    }
+
+    public void filterNow(){
+        clearFilter();
         if (!MainActivity.myTaskS.isEmpty()) {
-            clearFilter();
+            filteredList.clear();
             for (String lph : listPropertyHeader) {
+                Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskS) {
                     if (lph.contains(f)) {
+                        Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }
             }
-        }else{
-            filteredList = listPropertyHeader;
         }
-    }
-
-    public void clearFilter(){
-        filteredList.clear();
+        myAdapter.notifyDataSetChanged();
     }
 
     private void initData(){

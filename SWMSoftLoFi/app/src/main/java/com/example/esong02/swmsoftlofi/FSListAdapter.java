@@ -25,7 +25,6 @@ public class FSListAdapter extends ArrayAdapter {
     private Context context;
     private int resource;
     private List<String> objects;
-    private List<String> filteredList = new ArrayList<String>();
     private String aType;
 
     public FSListAdapter(Context context, int resource,List<String> objects) {
@@ -33,38 +32,11 @@ public class FSListAdapter extends ArrayAdapter {
         this.context=context;
         this.resource=resource;
         this.objects=objects;
-        //clearFilter();
     }//end constructor
 
     public void setAssetType(String type){
         this.aType = type;
     }
-
-    /*
-    //filter
-    public void filter(){
-        clearFilter();
-        if (!MainActivity.myTaskF.isEmpty()) {
-            filteredList.clear();
-            for (String lph : objects) {
-                Log.d("Objects",lph);
-                for (String f: MainActivity.myTaskF) {
-                    if (lph.contains(f)) {
-                        Log.d("Tasks",f);
-                        filteredList.add(f);
-                    }
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
-
-    public void clearFilter(){
-        filteredList.clear();
-        filteredList.addAll(objects);
-        Log.d("Clear"," size: " + filteredList.size());
-    }
-    */
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

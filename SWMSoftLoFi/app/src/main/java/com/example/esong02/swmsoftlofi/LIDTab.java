@@ -3,6 +3,7 @@ package com.example.esong02.swmsoftlofi;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class LIDTab extends Fragment{
         View rootView = inflater.inflate(R.layout.lid_tab, container, false);
 
         initData();
-        filter();
+        clearFilter();
 
         listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         listAdapter = new LIDListAdapter(context,filteredList,listHash);
@@ -38,24 +39,30 @@ public class LIDTab extends Fragment{
         return rootView;
     }
 
-    public void filter(){
+    public void clearFilter(){
+        filteredList.clear();
+        filteredList.addAll(listSiteHeader);
+        Log.d("Clear"," size: " + filteredList.size());
+        //listAdapter.notifyDataSetChanged();
+    }
+
+    public void filterNow(){
+        clearFilter();
         if (!MainActivity.myTaskL.isEmpty()) {
-            clearFilter();
+            filteredList.clear();
             for (String lph : listSiteHeader) {
+                Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskL) {
                     if (lph.contains(f)) {
+                        Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }
             }
-        }else{
-            filteredList = listSiteHeader;
         }
+        listAdapter.notifyDataSetChanged();
     }
 
-    public void clearFilter(){
-        filteredList.clear();
-    }
 
     private void initData(){
         listHash = new HashMap<>();

@@ -50,6 +50,7 @@ public class FacilityTab extends Fragment{
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
         Log.d("Clear"," size: " + filteredList.size());
+        //myAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){
