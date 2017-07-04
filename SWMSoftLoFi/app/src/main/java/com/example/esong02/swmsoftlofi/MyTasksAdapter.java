@@ -2,12 +2,10 @@ package com.example.esong02.swmsoftlofi;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,8 +32,6 @@ public class MyTasksAdapter extends ArrayAdapter {
         final TextView title = (TextView) row.findViewById(R.id.assetName);
         TextView locations = (TextView) row.findViewById(R.id.location);
         TextView distance = (TextView) row.findViewById(R.id.distance);
-        //ImageView completeIcn = (ImageView) row.findViewById(R.id.completeIcon);
-
 
         if(objects[position].progress.equals("Complete")){
             row.setBackgroundResource(R.drawable.green_task);
@@ -51,9 +47,6 @@ public class MyTasksAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context,title.getText() + "selected",Toast.LENGTH_SHORT).show();
-                //Intent intent = new Intent(context, InspectionActivity.class);
-                //intent.putExtra("Activity",title.getText());
-                //intent.putExtra("Asset Type","Facility");
             }
         });
 

@@ -23,14 +23,8 @@ public class InspectionActivity extends AppCompatActivity{
     private ItemListAdapter listAdapter;
     private List<String> componentHeader;
     private HashMap<String, List<Item>> listHash;
-    private Context context;
-
-    private CoordinatorLayout mCLayout;
-    private FloatingActionButton mFAB;
 
     private Toolbar mToolbar;
-    private CollapsingToolbarLayout mCollapsingToolbarLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

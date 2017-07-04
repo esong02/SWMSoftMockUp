@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,7 +47,6 @@ public class FSListAdapter extends ArrayAdapter {
         ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
         ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
 
-        //Log.d("Position",position + "");
         title.setText(objects.get(position));//prevent
         type.setText("");
         row.setBackgroundResource(R.drawable.info_background);
