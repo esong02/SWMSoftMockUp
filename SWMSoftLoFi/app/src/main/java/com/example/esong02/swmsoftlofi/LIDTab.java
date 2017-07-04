@@ -25,12 +25,13 @@ public class LIDTab extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        context = getContext();
+        context = getActivity();
 
         View rootView = inflater.inflate(R.layout.lid_tab, container, false);
 
         initData();
-        clearFilter();
+        filteredList.clear();
+        filteredList.addAll(listSiteHeader);
 
         listView = (ExpandableListView) rootView.findViewById(R.id.firstListView);
         listAdapter = new LIDListAdapter(context,filteredList,listHash);
@@ -42,8 +43,8 @@ public class LIDTab extends Fragment{
     public void clearFilter(){
         filteredList.clear();
         filteredList.addAll(listSiteHeader);
-        Log.d("Clear"," size: " + filteredList.size());
-        //listAdapter.notifyDataSetChanged();
+        //Log.d("Clear"," L size: " + filteredList.size());
+        listAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){

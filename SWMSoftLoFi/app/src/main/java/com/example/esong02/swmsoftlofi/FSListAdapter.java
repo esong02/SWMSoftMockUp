@@ -49,7 +49,7 @@ public class FSListAdapter extends ArrayAdapter {
         ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
         ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
 
-        Log.d("Position",position + "");
+        //Log.d("Position",position + "");
         title.setText(objects.get(position));//prevent
         type.setText("");
         row.setBackgroundResource(R.drawable.info_background);

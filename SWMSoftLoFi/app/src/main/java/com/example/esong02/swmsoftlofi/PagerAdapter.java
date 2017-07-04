@@ -24,12 +24,15 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 tab1 = new FacilityTab();
+                Log.d("Tab"," Facility ");
                 return tab1;
             case 1:
                 tab2 = new StructureTab();
+                Log.d("Tab"," Structure ");
                 return tab2;
             case 2:
                 tab3 = new LIDTab();
+                Log.d("Tab"," LID");
                 return tab3;
             default:
                 return null;

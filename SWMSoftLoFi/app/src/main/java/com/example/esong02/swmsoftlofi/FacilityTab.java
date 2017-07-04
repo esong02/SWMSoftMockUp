@@ -7,10 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,14 +25,13 @@ public class FacilityTab extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        context = getContext();
+        context = getActivity();
 
         View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
         initData();
-        //filter();
-        //filteredList = listPropertyHeader;
-        clearFilter();
+        filteredList.clear();
+        filteredList.addAll(listPropertyHeader);
 
         myAdapter = new FSListAdapter(context, R.layout.lst_item, filteredList);
         myAdapter.setAssetType("Facility");
@@ -49,19 +45,19 @@ public class FacilityTab extends Fragment{
     public void clearFilter(){
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
-        Log.d("Clear"," size: " + filteredList.size());
-        //myAdapter.notifyDataSetChanged();
+        //Log.d("Clear"," F size: " + filteredList.size());
+        myAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){
-        clearFilter();
+        //clearFilter();
         if (!MainActivity.myTaskF.isEmpty()) {
             filteredList.clear();
             for (String lph : listPropertyHeader) {
-                Log.d("Objects",lph);
+                //Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskF) {
                     if (lph.contains(f)) {
-                        Log.d("Tasks",f);
+                        //Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }

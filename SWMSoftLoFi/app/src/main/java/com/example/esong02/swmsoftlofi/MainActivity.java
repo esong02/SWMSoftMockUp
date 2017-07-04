@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //filter test
         myTaskF.add("Facility 1");
         myTaskS.add("Structure 2");
-        myTaskS.add("Site 3");
+        myTaskL.add("Site 3");
         /*
 
         if (!sampleU.getLogin()){
@@ -103,20 +103,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        //myTasksS.add("Structure 2");
-        //Log.d("Filter Name",FacilityTab.filterFS.get(0));
 
         viewPager = (ViewPager) findViewById(R.id.pager);
+        //adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(2);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
-                //adapter.setFilter(myTasksFS);
                 viewPager.setCurrentItem(tab.getPosition());
-                //Toast.makeText(MainActivity.this, tab.getText(), Toast.LENGTH_SHORT).show();
+                //Log.d("Tab"," #"+tab.getPosition());
             }
 
             @Override
