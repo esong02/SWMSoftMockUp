@@ -2,6 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/filter_tasks"
+        android:icon="@drawable/ic_account_circle_white_24dp"
+        android:title="My Tasks"
+        app:showAsAction="always" />
+
     <item
         android:icon="@drawable/ic_language_white"
         android:id="@+id/action_gis_view"
@@ -9,15 +16,15 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_sync_db"
+        android:icon="@drawable/ic_sync_white"
+        android:title="Sync to Database"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search_white"
         android:title="Search"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        app:showAsAction="always" />
-
-    <item
-        android:id="@+id/action_sync_db"
-        android:icon="@drawable/ic_sync_white"
-        android:title="Sync to Database"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom" />
 </menu>

@@ -43,19 +43,15 @@ public class LIDTab extends Fragment{
     public void clearFilter(){
         filteredList.clear();
         filteredList.addAll(listSiteHeader);
-        //Log.d("Clear"," L size: " + filteredList.size());
         listAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){
-        clearFilter();
         if (!MainActivity.myTaskL.isEmpty()) {
             filteredList.clear();
             for (String lph : listSiteHeader) {
-                Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskL) {
                     if (lph.contains(f)) {
-                        Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }
@@ -63,7 +59,6 @@ public class LIDTab extends Fragment{
         }
         listAdapter.notifyDataSetChanged();
     }
-
 
     private void initData(){
         listHash = new HashMap<>();
@@ -91,7 +86,5 @@ public class LIDTab extends Fragment{
         listHash.put(listSiteHeader.get(0),lid1);
         listHash.put(listSiteHeader.get(1),lid2);
         listHash.put(listSiteHeader.get(2),lid3);
-
     }
-
 }

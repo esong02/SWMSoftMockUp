@@ -45,19 +45,15 @@ public class FacilityTab extends Fragment{
     public void clearFilter(){
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
-        //Log.d("Clear"," F size: " + filteredList.size());
         myAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){
-        //clearFilter();
         if (!MainActivity.myTaskF.isEmpty()) {
             filteredList.clear();
             for (String lph : listPropertyHeader) {
-                //Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskF) {
                     if (lph.contains(f)) {
-                        //Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }
@@ -65,7 +61,6 @@ public class FacilityTab extends Fragment{
         }
         myAdapter.notifyDataSetChanged();
     }
-
 
     private void initData(boolean c){
         listPropertyHeader = new ArrayList<>();

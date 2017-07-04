@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean filter = false;
     private ViewPager viewPager;
     private PagerAdapter adapter;
-    //private PagerAdapter adapter;
-    List<WeakReference<Fragment>> fragList = new ArrayList<WeakReference<Fragment>>();
-    //Test
     private DrawerLayout mdrawerLayout;
 
     @Override
@@ -53,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         myTaskF.add("Facility 1");
         myTaskS.add("Structure 2");
         myTaskL.add("Site 3");
-        /*
 
         if (!sampleU.getLogin()){
 
@@ -87,8 +83,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             alertDialog.show();
             sampleU.setLogin(true);
         }
-
-        */
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -129,24 +123,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    @Override
-    public void onAttachFragment (Fragment fragment) {
-        fragList.add(new WeakReference(fragment));
-    }
-
-    public List<Fragment> getActiveFragments() {
-        ArrayList<Fragment> ret = new ArrayList<Fragment>();
-        for(WeakReference<Fragment> ref : fragList) {
-            Fragment f = ref.get();
-            if(f != null) {
-                if(f.isVisible()) {
-                    ret.add(f);
-                }
-            }
-        }
-        return ret;
-    }
-
     public void openDrawer(){
         mdrawerLayout.openDrawer(Gravity.START);
     }
@@ -171,9 +147,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case R.id.filter_tasks:
+                if (filter == false) {
+                    //Filtering Now
+                    filter = true;
+                    Toast.makeText(MainActivity.this, "Filtering by User's tasks", Toast.LENGTH_SHORT).show();
+                    adapter.tab1.filterNow();
+                    adapter.tab2.filterNow();
+                    adapter.tab3.filterNow();
+
+                    item.setIcon(R.drawable.ic_cancel_white_24dp);
+                }else{
+                    //Already Filtered
+                    filter = false;
+                    Toast.makeText(MainActivity.this,"Clearing filter . . ", Toast.LENGTH_SHORT).show();
+                    adapter.tab1.clearFilter();
+                    adapter.tab2.clearFilter();
+                    adapter.tab3.clearFilter();
+                    item.setIcon(R.drawable.ic_account_circle_white_24dp);
+                }
+
+                return true;
+
             case R.id.action_gis_view:
                 openDrawer();
                 return true;
+
             case R.id.action_sync_db:
 
                 //Actual Sync DB function
@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 alertDialog.setContentView(R.layout.sync_db);
                 alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 alertDialog.show();
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -202,51 +203,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("Activity","My Inspection Tasks");
             startActivity(intent);
         } else if (id == R.id.photos) {
-            if (filter == false) {
-                //Filtering now
-                filter = true;
 
-                //Fragment page = getSupportFragmentManager().findFragmentById(R.id.pager);
-                // based on the current position you can then cast the page to the correct
-                // class and call the method:
-
-                Toast.makeText(MainActivity.this, "Filtering", Toast.LENGTH_SHORT).show();
-                //Log.d("Page",page.toString());
-                /*
-                if (viewPager.getCurrentItem() == 0 && page != null) {
-
-                    myTaskF.add("Facility 1");//filter test
-                    //myTaskS.add("Structure 2");//structure test
-                    if (page instanceof FacilityTab) {
-                        Log.d("instanceof","Facility");
-                        FacilityTab fPage = (FacilityTab) page;
-                        fPage.filterNow();
-                    }
-                }
-                */
-
-
-                adapter.tab1.filterNow();
-                adapter.tab2.filterNow();
-                adapter.tab3.filterNow();
-
-
-               // List<Fragment> pages = getActiveFragments();
-
-                //Log.d("Pages",pages.size() + "");
-
-
-                //myTaskS.add("Structure 2");//structure test
-
-                //myTaskL.add("Site 3");//lid test
-            }else{
-                //Already Filtered
-                filter = false;
-                Toast.makeText(MainActivity.this,"Defiltering", Toast.LENGTH_SHORT).show();
-                adapter.tab1.clearFilter();
-                adapter.tab2.clearFilter();
-                adapter.tab3.clearFilter();
-            }
         } else if (id == R.id.closeNavBar) {
             closeDrawer();
         } else if (id == R.id.about) {

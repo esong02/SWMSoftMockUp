@@ -45,19 +45,15 @@ public class StructureTab extends Fragment{
     public void clearFilter(){
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
-        //Log.d("Clear"," S size: " + filteredList.size());
         myAdapter.notifyDataSetChanged();
     }
 
     public void filterNow(){
-        clearFilter();
         if (!MainActivity.myTaskS.isEmpty()) {
             filteredList.clear();
             for (String lph : listPropertyHeader) {
-                //Log.d("Objects",lph);
                 for (String f: MainActivity.myTaskS) {
                     if (lph.contains(f)) {
-                        //Log.d("Tasks",f);
                         filteredList.add(f);
                     }
                 }
