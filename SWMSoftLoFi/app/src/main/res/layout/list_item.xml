@@ -59,22 +59,22 @@
                 android:layout_height="50dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:id="@+id/inspectAction"
                 android:layout_columnWeight="1"
-                android:scaleType="centerInside"
+                android:id="@+id/pInspectAction"
                 android:background="@color/transparent"
-                android:src="@drawable/inspection"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/p_inspection"/>
 
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:id="@+id/inspectAction"
                 android:layout_columnWeight="1"
-                android:id="@+id/pInspectAction"
-                android:background="@color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/p_inspection"/>
+                android:background="@color/transparent"
+                android:src="@drawable/inspection"/>
 
             <ImageButton
                 android:layout_width="50dp"
@@ -87,11 +87,12 @@
                 android:background="@color/transparent"
                 android:src="@drawable/ic_info_outline_black_24dp"/>
 
+
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Inspect"
-                android:gravity="center_horizontal"
+                android:text="Past In."
+                android:gravity="center"
                 android:layout_columnWeight="1"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>
@@ -99,8 +100,8 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Past Inspects"
-                android:gravity="center_horizontal"
+                android:text="Inspection"
+                android:gravity="center"
                 android:layout_columnWeight="1"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>
@@ -109,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Info"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_columnWeight="1"
                 android:textColor="@color/black"
                 android:textSize="14dp"/>

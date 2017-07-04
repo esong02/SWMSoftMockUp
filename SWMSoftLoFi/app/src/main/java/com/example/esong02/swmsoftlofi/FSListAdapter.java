@@ -89,7 +89,7 @@ public class FSListAdapter extends ArrayAdapter {
 
             @Override
             public void onClick(View arg0) {
-                //Listview of Past Inspections
+                //General Information
 
                 final Dialog alertDialog = new Dialog(context);
                 alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

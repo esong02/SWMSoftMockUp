@@ -87,7 +87,7 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
 
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.lst_item,null);
+            convertView = inflater.inflate(R.layout.list_item,null);
         }
 
         final TextView txtListChild = (TextView)convertView.findViewById(R.id.lblListItem);

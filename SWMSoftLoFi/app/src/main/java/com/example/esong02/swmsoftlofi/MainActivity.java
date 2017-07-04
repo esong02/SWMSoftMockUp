@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -161,9 +162,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     adapter.tab1.clearFilter();
                     adapter.tab2.clearFilter();
                     adapter.tab3.clearFilter();
-                    item.setIcon(R.drawable.ic_account_circle_white_24dp);
+                    item.setIcon(R.drawable.ic_assignment_ind_white_24dp);
                 }
 
+                return true;
+
+            case R.id.inspection_type:
+
+                //Inspection Type
+                final Dialog iTypeDialog = new Dialog(this);
+                iTypeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                iTypeDialog.setContentView(R.layout.inspection_type_dialog);
+                iTypeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                ImageButton cancelBtn = (ImageButton) iTypeDialog.findViewById(R.id.iType_Cancel_Button);
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        iTypeDialog.dismiss();
+                    }
+                });
+
+                iTypeDialog.show();
                 return true;
 
             case R.id.action_gis_view:
@@ -173,11 +193,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.action_sync_db:
 
                 //Actual Sync DB function
-                Dialog alertDialog = new Dialog(this);
-                alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alertDialog.setContentView(R.layout.sync_db);
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                alertDialog.show();
+                Dialog syncDialog = new Dialog(this);
+                syncDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                syncDialog.setContentView(R.layout.sync_db);
+                syncDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                syncDialog.show();
                 return true;
 
             default:
