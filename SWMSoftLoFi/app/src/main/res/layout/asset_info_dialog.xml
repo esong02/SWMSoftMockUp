@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="250dp"
-    android:layout_height="400dp"
+    android:layout_height="450dp"
     android:background="@color/transparent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="380dp"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
         android:background="@drawable/info_background"
@@ -19,7 +19,7 @@
             android:text="Asset Information"
             android:textColor="@color/white"
             android:gravity="center_horizontal"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:textStyle="bold"/>
 
         <GridLayout
@@ -97,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="100dp"
                 android:layout_columnWeight="1">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -109,6 +110,7 @@
                     android:textSize="12dp" />
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -134,10 +136,14 @@
                 android:textSize="12dp" />
 
         </GridLayout>
+
     </LinearLayout>
 
     <ImageButton
+        android:layout_marginTop="10dp"
         android:layout_margin="10dp"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_clear_white_24dp"

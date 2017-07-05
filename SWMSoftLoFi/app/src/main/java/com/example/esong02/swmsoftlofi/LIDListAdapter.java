@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -95,12 +96,15 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
         ImageButton inspect = (ImageButton)convertView.findViewById(R.id.inspectAction);
         ImageButton pInspect = (ImageButton)convertView.findViewById(R.id.pInspectAction);
         ImageButton infoBtn = (ImageButton)convertView.findViewById(R.id.infoAction);
+        LinearLayout ll = (LinearLayout)convertView.findViewById(R.id.subLayer);
 
         if (getChild(groupPosition,childPosition) instanceof LID){
             LID lid = (LID) getChild(groupPosition,childPosition);
             txtListChild.setText(lid.getName());
             type.setText(lid.getType());
-            convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
+            ll.setBackgroundResource(R.drawable.sub_info_background);
+
+            //convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
         }
 
         inspect.setOnClickListener(new View.OnClickListener() {

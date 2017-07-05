@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -26,14 +27,13 @@
             android:paddingRight="10dp"
             android:paddingBottom="5dp"/>
 
-
         <TextView
             android:id="@+id/lblListItem"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:paddingTop="5sp"
             android:gravity="left|top"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:text="LID Name"
             android:layout_toLeftOf="@id/type"
             android:layout_alignParentLeft="true"
@@ -41,81 +41,101 @@
             android:textStyle="normal"
             android:textColor="@color/black"
             android:paddingLeft="10dp"
-            android:paddingBottom="5dp"
-            />
+            android:paddingBottom="5dp" />
 
         <GridLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:columnCount="3"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
-            android:layout_below="@id/lblListItem"
+            android:layout_below="@id/type"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:gravity="center_horizontal"
             android:id="@+id/activityRow">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_columnWeight="1"
-                android:id="@+id/pInspectAction"
-                android:background="@color/transparent"
-                android:scaleType="centerInside"
-                android:src="@drawable/p_inspection"/>
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:id="@+id/inspectAction"
-                android:layout_columnWeight="1"
-                android:scaleType="centerInside"
-                android:background="@color/transparent"
-                android:src="@drawable/inspection"/>
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:paddingLeft="10dp"
-                android:layout_columnWeight="1"
-                android:paddingRight="10dp"
-                android:id="@+id/infoAction"
-                android:scaleType="fitCenter"
-                android:background="@color/transparent"
-                android:src="@drawable/ic_info_outline_black_24dp"/>
-
-
-            <TextView
+            <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Past In."
-                android:gravity="center"
+                android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:textColor="@color/black"
-                android:textSize="14dp"/>
+                android:gravity="center_horizontal">
 
-            <TextView
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:id="@+id/pInspectAction"
+                    android:background="@color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/p_inspection"/>
+
+                <TextView
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:text="Past\nInspections"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Inspection"
-                android:gravity="center"
+                android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:textColor="@color/black"
-                android:textSize="14dp"/>
+                android:gravity="center_horizontal">
 
-            <TextView
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:id="@+id/inspectAction"
+                    android:scaleType="centerInside"
+                    android:background="@color/transparent"
+                    android:src="@drawable/inspection"/>
+
+                <TextView
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:text="Inspection"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Info"
-                android:gravity="center"
+                android:orientation="vertical"
                 android:layout_columnWeight="1"
-                android:textColor="@color/black"
-                android:textSize="14dp"/>
+                android:gravity="center_horizontal">
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:id="@+id/infoAction"
+                    android:scaleType="fitCenter"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_info_outline_black_24dp"/>
+
+                <TextView
+                    android:layout_height="40dp"
+                    android:layout_width="match_parent"
+                    android:text="Info"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
 
         </GridLayout>
 
     </RelativeLayout>
+
 </LinearLayout>
