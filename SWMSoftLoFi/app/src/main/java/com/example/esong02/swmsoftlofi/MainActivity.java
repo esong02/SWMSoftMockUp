@@ -1,10 +1,12 @@
 package com.example.esong02.swmsoftlofi;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -19,9 +21,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
 
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
@@ -54,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             alertDialog.setContentView(R.layout.login_dialog);
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            alertDialog.setCancelable(false);
+            //alertDialog.setCancelable(false);
 
             final EditText pass = (EditText) alertDialog.findViewById(R.id.passField);
             final Button loginBtn = (Button) alertDialog.findViewById(R.id.loginBtn);
@@ -63,15 +68,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (uName.getText().toString().equals(sampleU.getName())) {
-                        if (pass.getText().toString().equals(sampleU.getPass())) {
+                    if (uName.getText().toString().toLowerCase().equals(sampleU.getName().toLowerCase())) {
+                        if (pass.getText().toString().toLowerCase().equals(sampleU.getPass().toLowerCase())) {
                             Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                             alertDialog.dismiss();
                         } else {
-                            pass.setText("Invalid Password");
+                            pass.setHint("Invalid Password");
                         }
                     }else{
-                        uName.setText("Invalid Username");
+                        uName.setHint("Invalid Username");
                     }
                 }
             });
@@ -81,20 +86,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //Custom Toolbar xml: custom_actionbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ImageButton settingBtn = (ImageButton)toolbar.findViewById(R.id.action_settings);
+        final ImageButton settingBtn = (ImageButton)toolbar.findViewById(R.id.action_settings);
         ImageButton inspectionTypeBtn = (ImageButton)toolbar.findViewById(R.id.inspection_type);
         final ImageButton filterTaskBtn = (ImageButton)toolbar.findViewById(R.id.filter_tasks);
         ImageButton findBtn = (ImageButton)toolbar.findViewById(R.id.action_search);
         ImageButton syncBtn = (ImageButton)toolbar.findViewById(R.id.action_sync_db);
         final TextView filterTasklbl = (TextView)toolbar.findViewById(R.id.filterTaskLabel);
+        final String settingsMenu[] = {"About","Help","Feedback"};
+
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
-                // TODO: 2017-07-05
+
+                Toast.makeText(MainActivity.this,"Under Construction",Toast.LENGTH_SHORT).show();
+                /*
+                Spinner settingSpn = (Spinner)toolbar.findViewById(R.id.settingSpinner);
+                ArrayAdapter<String> sAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_spinner_item,settingsMenu);
+                // Specify the layout to use when the list of choices appears
+                sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+                settingSpn.setAdapter(sAdapter);
+                //settingSpn.setDropDownVerticalOffset(4);
+
+                settingSpn.setOnItemSelectedListener(MainActivity.this);
+                */
+
             }
         });
 
@@ -148,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2017-07-05
+                Toast.makeText(MainActivity.this,"Under Construction",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -200,11 +221,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-        public void openDrawer(){
+    public void openDrawer(){
             mdrawerLayout.openDrawer(Gravity.START);
         }
 
-        public void closeDrawer(){
+    public void closeDrawer(){
             mdrawerLayout.closeDrawer(Gravity.START);
         }
 
@@ -315,4 +336,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        //TODO Auto Generated Stub
+    }
 }

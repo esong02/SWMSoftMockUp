@@ -2,9 +2,12 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--color name="colorPrimary">#0acdf6</color-->
+    <!--color name="colorPrimaryDark">#1a81df</color-->
     <!--color name="colorPrimary">#000000</color-->
     <!--color name="colorPrimaryDark">#858585</color-->
-    <color name="colorAccent">#FF4081</color>
+    <!--color name="colorAccent">#ffe700</color-->
     <color name="white">#FFFFFF</color>
     <color name="aqua">#0acdf6</color>
     <color name="cyan">#00FFFF</color>

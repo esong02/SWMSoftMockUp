@@ -74,7 +74,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="-10dp"
                     android:layout_width="match_parent"
-                    android:text="P. Inspections"
+                    android:text="Records"
                     android:gravity="center_horizontal"
                     android:textColor="@color/black"
                     android:textSize="14dp"/>
