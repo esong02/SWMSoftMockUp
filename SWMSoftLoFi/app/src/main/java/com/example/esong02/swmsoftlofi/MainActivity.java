@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 iTypeDialog.setContentView(R.layout.inspection_type_dialog);
                 iTypeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-                ImageButton cancelBtn = (ImageButton) iTypeDialog.findViewById(R.id.iType_Cancel_Button);
+                ImageButton cancelBtn = (ImageButton) iTypeDialog.findViewById(R.id.iTypeCancelButton);
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

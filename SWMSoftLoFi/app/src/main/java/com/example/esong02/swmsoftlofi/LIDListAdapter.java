@@ -96,15 +96,13 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
         ImageButton inspect = (ImageButton)convertView.findViewById(R.id.inspectAction);
         ImageButton pInspect = (ImageButton)convertView.findViewById(R.id.pInspectAction);
         ImageButton infoBtn = (ImageButton)convertView.findViewById(R.id.infoAction);
-        LinearLayout ll = (LinearLayout)convertView.findViewById(R.id.subLayer);
 
         if (getChild(groupPosition,childPosition) instanceof LID){
             LID lid = (LID) getChild(groupPosition,childPosition);
             txtListChild.setText(lid.getName());
             type.setText(lid.getType());
-            ll.setBackgroundResource(R.drawable.sub_info_background);
 
-            //convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
+            convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
         }
 
         inspect.setOnClickListener(new View.OnClickListener() {

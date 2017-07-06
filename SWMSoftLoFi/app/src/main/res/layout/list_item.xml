@@ -73,7 +73,7 @@
                 <TextView
                     android:layout_height="40dp"
                     android:layout_width="match_parent"
-                    android:text="Past\nInspections"
+                    android:text="P. Inspections"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="14dp"/>
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_height="40dp"
                     android:layout_width="match_parent"
-                    android:text="Inspection"
+                    android:text="Inspections"
                     android:gravity="center"
                     android:textColor="@color/black"
                     android:textSize="14dp"/>
