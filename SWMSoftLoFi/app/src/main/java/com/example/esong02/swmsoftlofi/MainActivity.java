@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
     private static final User inspectorU = new User("Inspector","pass",false);
-    public static List<String> myTaskF = new ArrayList<String>();
-    public static List<String> myTaskS = new ArrayList<String>();
-    public static List<String> myTaskL = new ArrayList<String>();
+    public static List<String> myTaskF = new ArrayList<>(Arrays.asList("Facility 1"));
+    public static List<String> myTaskS = new ArrayList<>(Arrays.asList("Structure 2"));
+    public static List<String> myTaskL = new ArrayList<>(Arrays.asList("Site 3"));
     private boolean filter = false;
     private ViewPager viewPager;
     private PagerAdapter adapter;
@@ -45,11 +46,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //filter test
-        myTaskF.add("Facility 1");
-        myTaskS.add("Structure 2");
-        myTaskL.add("Site 3");
 
         if (!sampleU.getLogin()){
 
@@ -84,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             sampleU.setLogin(true);
         }
 
-        //Custom Toolbar
+        //Custom Toolbar xml: custom_actionbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

@@ -33,6 +33,7 @@
             android:id="@+id/userField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="30sp"
             android:layout_marginRight="30sp"
             android:textColor="@color/colorPrimaryDark"
@@ -46,6 +47,7 @@
 
         <EditText
             android:id="@+id/passField"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"

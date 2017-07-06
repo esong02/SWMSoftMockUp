@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:columnCount="6">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_columnWeight="1"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:id="@+id/action_sync_db"
+            android:src="@drawable/ic_sync_white"
+            android:paddingTop="5dp"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Sync DB"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_columnWeight="1"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:background="@color/colorPrimary"
+            android:id="@+id/inspection_type"
+            android:src="@drawable/ic_assignment_white_24dp"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="I. Types"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_columnWeight="1"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:background="@color/colorPrimary"
+            android:id="@+id/filter_tasks"
+            android:src="@drawable/ic_assignment_ind_white_24dp"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="My Tasks"
+            android:id="@+id/filterTaskLabel"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_columnWeight="1"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:paddingTop="5dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ic_search_white"
+            android:id="@+id/action_search"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Find"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_columnWeight="1"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:id="@+id/action_settings"
+            android:src="@drawable/ic_settings_white_24dp"
+            android:paddingTop="5dp"/>
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:text="Settings"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+</GridLayout>
