@@ -32,7 +32,7 @@ public class FacilityTab extends Fragment{
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
 
-        myAdapter = new FSListAdapter(context, R.layout.list_item, filteredList);
+        myAdapter = new FSListAdapter(context, R.layout.list_item_viewflipper, filteredList);
         myAdapter.setAssetType("Facility");
 
         listView = (ListView) rootView.findViewById(R.id.facilityStructureListView);

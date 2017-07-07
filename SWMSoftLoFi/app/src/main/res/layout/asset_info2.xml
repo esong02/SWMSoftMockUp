@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:padding="10dp"
+    android:background="@drawable/info_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Asset Information"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:textSize="22dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Name"
+            android:textColor="@color/grey"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:maxLines="2"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Pond#1-Vaughan/400"
+            android:textColor="@color/grey"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Location"
+            android:textColor="@color/grey"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_weight="1"
+            android:maxLines="2"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="North-East corner of HWY400"
+            android:textColor="@color/grey"
+            android:textSize="16dp" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Description"
+            android:textColor="@color/grey"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:gravity="start"
+             android:maxLines="5"
+             android:paddingBottom="10dp"
+             android:paddingTop="10dp"
+             android:text="North of park servicing major system flows from the south"
+             android:textColor="@color/grey"
+             android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Comments"
+            android:textColor="@color/grey"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:maxLines="2"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="N/A"
+            android:textColor="@color/grey"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/red_button"
+        android:id="@+id/backToActivity"
+        android:src="@drawable/ic_arrow_back_white"
+        android:scaleType="fitXY"
+        android:padding="15dp"/>
+
+</LinearLayout>

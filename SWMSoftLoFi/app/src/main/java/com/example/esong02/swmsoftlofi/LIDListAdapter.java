@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +25,8 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<String> listDataHeader;
     private HashMap<String,List<LID>> listHashMap;
+    private ViewFlipper vf;
+    private ViewFlipper ve;
 
     public LIDListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<LID>> listHashMap) {
         this.context = context;
@@ -86,23 +88,25 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-        if (convertView == null){
-            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_item,null);
-        }
+        //if (convertView == null){
+        LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View row = inflater.inflate(R.layout.list_item_viewflipper,null);
+            //convertView = inflater.inflate(R.layout.list_item_activity,null);
+        //}
 
-        final TextView txtListChild = (TextView)convertView.findViewById(R.id.lblListItem);
-        TextView type = (TextView)convertView.findViewById(R.id.type);
-        ImageButton inspect = (ImageButton)convertView.findViewById(R.id.inspectAction);
-        ImageButton pInspect = (ImageButton)convertView.findViewById(R.id.pInspectAction);
-        ImageButton infoBtn = (ImageButton)convertView.findViewById(R.id.infoAction);
+        LID lid = (LID) getChild(groupPosition,childPosition);
+        //Initial List Item
+        final TextView txtListChild = (TextView)row.findViewById(R.id.lblListItem);
+        final TextView type = (TextView)row.findViewById(R.id.type);
+        ImageButton inspect = (ImageButton)row.findViewById(R.id.inspectAction);
+        ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
+        ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
 
         if (getChild(groupPosition,childPosition) instanceof LID){
-            LID lid = (LID) getChild(groupPosition,childPosition);
+            //LID lid = (LID) getChild(groupPosition,childPosition);
             txtListChild.setText(lid.getName());
             type.setText(lid.getType());
-
-            convertView.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
+            row.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
         }
 
         inspect.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +120,97 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
             }
         });
 
+
+        //Initial List Item Buttons
+        pInspect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ve = (ViewFlipper) row.findViewById(R.id.expandItem);
+                ve.setInAnimation(context, R.anim.expand);
+                ve.setOutAnimation(context, R.anim.collapse);
+                ve.showNext();
+            }
+        });
+
+
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showNext();
+            }
+        });
+
+        //Expanded List Item aka Past Inspection
+        final TextView title2 = (TextView) row.findViewById(R.id.lblListItem2);
+        final TextView type2 = (TextView) row.findViewById(R.id.type2);
+        ImageButton inspect2 = (ImageButton)row.findViewById(R.id.inspectAction2);
+        ImageButton cancelPIns = (ImageButton)row.findViewById(R.id.cancelAction);
+        ImageButton info2 = (ImageButton)row.findViewById(R.id.infoAction2);
+
+        if (getChild(groupPosition,childPosition) instanceof LID){
+            title2.setText(lid.getName());
+            type2.setText(lid.getType());
+            row.findViewById(R.id.subLayer).setBackgroundResource(R.drawable.sub_info_background);
+        }
+
+        //Expanded List Item
+
+        cancelPIns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ve = (ViewFlipper) row.findViewById(R.id.expandItem);
+                ve.setInAnimation(context, R.anim.expand);
+                ve.setOutAnimation(context, R.anim.collapse);
+                ve.showPrevious();
+            }
+        });
+
+
+        info2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showNext();
+            }
+        });
+
+
+        inspect2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, InspectionActivity.class);
+                intent.putExtra("Activity",title2.getText());
+                intent.putExtra("Asset Type","LID");
+                context.startActivity(intent);
+            }
+        });
+
+
+        //Asset Info
+
+        //Asset Info
+        ImageButton backTActy = (ImageButton)row.findViewById(R.id.backToActivity);
+        backTActy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showPrevious();
+            }
+        });
+        /*
         pInspect.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -159,7 +254,8 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
                 alertDialog.show();
             }
         });
-        return convertView;
+        */
+        return row;
     }
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.esong02.swmsoftlofi.MainActivity">
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:measureAllChildren="false"
+        android:id="@+id/flipItem">
+
+        <ViewFlipper
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:measureAllChildren="false"
+            android:id="@+id/expandItem">
+
+            <include layout="@layout/list_item_activity_2"></include>
+
+            <include layout="@layout/past_inspections2"></include>
+
+        </ViewFlipper>
+
+        <include layout="@layout/asset_info2"></include>
+
+    </ViewFlipper>
+
+</LinearLayout>

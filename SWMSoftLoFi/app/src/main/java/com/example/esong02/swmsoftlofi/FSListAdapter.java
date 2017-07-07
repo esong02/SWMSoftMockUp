@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public class FSListAdapter extends ArrayAdapter {
     private int resource;
     private List<String> objects;
     private String aType;
+    private ViewFlipper vf;
+    private ViewFlipper ve;
 
     public FSListAdapter(Context context, int resource,List<String> objects) {
         super(context, resource, objects);
@@ -39,18 +42,57 @@ public class FSListAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater= ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(resource,parent,false);
+        final View row = inflater.inflate(resource,parent,false);
 
+        //Initial List Item
         final TextView title = (TextView) row.findViewById(R.id.lblListItem);
         TextView type = (TextView) row.findViewById(R.id.type);
         ImageButton inspect = (ImageButton)row.findViewById(R.id.inspectAction);
-        ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
-        ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
-
-        title.setText(objects.get(position));//prevent
+        ImageButton pastInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
+        ImageButton info = (ImageButton)row.findViewById(R.id.infoAction);
+        title.setText(objects.get(position));
         type.setText("");
-        row.setBackgroundResource(R.drawable.info_background);
-        row.setPadding(20,5,0,5);
+
+        //Expanded List Item aka Past Inspection
+        final TextView title2 = (TextView) row.findViewById(R.id.lblListItem2);
+        TextView type2 = (TextView) row.findViewById(R.id.type2);
+        ImageButton inspect2 = (ImageButton)row.findViewById(R.id.inspectAction2);
+        ImageButton cancelPIns = (ImageButton)row.findViewById(R.id.cancelAction);
+        ImageButton info2 = (ImageButton)row.findViewById(R.id.infoAction2);
+        title2.setText(objects.get(position));
+        type2.setText("");
+
+        //Asset Info
+        ImageButton backTActy = (ImageButton)row.findViewById(R.id.backToActivity);
+
+        //Populate old list item
+        //ImageButton pInspect = (ImageButton)row.findViewById(R.id.pInspectAction);
+        //ImageButton infoBtn = (ImageButton)row.findViewById(R.id.infoAction);
+
+        //Initial List Item Buttons
+        pastInspect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ve = (ViewFlipper) row.findViewById(R.id.expandItem);
+                ve.setInAnimation(context, R.anim.expand);
+                ve.setOutAnimation(context, R.anim.collapse);
+                ve.showNext();
+            }
+        });
+
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showNext();
+            }
+        });
+
 
         inspect.setOnClickListener(new View.OnClickListener() {
 
@@ -63,6 +105,61 @@ public class FSListAdapter extends ArrayAdapter {
             }
         });
 
+        //Expanded List Item
+
+        cancelPIns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ve = (ViewFlipper) row.findViewById(R.id.expandItem);
+                ve.setInAnimation(context, R.anim.expand);
+                ve.setOutAnimation(context, R.anim.collapse);
+                ve.showPrevious();
+            }
+        });
+
+
+        info2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showNext();
+            }
+        });
+
+
+        inspect2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, InspectionActivity.class);
+                intent.putExtra("Activity",title.getText());
+                intent.putExtra("Asset Type",aType);
+                context.startActivity(intent);
+            }
+        });
+
+
+        //Asset Info
+
+        backTActy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vf = (ViewFlipper) row.findViewById(R.id.flipItem);
+                vf.setInAnimation(context, R.anim.grow_from_middle);
+                vf.setOutAnimation(context, R.anim.shrink_to_middle);
+                vf.showPrevious();
+            }
+        });
+
+
+        //Old List Item
+
+        /*
         pInspect.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -106,6 +203,7 @@ public class FSListAdapter extends ArrayAdapter {
                 alertDialog.show();
             }
         });
+        */
         return row;
     }
 }
