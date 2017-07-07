@@ -150,16 +150,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.task_item,null);
         }
 
-        /* //Will keep based on how bad feedback is
-        if (grey == false) {
-            convertView.setBackgroundColor(Color.argb(100, 255, 255, 255));
-            grey = true;
-        }else{
-            convertView.setBackgroundColor(Color.argb(25, 0, 0, 0));
-            grey = false;
-        }
-        */
-
         final Item iTask = (Item) getChild(groupPosition,childPosition);
 
         final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
@@ -201,7 +191,6 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         //reset field
         clearAllRatingBtn(rating1, rating2, rating3, rating4, rating5);
         photoBtn.setBackgroundResource(R.drawable.rating_button);
-        //Log.d("Current btn mapped to:", iTask.getName());
 
         if (iTask.getRating() == 1){
             rating1.setBackgroundResource(R.drawable.green_button);
