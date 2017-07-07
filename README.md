@@ -1,3 +1,3 @@
 # SWMSoftMockUp
 
-Testing
+An interactive mock up for the SWMSoft mobile application.
