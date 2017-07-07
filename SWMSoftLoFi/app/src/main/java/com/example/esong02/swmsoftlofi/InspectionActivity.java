@@ -8,7 +8,10 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,6 +51,15 @@ public class InspectionActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
         listView = (ExpandableListView) findViewById(R.id.iListview);
+
+        Button iTypeSelect = (Button) mToolbar.findViewById(R.id.iTypes);
+
+        iTypeSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InspectionActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         if (assetType.equals("LID")){
             lidData();

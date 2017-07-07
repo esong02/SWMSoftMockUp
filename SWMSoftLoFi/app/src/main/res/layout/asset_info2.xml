@@ -29,7 +29,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="Name"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="Pond#1-Vaughan/400"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp" />
 
     </LinearLayout>
@@ -60,7 +60,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="Location"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="North-East corner of HWY400"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp" />
 
         </LinearLayout>
@@ -91,7 +91,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="Description"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
              android:paddingBottom="10dp"
              android:paddingTop="10dp"
              android:text="North of park servicing major system flows from the south"
-             android:textColor="@color/grey"
+             android:textColor="@color/black"
              android:textSize="16dp" />
 
     </LinearLayout>
@@ -122,7 +122,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="Comments"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -135,7 +135,7 @@
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="N/A"
-            android:textColor="@color/grey"
+            android:textColor="@color/black"
             android:textSize="16dp" />
 
     </LinearLayout>

@@ -11,7 +11,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:theme="@style/ToolbarColoredBackArrow" />
+        app:theme="@style/ToolbarColoredBackArrow">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="end|right">
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Inspection Type"
+                android:id="@+id/iTypes"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:background="@color/lightblack"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
 
     <ExpandableListView
         android:id="@+id/iListview"
