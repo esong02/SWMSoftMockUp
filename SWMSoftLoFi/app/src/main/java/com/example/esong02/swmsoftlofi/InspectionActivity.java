@@ -1,16 +1,27 @@
 package com.example.esong02.swmsoftlofi;
 
+import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,6 +40,7 @@ public class InspectionActivity extends AppCompatActivity{
 
     private Toolbar mToolbar;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +64,6 @@ public class InspectionActivity extends AppCompatActivity{
         getSupportActionBar().setTitle(title);
         listView = (ExpandableListView) findViewById(R.id.iListview);
 
-        Button iTypeSelect = (Button) mToolbar.findViewById(R.id.iTypes);
-
-        iTypeSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(InspectionActivity.this, "Under Construction", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         if (assetType.equals("LID")){
             lidData();
         }else if (assetType.equals("Facility")){
@@ -70,6 +73,79 @@ public class InspectionActivity extends AppCompatActivity{
         }else{
             error();
         }
+
+        //final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InspectionActivity.this, android.R.layout.select_dialog_singlechoice);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InspectionActivity.this, R.layout.spinner_item);
+        arrayAdapter.add("Assumption Inspection");
+        arrayAdapter.add("Routine Maintenance");
+        arrayAdapter.add("Performance Verification");
+
+        /*
+        final Dialog dialog = new Dialog(InspectionActivity.this);
+        dialog.setContentView(R.layout.inspection_type_dialog);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        ListView dialogList = (ListView) dialog.findViewById(R.id.inspectionTypeList);
+        //final TextView iTypeHeader = (TextView) findViewById(R.id.ilabel);
+        dialogList.setAdapter(arrayAdapter);
+        dialogList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(InspectionActivity.this, "Selected: " + parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+                //iTypeHeader.setText((String)parent.getItemAtPosition(position));
+                dialog.dismiss();
+            }
+        });
+
+        ImageButton cancelBtn = (ImageButton) dialog.findViewById(R.id.iTypeCancelButton);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+        ImageButton iTypeSelect = (ImageButton) findViewById(R.id.iTypes);
+        iTypeSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(InspectionActivity.this);
+                dialog.setContentView(R.layout.inspection_type_dialog);
+                dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+                ListView dialogList = (ListView) dialog.findViewById(R.id.inspectionTypeList);
+                final TextView iTypeHeader = (TextView) findViewById(R.id.ilabel);
+                dialogList.setAdapter(arrayAdapter);
+                dialogList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //Toast.makeText(InspectionActivity.this, "Selected: " + parent.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+                        iTypeHeader.setText((String)parent.getItemAtPosition(position));
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
+        */
+
+
+        final Spinner iTypeDropDown = (Spinner) findViewById(R.id.iTypeSpinner);
+        iTypeDropDown.setAdapter(arrayAdapter);
+        //iTypeDropDown.setPopupBackgroundResource(R.color.transparent);
+        iTypeDropDown.setPopupBackgroundResource(R.drawable.spinner_background);
+        //iTypeDropDown.setElevation(5);
+        iTypeDropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(InspectionActivity.this, "Selected: " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         listAdapter = new ItemListAdapter(InspectionActivity.this,componentHeader,listHash);
         listView.setAdapter(listAdapter);

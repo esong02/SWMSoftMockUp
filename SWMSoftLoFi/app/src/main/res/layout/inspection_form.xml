@@ -13,26 +13,50 @@
         android:background="?attr/colorPrimary"
         app:theme="@style/ToolbarColoredBackArrow">
 
-        <LinearLayout
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <!--TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="end|right">
+            android:layout_gravity="start|left|center_vertical"
+            android:paddingLeft="10dp"
+            android:textStyle="italic"
+            android:text="Inspection Type"
+            android:id="@+id/ilabel"
+            android:textColor="@color/white"
+            android:textSize="16dp"/>
 
-            <Button
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Inspection Type"
-                android:id="@+id/iTypes"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                android:background="@color/lightblack"/>
+        <ImageButton
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/iTypes"
+            android:src="@drawable/ic_edit_black_24dp"
+            android:scaleType="centerInside"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/circle_button"/-->
 
-        </LinearLayout>
+        <Spinner
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:dropDownWidth="wrap_content"
+            android:padding="-15dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:foregroundTint="@color/white"
+            android:background="@drawable/spinner_background"
+            android:id="@+id/iTypeSpinner"/>
 
-    </android.support.v7.widget.Toolbar>
+    </LinearLayout>
 
     <ExpandableListView
         android:id="@+id/iListview"

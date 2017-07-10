@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static List<String> myTaskS = new ArrayList<>(Arrays.asList("Structure 2"));
     public static List<String> myTaskL = new ArrayList<>(Arrays.asList("Site 3"));
     private boolean filter = false;
+    private static int tabState = 0; //can only be 0-2
     private ViewPager viewPager;
     private PagerAdapter adapter;
     private DrawerLayout mdrawerLayout;
@@ -202,10 +203,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager.setCurrentItem(tabState);//saves tab position
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                setTabState(tab.getPosition());
                 //Log.d("Tab"," #"+tab.getPosition());
             }
 
@@ -219,6 +223,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+
+
     }
 
     public void openDrawer(){
@@ -228,6 +235,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void closeDrawer(){
             mdrawerLayout.closeDrawer(Gravity.START);
         }
+
+    public void setTabState(int t){
+        tabState = t;
+    }
 
 /*
     @Override

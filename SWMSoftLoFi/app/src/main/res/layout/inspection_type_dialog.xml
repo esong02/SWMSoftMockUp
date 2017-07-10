@@ -1,63 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:background="@color/transparent"
     android:layout_width="250dp"
     android:layout_height= "450dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:paddingBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:background="@drawable/info_background">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Select an Inspection"
-            android:textColor="@color/white"
-            android:background="@drawable/info_header"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Assumption Inspection"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/grey"/>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Routine Maintenance"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/grey"/>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Performance Verification"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:gravity="center_horizontal"
-            android:textColor="@color/grey"/>
-
-    </LinearLayout>
-
     <ImageButton
         android:layout_marginTop="10dp"
         android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
         android:paddingTop="5sp"
         android:paddingBottom="5sp"
         android:layout_width="match_parent"
@@ -66,4 +17,35 @@
         android:id="@+id/iTypeCancelButton"
         android:background="@drawable/red_button"/>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/iTypeCancelButton"
+        android:background="@drawable/info_background"
+        android:id="@+id/subLayer">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/info_header"
+            android:text="Select an Inspection"
+            android:textStyle="bold"
+            android:id="@+id/iTypeHeader"
+            android:textColor="@color/white"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:gravity="center_horizontal" />
+
+        <ListView
+            android:layout_below="@id/iTypeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inspectionTypeList"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
