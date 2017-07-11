@@ -21,7 +21,7 @@
         android:rowCount="1"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/transparent">
 
         <TextView
             android:layout_height="wrap_content"

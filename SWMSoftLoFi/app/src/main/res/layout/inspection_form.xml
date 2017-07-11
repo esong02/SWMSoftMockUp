@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:id="@+id/inspectionTopLayer"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.Toolbar
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
+        android:titleTextColor="@color/black"
         app:theme="@style/ToolbarColoredBackArrow">
 
     </android.support.v7.widget.Toolbar>
@@ -49,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:dropDownWidth="wrap_content"
-            android:padding="-15dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:foregroundTint="@color/white"

@@ -5,7 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+    <ImageView
+        android:id="@+id/gisView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:padding="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/gisview_example2"/>
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GIS View"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"/>
+
+    <!--TextView
         android:id="@+id/completeInspectionsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,19 +42,19 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:textSize="18dp"
-        android:textColor="@color/grey"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:gravity="center_horizontal"
-        android:text="Inspection Date: 7/9/2003"/>
+        android:text="7/9/2003"/>
 
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:textSize="18dp"
-        android:textColor="@color/grey"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:gravity="center_horizontal"
-        android:text="Inspection Date: 8/19/2016"/>
+        android:text="8/19/2016"/-->
 
     <LinearLayout
         android:orientation="vertical"

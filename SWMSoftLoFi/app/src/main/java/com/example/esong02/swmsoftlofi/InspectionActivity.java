@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -57,19 +59,25 @@ public class InspectionActivity extends AppCompatActivity{
             assetType = (String) b.get("Asset Type");
         }
 
+        LinearLayout ll = (LinearLayout) findViewById(R.id.inspectionTopLayer);
+
         // Set the support action bar
         mToolbar = (Toolbar) findViewById(R.id.inspectionBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
+        mToolbar.setTitleTextColor(Color.BLACK);
         listView = (ExpandableListView) findViewById(R.id.iListview);
 
         if (assetType.equals("LID")){
             lidData();
+            ll.setBackgroundResource(R.color.light_blue);
         }else if (assetType.equals("Facility")){
             facilityData();
+            ll.setBackgroundResource(R.color.orange_yellow);
         }else if (assetType.equals("Structure")){
             structureData();
+            ll.setBackgroundResource(R.color.lime_green);
         }else{
             error();
         }
