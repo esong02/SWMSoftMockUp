@@ -10,7 +10,7 @@
         android:id="@+id/inspectionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/transparent"
         app:theme="@style/ToolbarColoredBackArrow">
 
     </android.support.v7.widget.Toolbar>
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/transparent"
         android:orientation="horizontal">
 
         <!--TextView
@@ -65,7 +65,7 @@
         android:paddingTop="10dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="5.0sp"/>
 

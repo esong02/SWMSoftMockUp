@@ -11,7 +11,7 @@
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="5.0sp" >
     </ListView>

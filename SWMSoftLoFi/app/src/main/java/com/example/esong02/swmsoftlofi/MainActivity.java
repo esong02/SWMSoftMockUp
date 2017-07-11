@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Build;
@@ -26,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ViewPager viewPager;
     private PagerAdapter adapter;
     private DrawerLayout mdrawerLayout;
+    private TabLayout tabLayout;
+    private Toolbar toolbar;
+    private LinearLayout customBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         //Custom Toolbar xml: custom_actionbar
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        customBar = (LinearLayout) toolbar.findViewById(R.id.customeActionBarLayer);
         setSupportActionBar(toolbar);
 
         final ImageButton settingBtn = (ImageButton)toolbar.findViewById(R.id.action_settings);
@@ -152,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     adapter.tab2.filterNow();
                     adapter.tab3.filterNow();
 
-                    filterTaskBtn.setImageResource(R.drawable.ic_cancel_white_24dp);
+                    filterTaskBtn.setImageResource(R.drawable.cancel_small);
                     filterTasklbl.setText("Cancel");
                 }else{
                     //Already Filtered
@@ -161,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     adapter.tab1.clearFilter();
                     adapter.tab2.clearFilter();
                     adapter.tab3.clearFilter();
-                    filterTaskBtn.setImageResource(R.drawable.ic_assignment_ind_white_24dp);
+                    filterTaskBtn.setImageResource(R.drawable.ic_assignment_ind_black_24dp);
                     filterTasklbl.setText("My Tasks");
                 }
             }
@@ -186,14 +192,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+        //Navigation Layout
         mdrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Facility"));
-        tabLayout.addTab(tabLayout.newTab().setText("Structure"));
-        tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
+
+
+        //Tab Layout
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+
+        TabLayout.Tab tab1 = tabLayout.newTab().setText("Facility");
+        tab1.setCustomView(R.layout.fac_tab_header);
+        tabLayout.addTab(tab1);
+
+        TabLayout.Tab tab2 = tabLayout.newTab().setText("Structure");
+        tab2.setCustomView(R.layout.struc_tab_header);
+        tabLayout.addTab(tab2);
+
+        TabLayout.Tab tab3 = tabLayout.newTab().setText("L.I.D.");
+        tab3.setCustomView(R.layout.lid_tab_header);
+        tabLayout.addTab(tab3);
+
+        //tabLayout.addTab(tabLayout.newTab().setText("Facility"));
+        //tabLayout.addTab(tabLayout.newTab().setText("Structure"));
+        //tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
+
+
+
+
+        //View tabView2 = tabLayout.getChildAt(1);
+        //tabView2.setBackgroundResource(R.color.lime_green);
+
+        //View tabView3 = tabLayout.getChildAt(2);
+        //tabView3.setBackgroundResource(R.color.light_blue);
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -203,13 +236,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
         viewPager.setCurrentItem(tabState);//saves tab position
+        setTabColor(tabState);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 setTabState(tab.getPosition());
+                setTabColor(tab.getPosition());
                 //Log.d("Tab"," #"+tab.getPosition());
             }
 
@@ -236,8 +272,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mdrawerLayout.closeDrawer(Gravity.START);
         }
 
-    public void setTabState(int t){
-        tabState = t;
+    public void setTabState(int position){
+        tabState = position;
+    }
+
+    public void setTabColor(int position){
+
+        if (tabState == 0){
+            //customBar.setBackgroundResource(R.color.orange_yellow);
+            //tabLayout.setBackgroundResource(R.color.orange_yellow);
+            //tabView.setBackgroundResource(R.color.orange_yellow);
+            viewPager.setBackgroundResource(R.color.orange_yellow);
+        }else if (tabState == 1){
+            //tabLayout.setBackgroundResource(R.color.lime_green);
+            //customBar.setBackgroundResource(R.color.lime_green);
+            viewPager.setBackgroundResource(R.color.lime_green);
+        }else if (tabState == 2){
+            //tabLayout.setBackgroundResource(R.color.light_blue);
+            //customBar.setBackgroundResource(R.color.light_blue);
+            viewPager.setBackgroundResource(R.color.light_blue);
+        }else{
+            Toast.makeText(MainActivity.this, "Error on tab color", Toast.LENGTH_SHORT).show();
+        }
     }
 
 /*

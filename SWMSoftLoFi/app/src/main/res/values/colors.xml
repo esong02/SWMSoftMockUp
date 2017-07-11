@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <!--color name="colorPrimaryDark">#303F9F</color-->
     <color name="colorAccent">#FF4081</color>
     <!--color name="colorPrimary">#0acdf6</color-->
-    <!--color name="colorPrimaryDark">#1a81df</color-->
+    <color name="colorPrimaryDark">#000000</color>
     <!--color name="colorPrimary">#000000</color-->
     <!--color name="colorPrimaryDark">#858585</color-->
     <!--color name="colorAccent">#ffe700</color-->
@@ -22,4 +22,7 @@
     <color name="red">#ff0000 </color>
     <color name="green">#0cea5e</color>
     <color name="hBlue">#1a81df</color>
+    <color name="orange_yellow">#ffce00</color>
+    <color name="lime_green">#c4fd22</color>
+    <color name="light_blue">#00baf0</color>
 </resources>
