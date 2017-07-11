@@ -34,6 +34,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     private HashMap<String,List<Item>> listHashMap;
     private static boolean grey = false;
     private ImageView completeIcn;
+    private Button rating1;
+    private Button rating2;
+    private Button rating3;
+    private Button rating4;
+    private Button rating5;
+    private ImageButton photoBtn;
+    private Item iTask;
 
     public ItemListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Item>> listHashMap) {
         this.context = context;
@@ -98,37 +105,31 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    public void clearRatingBtn(View r1, View r2, View r3, View r4){
-        Button b1 = (Button) r1;
-        Button b2 = (Button) r2;
-        Button b3 = (Button) r3;
-        Button b4 = (Button) r4;
+    public void clearAllRatingBtn(){
 
-        b1.setBackgroundResource(R.drawable.rating_button);
-        b2.setBackgroundResource(R.drawable.rating_button);
-        b3.setBackgroundResource(R.drawable.rating_button);
-        b4.setBackgroundResource(R.drawable.rating_button);
-    }
-
-    public void clearAllRatingBtn(View r1, View r2, View r3, View r4, View r5){
-        Button b1 = (Button) r1;
-        Button b2 = (Button) r2;
-        Button b3 = (Button) r3;
-        Button b4 = (Button) r4;
-        Button b5 = (Button) r5;
-
+        /*
         b1.setBackgroundResource(R.drawable.rating_button);
         b2.setBackgroundResource(R.drawable.rating_button);
         b3.setBackgroundResource(R.drawable.rating_button);
         b4.setBackgroundResource(R.drawable.rating_button);
         b5.setBackgroundResource(R.drawable.rating_button);
+        */
+        rating1.setTextColor(Color.WHITE);
+        rating2.setTextColor(Color.WHITE);
+        rating3.setTextColor(Color.WHITE);
+        rating4.setTextColor(Color.WHITE);
+        rating5.setTextColor(Color.WHITE);
+
     }
 
-    public void clearPhotoBtn(View v, Object object){
+    public void clearPhotoBtn(){
+        /*
         ImageButton i1 = (ImageButton) v;
         Item iTask = (Item) object;
+        */
+        //i1.setBackgroundResource(R.drawable.rating_button);
         iTask.setPhoto(false);
-        i1.setBackgroundResource(R.drawable.rating_button);
+        photoBtn.setImageResource(R.drawable.ic_photo_camera_white_48dp);
     }
 
     public boolean checkComplete(String gName){
@@ -150,7 +151,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.task_item,null);
         }
 
-        final Item iTask = (Item) getChild(groupPosition,childPosition);
+        iTask = (Item) getChild(groupPosition,childPosition);
 
         final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
         EditText cText = (EditText) convertView.findViewById(R.id.commentText);
@@ -181,76 +182,93 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             }
         });
 
-        final Button rating1 = (Button) convertView.findViewById(R.id.rButton1);
-        final Button rating2 = (Button) convertView.findViewById(R.id.rButton2);
-        final Button rating3 = (Button) convertView.findViewById(R.id.rButton3);
-        final Button rating4 = (Button) convertView.findViewById(R.id.rButton4);
-        final Button rating5 = (Button) convertView.findViewById(R.id.rButton5);
-        final ImageButton photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
+        rating1 = (Button) convertView.findViewById(R.id.rButton1);
+        rating2 = (Button) convertView.findViewById(R.id.rButton2);
+        rating3 = (Button) convertView.findViewById(R.id.rButton3);
+        rating4 = (Button) convertView.findViewById(R.id.rButton4);
+        rating5 = (Button) convertView.findViewById(R.id.rButton5);
+        photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
 
         //reset field
-        clearAllRatingBtn(rating1, rating2, rating3, rating4, rating5);
-        photoBtn.setBackgroundResource(R.drawable.rating_button);
+        clearAllRatingBtn();
+        photoBtn.setImageResource(R.drawable.ic_photo_camera_white_48dp);
+        //photoBtn.setBackgroundResource(R.drawable.circle_button);
 
         if (iTask.getRating() == 1){
-            rating1.setBackgroundResource(R.drawable.green_button);
+            //rating1.setBackgroundResource(R.drawable.green_button);
+            rating1.setTextColor(Color.BLACK);
         }else if (iTask.getRating() == 2){
-            rating2.setBackgroundResource(R.drawable.green_button);
+            //rating2.setBackgroundResource(R.drawable.green_button);
+            rating2.setTextColor(Color.BLACK);
         }else if (iTask.getRating() == 3){
-            rating3.setBackgroundResource(R.drawable.green_button);
+            //rating3.setBackgroundResource(R.drawable.green_button);
+            rating3.setTextColor(Color.BLACK);
         }else if (iTask.getRating() == 4){
-            rating4.setBackgroundResource(R.drawable.green_button);
+            //rating4.setBackgroundResource(R.drawable.green_button);
+            rating4.setTextColor(Color.BLACK);
         }else if (iTask.getRating() == 5){
-            rating5.setBackgroundResource(R.drawable.green_button);
+            //rating5.setBackgroundResource(R.drawable.green_button);
+            rating5.setTextColor(Color.BLACK);
         }
 
         if (iTask.getPhoto()){
-            photoBtn.setBackgroundResource(R.drawable.green_button);
+            //photoBtn.setBackgroundResource(R.drawable.green_button);
+            photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
         }
 
         rating1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iTask.setRating(1);
-                rating1.setBackgroundResource(R.drawable.green_button);
-                clearRatingBtn(rating2,rating3,rating4, rating5);
-                clearPhotoBtn(photoBtn,iTask);
+                //rating1.setBackgroundResource(R.drawable.green_button);
+                clearAllRatingBtn();
+                clearPhotoBtn();
+                //clearPhotoBtn(photoBtn,iTask);
+                rating1.setTextColor(Color.BLACK);
             }
         });
         rating2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iTask.setRating(2);
-                rating2.setBackgroundResource(R.drawable.green_button);
-                clearRatingBtn(rating1,rating3,rating4, rating5);
-                clearPhotoBtn(photoBtn,iTask);
+                //rating2.setBackgroundResource(R.drawable.green_button);
+                clearAllRatingBtn();
+                clearPhotoBtn();
+                //clearPhotoBtn(photoBtn,iTask);
+                rating2.setTextColor(Color.BLACK);
             }
         });
         rating3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iTask.setRating(3);
-                rating3.setBackgroundResource(R.drawable.green_button);
-                clearRatingBtn(rating1,rating2,rating4, rating5);
-                clearPhotoBtn(photoBtn,iTask);
+                //rating3.setBackgroundResource(R.drawable.green_button);
+                clearAllRatingBtn();
+                clearPhotoBtn();
+                //clearPhotoBtn(photoBtn,iTask);
+                rating3.setTextColor(Color.BLACK);
             }
         });
         rating4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iTask.setRating(4);
-                rating4.setBackgroundResource(R.drawable.green_button);
-                clearRatingBtn(rating1,rating2,rating3, rating5);
-                clearPhotoBtn(photoBtn,iTask);
+                clearAllRatingBtn();
+                clearPhotoBtn();
+                //clearPhotoBtn(photoBtn,iTask);
+                //rating4.setBackgroundResource(R.drawable.green_button);
+                rating4.setTextColor(Color.BLACK);
             }
         });
         rating5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iTask.setRating(5);
-                rating5.setBackgroundResource(R.drawable.green_button);
-                clearRatingBtn(rating1,rating2,rating3, rating4);
-                clearPhotoBtn(photoBtn,iTask);
+                //rating5.setBackgroundResource(R.drawable.green_button);
+                clearAllRatingBtn();
+                //clearPhotoBtn(photoBtn,iTask);
+                clearPhotoBtn();
+                rating5.setTextColor(Color.BLACK);
             }
         });
 
@@ -258,7 +276,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 iTask.setPhoto(true);
-                photoBtn.setBackgroundResource(R.drawable.green_button);
+                //photoBtn.setBackgroundResource(R.drawable.green_button);
+                photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
                 Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
 
                 if (iTask.getRating() == 0){

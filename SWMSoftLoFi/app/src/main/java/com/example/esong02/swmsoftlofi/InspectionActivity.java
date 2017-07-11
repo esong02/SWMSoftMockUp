@@ -67,6 +67,7 @@ public class InspectionActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
         mToolbar.setTitleTextColor(Color.BLACK);
+
         listView = (ExpandableListView) findViewById(R.id.iListview);
 
         if (assetType.equals("LID")){

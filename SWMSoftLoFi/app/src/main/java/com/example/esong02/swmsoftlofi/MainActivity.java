@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static List<String> myTaskS = new ArrayList<>(Arrays.asList("Structure 2"));
     public static List<String> myTaskL = new ArrayList<>(Arrays.asList("Site 3"));
     private boolean filter = false;
+    private boolean firstState = true;
     private static int tabState = 0; //can only be 0-2
     private ViewPager viewPager;
     private PagerAdapter adapter;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private LinearLayout customBar;
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Custom Toolbar xml: custom_actionbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        customBar = (LinearLayout) toolbar.findViewById(R.id.customeActionBarLayer);
+        customBar = (LinearLayout) toolbar.findViewById(R.id.customActionBarLayer);
         setSupportActionBar(toolbar);
 
         final ImageButton settingBtn = (ImageButton)toolbar.findViewById(R.id.action_settings);
@@ -102,7 +104,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageButton findBtn = (ImageButton)toolbar.findViewById(R.id.action_search);
         ImageButton syncBtn = (ImageButton)toolbar.findViewById(R.id.action_sync_db);
         final TextView filterTasklbl = (TextView)toolbar.findViewById(R.id.filterTaskLabel);
-        final String settingsMenu[] = {"About","Help","Feedback"};
+
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, R.layout.setting_spinner);
+        //arrayAdapter.add("");
+        arrayAdapter.add("Help");
+        arrayAdapter.add("About");
+        arrayAdapter.add("Feedback");
+        arrayAdapter.add("");
+
+        final Spinner settingSpn = (Spinner) findViewById(R.id.settingSpinner);
+        settingSpn.setAdapter(arrayAdapter);
+        settingSpn.setSelection(3);
 
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
@@ -110,22 +122,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this,"Under Construction",Toast.LENGTH_SHORT).show();
-                /*
-                Spinner settingSpn = (Spinner)toolbar.findViewById(R.id.settingSpinner);
-                ArrayAdapter<String> sAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_spinner_item,settingsMenu);
-                // Specify the layout to use when the list of choices appears
-                sAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                // Apply the adapter to the spinner
-                settingSpn.setAdapter(sAdapter);
-                //settingSpn.setDropDownVerticalOffset(4);
+                settingSpn.setVisibility(View.INVISIBLE);
+                settingSpn.performClick();
 
-                settingSpn.setOnItemSelectedListener(MainActivity.this);
-                */
+                settingSpn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(MainActivity.this, "Selected: " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+                        settingSpn.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        settingSpn.setVisibility(View.GONE);
+                    }
+                });
 
             }
         });
 
+        /*
         inspectionTypeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 iTypeDialog.show();
             }
         });
+        */
 
         filterTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
-        android:titleTextColor="@color/black"
+        android:titleTextColor="@color/white"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
         app:theme="@style/ToolbarColoredBackArrow">
 
     </android.support.v7.widget.Toolbar>
