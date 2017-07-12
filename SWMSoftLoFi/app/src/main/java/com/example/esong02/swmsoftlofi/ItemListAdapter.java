@@ -40,7 +40,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
     private Button rating4;
     private Button rating5;
     private ImageButton photoBtn;
-    private Item iTask;
+    //private Item iTask;
 
     public ItemListAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Item>> listHashMap) {
         this.context = context;
@@ -114,21 +114,22 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         b4.setBackgroundResource(R.drawable.rating_button);
         b5.setBackgroundResource(R.drawable.rating_button);
         */
-        rating1.setTextColor(Color.WHITE);
-        rating2.setTextColor(Color.WHITE);
-        rating3.setTextColor(Color.WHITE);
-        rating4.setTextColor(Color.WHITE);
-        rating5.setTextColor(Color.WHITE);
+        rating1.setTextColor(Color.BLACK);
+        rating2.setTextColor(Color.BLACK);
+        rating3.setTextColor(Color.BLACK);
+        rating4.setTextColor(Color.BLACK);
+        rating5.setTextColor(Color.BLACK);
 
     }
 
-    public void clearPhotoBtn(){
+    public void clearPhotoBtn(Item iTask){
         /*
         ImageButton i1 = (ImageButton) v;
         Item iTask = (Item) object;
         */
         //i1.setBackgroundResource(R.drawable.rating_button);
         iTask.setPhoto(false);
+
         photoBtn.setImageResource(R.drawable.ic_photo_camera_white_48dp);
     }
 
@@ -143,6 +144,10 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
+    public void btnEnable(boolean isTrue){
+        photoBtn.setEnabled(isTrue);
+    }
+
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
@@ -151,13 +156,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.task_item,null);
         }
 
-        iTask = (Item) getChild(groupPosition,childPosition);
+        final Item iTask = (Item) getChild(groupPosition,childPosition);
 
         final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
         EditText cText = (EditText) convertView.findViewById(R.id.commentText);
         ImageButton helpBtn = (ImageButton) convertView.findViewById(R.id.helpButton);
 
-        description.setText((String)iTask.getDescription());
+        description.setText(iTask.getDescription());
 
         // add button listener for Help Button
         helpBtn.setOnClickListener(new View.OnClickListener() {
@@ -196,19 +201,19 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
         if (iTask.getRating() == 1){
             //rating1.setBackgroundResource(R.drawable.green_button);
-            rating1.setTextColor(Color.BLACK);
+            rating1.setTextColor(Color.BLUE);
         }else if (iTask.getRating() == 2){
             //rating2.setBackgroundResource(R.drawable.green_button);
-            rating2.setTextColor(Color.BLACK);
+            rating2.setTextColor(Color.BLUE);
         }else if (iTask.getRating() == 3){
             //rating3.setBackgroundResource(R.drawable.green_button);
-            rating3.setTextColor(Color.BLACK);
+            rating3.setTextColor(Color.BLUE);
         }else if (iTask.getRating() == 4){
             //rating4.setBackgroundResource(R.drawable.green_button);
-            rating4.setTextColor(Color.BLACK);
+            rating4.setTextColor(Color.BLUE);
         }else if (iTask.getRating() == 5){
             //rating5.setBackgroundResource(R.drawable.green_button);
-            rating5.setTextColor(Color.BLACK);
+            rating5.setTextColor(Color.BLUE);
         }
 
         if (iTask.getPhoto()){
@@ -219,12 +224,13 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
         rating1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Rating","Position "+childPosition);
                 iTask.setRating(1);
                 //rating1.setBackgroundResource(R.drawable.green_button);
                 clearAllRatingBtn();
-                clearPhotoBtn();
+                clearPhotoBtn(iTask);
                 //clearPhotoBtn(photoBtn,iTask);
-                rating1.setTextColor(Color.BLACK);
+                rating1.setTextColor(Color.BLUE);
             }
         });
         rating2.setOnClickListener(new View.OnClickListener() {
@@ -233,9 +239,9 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 iTask.setRating(2);
                 //rating2.setBackgroundResource(R.drawable.green_button);
                 clearAllRatingBtn();
-                clearPhotoBtn();
+                clearPhotoBtn(iTask);
                 //clearPhotoBtn(photoBtn,iTask);
-                rating2.setTextColor(Color.BLACK);
+                rating2.setTextColor(Color.BLUE);
             }
         });
         rating3.setOnClickListener(new View.OnClickListener() {
@@ -244,9 +250,9 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 iTask.setRating(3);
                 //rating3.setBackgroundResource(R.drawable.green_button);
                 clearAllRatingBtn();
-                clearPhotoBtn();
+                clearPhotoBtn(iTask);
                 //clearPhotoBtn(photoBtn,iTask);
-                rating3.setTextColor(Color.BLACK);
+                rating3.setTextColor(Color.BLUE);
             }
         });
         rating4.setOnClickListener(new View.OnClickListener() {
@@ -254,10 +260,10 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             public void onClick(View v) {
                 iTask.setRating(4);
                 clearAllRatingBtn();
-                clearPhotoBtn();
+                clearPhotoBtn(iTask);
                 //clearPhotoBtn(photoBtn,iTask);
                 //rating4.setBackgroundResource(R.drawable.green_button);
-                rating4.setTextColor(Color.BLACK);
+                rating4.setTextColor(Color.BLUE);
             }
         });
         rating5.setOnClickListener(new View.OnClickListener() {
@@ -267,8 +273,8 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 //rating5.setBackgroundResource(R.drawable.green_button);
                 clearAllRatingBtn();
                 //clearPhotoBtn(photoBtn,iTask);
-                clearPhotoBtn();
-                rating5.setTextColor(Color.BLACK);
+                clearPhotoBtn(iTask);
+                rating5.setTextColor(Color.BLUE);
             }
         });
 
@@ -276,6 +282,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
                 iTask.setPhoto(true);
+                Log.d("Picture","Position " + childPosition);
                 //photoBtn.setBackgroundResource(R.drawable.green_button);
                 photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
                 Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
