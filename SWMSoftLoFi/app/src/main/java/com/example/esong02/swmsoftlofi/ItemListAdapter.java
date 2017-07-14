@@ -150,153 +150,157 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
-        if (convertView == null){
-            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.task_item,null);
-        }
+        //Log.d("CV","Child View"+childPosition);
 
         final Item iTask = (Item) getChild(groupPosition,childPosition);
 
-        final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
-        EditText cText = (EditText) convertView.findViewById(R.id.commentText);
-        ImageButton helpBtn = (ImageButton) convertView.findViewById(R.id.helpButton);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.task_item, null);
 
-        description.setText(iTask.getDescription());
+            final TextView description = (TextView)convertView.findViewById(R.id.componentDescription);
+            EditText cText = (EditText) convertView.findViewById(R.id.commentText);
+            ImageButton helpBtn = (ImageButton) convertView.findViewById(R.id.helpButton);
 
-        // add button listener for Help Button
-        helpBtn.setOnClickListener(new View.OnClickListener() {
+            description.setText(iTask.getDescription());
 
-            @Override
-            public void onClick(View arg0) {
+            // add button listener for Help Button
+            helpBtn.setOnClickListener(new View.OnClickListener() {
 
-                final Dialog alertDialog = new Dialog(context);
-                alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alertDialog.setContentView(R.layout.condition_dialog);
-                alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                final ImageButton subCBtn = (ImageButton)alertDialog.findViewById(R.id.subCancelButton);
-                alertDialog.show();
+                @Override
+                public void onClick(View arg0) {
 
-                subCBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
+                    final Dialog alertDialog = new Dialog(context);
+                    alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    alertDialog.setContentView(R.layout.condition_dialog);
+                    alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    final ImageButton subCBtn = (ImageButton)alertDialog.findViewById(R.id.subCancelButton);
+                    alertDialog.show();
 
-            }
-        });
+                    subCBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
 
-        rating1 = (Button) convertView.findViewById(R.id.rButton1);
-        rating2 = (Button) convertView.findViewById(R.id.rButton2);
-        rating3 = (Button) convertView.findViewById(R.id.rButton3);
-        rating4 = (Button) convertView.findViewById(R.id.rButton4);
-        rating5 = (Button) convertView.findViewById(R.id.rButton5);
-        photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
+                }
+            });
 
-        //reset field
-        clearAllRatingBtn();
-        photoBtn.setImageResource(R.drawable.ic_photo_camera_white_48dp);
-        //photoBtn.setBackgroundResource(R.drawable.circle_button);
+            rating1 = (Button) convertView.findViewById(R.id.rButton1);
+            rating2 = (Button) convertView.findViewById(R.id.rButton2);
+            rating3 = (Button) convertView.findViewById(R.id.rButton3);
+            rating4 = (Button) convertView.findViewById(R.id.rButton4);
+            rating5 = (Button) convertView.findViewById(R.id.rButton5);
+            photoBtn = (ImageButton) convertView.findViewById(R.id.photoButton);
 
-        if (iTask.getRating() == 1){
-            //rating1.setBackgroundResource(R.drawable.green_button);
-            rating1.setTextColor(Color.BLUE);
-        }else if (iTask.getRating() == 2){
-            //rating2.setBackgroundResource(R.drawable.green_button);
-            rating2.setTextColor(Color.BLUE);
-        }else if (iTask.getRating() == 3){
-            //rating3.setBackgroundResource(R.drawable.green_button);
-            rating3.setTextColor(Color.BLUE);
-        }else if (iTask.getRating() == 4){
-            //rating4.setBackgroundResource(R.drawable.green_button);
-            rating4.setTextColor(Color.BLUE);
-        }else if (iTask.getRating() == 5){
-            //rating5.setBackgroundResource(R.drawable.green_button);
-            rating5.setTextColor(Color.BLUE);
-        }
+            //reset field
+            clearAllRatingBtn();
+            photoBtn.setImageResource(R.drawable.ic_photo_camera_white_48dp);
+            //photoBtn.setBackgroundResource(R.drawable.circle_button);
 
-        if (iTask.getPhoto()){
-            //photoBtn.setBackgroundResource(R.drawable.green_button);
-            photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
-        }
-
-        rating1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Rating","Position "+childPosition);
-                iTask.setRating(1);
+            if (iTask.getRating() == 1){
                 //rating1.setBackgroundResource(R.drawable.green_button);
-                clearAllRatingBtn();
-                clearPhotoBtn(iTask);
-                //clearPhotoBtn(photoBtn,iTask);
                 rating1.setTextColor(Color.BLUE);
-            }
-        });
-        rating2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iTask.setRating(2);
+            }else if (iTask.getRating() == 2){
                 //rating2.setBackgroundResource(R.drawable.green_button);
-                clearAllRatingBtn();
-                clearPhotoBtn(iTask);
-                //clearPhotoBtn(photoBtn,iTask);
                 rating2.setTextColor(Color.BLUE);
-            }
-        });
-        rating3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iTask.setRating(3);
+            }else if (iTask.getRating() == 3){
                 //rating3.setBackgroundResource(R.drawable.green_button);
-                clearAllRatingBtn();
-                clearPhotoBtn(iTask);
-                //clearPhotoBtn(photoBtn,iTask);
                 rating3.setTextColor(Color.BLUE);
-            }
-        });
-        rating4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iTask.setRating(4);
-                clearAllRatingBtn();
-                clearPhotoBtn(iTask);
-                //clearPhotoBtn(photoBtn,iTask);
+            }else if (iTask.getRating() == 4){
                 //rating4.setBackgroundResource(R.drawable.green_button);
                 rating4.setTextColor(Color.BLUE);
-            }
-        });
-        rating5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iTask.setRating(5);
+            }else if (iTask.getRating() == 5){
                 //rating5.setBackgroundResource(R.drawable.green_button);
-                clearAllRatingBtn();
-                //clearPhotoBtn(photoBtn,iTask);
-                clearPhotoBtn(iTask);
                 rating5.setTextColor(Color.BLUE);
             }
-        });
 
-        photoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iTask.setPhoto(true);
-                Log.d("Picture","Position " + childPosition);
+            if (iTask.getPhoto()){
                 //photoBtn.setBackgroundResource(R.drawable.green_button);
                 photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
-                Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
+            }
 
-                if (iTask.getRating() == 0){
-                    Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
-                }else{
-                    iTask.setComplete(true);
-                    if (checkComplete(iTask.getName())){
-                        Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
+            rating1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Rating","Position "+childPosition);
+                    iTask.setRating(1);
+                    //rating1.setBackgroundResource(R.drawable.green_button);
+                    clearAllRatingBtn();
+                    clearPhotoBtn(iTask);
+                    //clearPhotoBtn(photoBtn,iTask);
+                    rating1.setTextColor(Color.BLUE);
+                }
+            });
+            rating2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iTask.setRating(2);
+                    //rating2.setBackgroundResource(R.drawable.green_button);
+                    clearAllRatingBtn();
+                    clearPhotoBtn(iTask);
+                    //clearPhotoBtn(photoBtn,iTask);
+                    rating2.setTextColor(Color.BLUE);
+                }
+            });
+            rating3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iTask.setRating(3);
+                    //rating3.setBackgroundResource(R.drawable.green_button);
+                    clearAllRatingBtn();
+                    clearPhotoBtn(iTask);
+                    //clearPhotoBtn(photoBtn,iTask);
+                    rating3.setTextColor(Color.BLUE);
+                }
+            });
+            rating4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iTask.setRating(4);
+                    clearAllRatingBtn();
+                    clearPhotoBtn(iTask);
+                    //clearPhotoBtn(photoBtn,iTask);
+                    //rating4.setBackgroundResource(R.drawable.green_button);
+                    rating4.setTextColor(Color.BLUE);
+                }
+            });
+            rating5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iTask.setRating(5);
+                    //rating5.setBackgroundResource(R.drawable.green_button);
+                    clearAllRatingBtn();
+                    //clearPhotoBtn(photoBtn,iTask);
+                    clearPhotoBtn(iTask);
+                    rating5.setTextColor(Color.BLUE);
+                }
+            });
+
+            photoBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    iTask.setPhoto(true);
+                    Log.d("Picture","Position " + childPosition);
+                    //photoBtn.setBackgroundResource(R.drawable.green_button);
+                    photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
+                    Toast.makeText(context,"Picture Taken!",Toast.LENGTH_SHORT).show();
+
+                    if (iTask.getRating() == 0){
+                        Toast.makeText(context,"Select a rating . . ",Toast.LENGTH_SHORT).show();
+                    }else{
+                        iTask.setComplete(true);
+                        if (checkComplete(iTask.getName())){
+                            Toast.makeText(context,"Task Complete!",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
-        });
+            });
+
+        }else{
+            Log.d("Null","False");
+        }
 
         return convertView;
     }

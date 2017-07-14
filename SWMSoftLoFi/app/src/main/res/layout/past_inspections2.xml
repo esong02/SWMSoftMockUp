@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
 
-    <ImageView
+    <!--ImageView
         android:id="@+id/gisView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -25,9 +25,9 @@
         android:textSize="16dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"/-->
 
-    <!--TextView
+    <TextView
         android:id="@+id/completeInspectionsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:textColor="@color/black"
         android:padding="10dp"
         android:gravity="center_horizontal"
-        android:text="8/19/2016"/-->
+        android:text="8/19/2016"/>
 
     <LinearLayout
         android:orientation="vertical"

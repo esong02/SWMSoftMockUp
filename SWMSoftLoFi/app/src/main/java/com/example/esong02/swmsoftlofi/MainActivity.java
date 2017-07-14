@@ -17,6 +17,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static List<String> myTaskL = new ArrayList<>(Arrays.asList("Site 3"));
     private boolean filter = false;
     private boolean firstState = true;
-    private static int tabState = 0; //can only be 0-2
+    private int tabState = 0; //can only be 0-2
     private ViewPager viewPager;
     private PagerAdapter adapter;
     private DrawerLayout mdrawerLayout;
@@ -56,9 +57,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*
+        if(savedInstanceState != null)
+        {
+            filter = savedInstanceState.getBoolean("filter");
+            tabState = savedInstanceState.getInt("Tab");
+            Toast.makeText(MainActivity.this, "SavedInstance",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity.this, "NewInstance",Toast.LENGTH_SHORT).show();
+        }
+        */
 
         if (!sampleU.getLogin()){
 
@@ -167,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         filterTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Log.d("Filter State","Statesss");
                 if (filter == false) {
                     //Filtering Now
                     filter = true;
@@ -431,5 +444,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         //TODO Auto Generated Stub
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("filter",filter);
+        outState.putInt("Tab",tabState);
     }
 }
