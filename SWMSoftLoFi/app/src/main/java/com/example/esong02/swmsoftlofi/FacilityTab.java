@@ -28,7 +28,7 @@ public class FacilityTab extends Fragment{
 
         View rootView = inflater.inflate(R.layout.f_s_tab, container, false);
 
-        initData();
+        initData(true);
         filteredList.clear();
         filteredList.addAll(listPropertyHeader);
 
@@ -64,9 +64,26 @@ public class FacilityTab extends Fragment{
     private void initData(boolean c){
         listPropertyHeader = new ArrayList<>();
 
-        listPropertyHeader.add("Facility 1");
-        listPropertyHeader.add("Facility 2");
-        listPropertyHeader.add("Facility 3");
+        listPropertyHeader.add("1 - Pondview2");
+        listPropertyHeader.add("2 - Oakbank Thornbank Pond");
+        listPropertyHeader.add("5 - Lakeview Estates Ltd");
+        listPropertyHeader.add("8 - Trullwrook Investments - Pond A");
+        listPropertyHeader.add("9 - Concord Storm Drainage - Pond B");
+        listPropertyHeader.add("10 - Pond 10");
+        listPropertyHeader.add("11 - Sugarbush Developments Ph 1");
+        listPropertyHeader.add("12 - Sugarbush Developments Ph 1");
+        listPropertyHeader.add("14 - Pond 1 - Woodland Acres");
+        listPropertyHeader.add("15 - Thornhill/Vaughan Community - Pond D (Marta Payne Park)");
+        listPropertyHeader.add("16 - Keele/407");
+        listPropertyHeader.add("17 - Pond 17");
+        listPropertyHeader.add("20 - Langstaff Eco - Park");
+        listPropertyHeader.add("21 - Concord Storm Drainage - Pond A");
+        listPropertyHeader.add("22 - Pond 22 - Aldridge Estates");
+        listPropertyHeader.add("23 - Maple Neighbourhood 2 Pond");
+        listPropertyHeader.add("24 - Fieldgate Pond");
+        listPropertyHeader.add("31 - Maplewood Villages Ltd");
+        listPropertyHeader.add("32 - Keele-Steele-Jane Indus. Area");
+        listPropertyHeader.add("36 - CNR Industrial Subdivision");
     }
 
     private void initData(){

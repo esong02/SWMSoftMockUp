@@ -63,9 +63,9 @@ public class LIDTab extends Fragment{
         listHash = new HashMap<>();
         listSiteHeader = new ArrayList<>();
 
-        listSiteHeader.add("Site 1");
-        listSiteHeader.add("Site 2");
-        listSiteHeader.add("Site 3");
+        listSiteHeader.add("1 - Site 1");
+        listSiteHeader.add("2 - Site 2");
+        listSiteHeader.add("3 - Site 3");
 
         List<LID> lid1 = new ArrayList<>();  //Bioretention LID
         List<LID> lid2 = new ArrayList<>(); //Permeable LID

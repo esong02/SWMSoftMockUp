@@ -65,24 +65,33 @@ public class StructureTab extends Fragment{
         listHash = new HashMap<>();
         listPropertyHeader = new ArrayList<>();
 
-        listPropertyHeader.add("Structure 1");
-        listPropertyHeader.add("Structure 2");
-        listPropertyHeader.add("Structure 3");
+        listPropertyHeader.add("2-10 - Culvert");
+        listPropertyHeader.add("2-12 - Culvert");
+        listPropertyHeader.add("10-10 - Culvert");
+        listPropertyHeader.add("10-11 - Culvert");
+        listPropertyHeader.add("10-12 - Culvert");
+        listPropertyHeader.add("10-13 - Bridge");
+        listPropertyHeader.add("10-2 - Bridge");
+        listPropertyHeader.add("10-20 - Culvert");
+        listPropertyHeader.add("10-3 - Bridge");
+        listPropertyHeader.add("10-4 - Bridge");
+        listPropertyHeader.add("10-5 - Bridge");
+        listPropertyHeader.add("10-7 - Bridge");
+        listPropertyHeader.add("10-8 - Bridge");
+        listPropertyHeader.add("11-4 - Culvert");
+        listPropertyHeader.add("11-5 - Culvert");
+        listPropertyHeader.add("11-6 - Bridge");
+        listPropertyHeader.add("15-2 - Culvert");
+        listPropertyHeader.add("15-3 - Culvert");
+        listPropertyHeader.add("19-12 - Culvert");
+        listPropertyHeader.add("19-5 - Culvert");
+        listPropertyHeader.add("19-7 - Culvert");
+        listPropertyHeader.add("21-6 - Culvert");
+        listPropertyHeader.add("21-9 - Culvert");
+        listPropertyHeader.add("22-2 - Culvert");
+        listPropertyHeader.add("22-7 - Culvert");
+        listPropertyHeader.add("22-8 - Culvert");
 
-        List<LID> lid1 = new ArrayList<>();  //Bioretention LID
-        List<LID> lid2 = new ArrayList<>(); //Permeable LID
-        List<LID> lid3 = new ArrayList<>(); //Green Roof LID
-
-        lid1.add(new LID("Outlet 1","Outlet"));
-        lid1.add(new LID("Spillway 1","Spillway"));
-        lid1.add(new LID("Channel 1","SWM Channel"));
-
-        lid2.add(new LID("Manhole 1","Manhole"));
-        lid2.add(new LID("Head Wall 1","HeadWall"));
-
-        listHash.put(listPropertyHeader.get(0),lid1);
-        listHash.put(listPropertyHeader.get(1),lid2);
-        listHash.put(listPropertyHeader.get(2),lid3);
 
     }
 

@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final User sampleU = new User("Civica","pass",false);
     private static final User adminU = new User("Admin","pass",false);
     private static final User inspectorU = new User("Inspector","pass",false);
-    public static List<String> myTaskF = new ArrayList<>(Arrays.asList("Facility 1"));
-    public static List<String> myTaskS = new ArrayList<>(Arrays.asList("Structure 2"));
-    public static List<String> myTaskL = new ArrayList<>(Arrays.asList("Site 3"));
+    public static List<String> myTaskF;
+    public static List<String> myTaskS;
+    public static List<String> myTaskL;
     private boolean filter = false;
     private boolean firstState = true;
     private int tabState = 0; //can only be 0-2
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(MainActivity.this, "NewInstance",Toast.LENGTH_SHORT).show();
         }
         */
+
+        assignUserTasks();//populate user tasks filter;
 
         if (!sampleU.getLogin()){
 
@@ -431,6 +433,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void assignUserTasks(){
+
+        myTaskF = new ArrayList<>();
+        myTaskS = new ArrayList<>();
+        myTaskL = new ArrayList<>();
+
+        myTaskF.add("1 - Pondview2");
+        myTaskF.add("2 - Oakbank Thornbank Pond");
+        myTaskF.add("16 - Keele/407");
+        myTaskF.add("24 - Fieldgate ");
+        myTaskF.add("11 - Sugarbush Developments Ph 1");
+
+        myTaskS.add("2-10 - Culvert");
+        myTaskS.add("10-3 - Bridge");
+        myTaskS.add("10-5 - Bridge");
+        myTaskS.add("10-8 - Bridge");
+        myTaskS.add("11-4 - Culvert");
+
+        myTaskL.add("2 - Site 2");
+
     }
 
     @Override
