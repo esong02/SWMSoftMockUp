@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Tabs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import android.widget.ExpandableListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import com.example.esong02.swmsoftlofi.Adapters.LIDListAdapter;
+import com.example.esong02.swmsoftlofi.Activities.MainActivity;
+import com.example.esong02.swmsoftlofi.Models.*;
+import com.example.esong02.swmsoftlofi.R;
 
 public class LIDTab extends Fragment{
 

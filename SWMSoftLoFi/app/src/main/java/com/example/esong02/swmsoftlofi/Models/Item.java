@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Models;
 
 /**
  * Created by esong02 on 2017-06-21.

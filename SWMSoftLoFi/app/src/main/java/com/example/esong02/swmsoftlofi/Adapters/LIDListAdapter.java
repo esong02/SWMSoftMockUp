@@ -1,14 +1,11 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Adapters;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,6 +13,10 @@ import android.widget.ViewFlipper;
 
 import java.util.HashMap;
 import java.util.List;
+
+import com.example.esong02.swmsoftlofi.Activities.InspectionActivity;
+import com.example.esong02.swmsoftlofi.Models.*;
+import com.example.esong02.swmsoftlofi.R;
 
 /**
  * Created by esong02 on 2017-06-10.

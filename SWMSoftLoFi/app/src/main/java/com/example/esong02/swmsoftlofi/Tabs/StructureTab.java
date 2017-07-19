@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Tabs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,12 +12,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.esong02.swmsoftlofi.Adapters.FSListAdapter;
+import com.example.esong02.swmsoftlofi.Activities.MainActivity;
+import com.example.esong02.swmsoftlofi.Models.*;
+import com.example.esong02.swmsoftlofi.R;
+
 public class StructureTab extends Fragment{
 
     private ListView listView;
     private List<String> listPropertyHeader;
     private List<String> filteredList = new ArrayList<>();
-    private HashMap<String, List<LID>> listHash;
+    private HashMap<String, List<Asset>> listHash;
     private Context context;
     private FSListAdapter myAdapter;
 

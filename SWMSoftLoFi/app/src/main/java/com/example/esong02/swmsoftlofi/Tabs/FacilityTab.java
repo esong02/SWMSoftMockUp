@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Tabs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,12 +12,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.esong02.swmsoftlofi.Adapters.FSListAdapter;
+import com.example.esong02.swmsoftlofi.Activities.MainActivity;
+import com.example.esong02.swmsoftlofi.Models.*;
+import com.example.esong02.swmsoftlofi.R;
+
 public class FacilityTab extends Fragment{
 
     private ListView listView;
     private List<String> listPropertyHeader;
     private List<String> filteredList = new ArrayList<>();
-    private HashMap<String, List<LID>> listHash;
+    private HashMap<String, List<Asset>> listHash;
     private Context context;
     public FSListAdapter myAdapter;
 
@@ -96,26 +101,26 @@ public class FacilityTab extends Fragment{
         listPropertyHeader.add("Facility 3");
 
 
-        List<LID> lid1 = new ArrayList<>();
-        List<LID> lid2 = new ArrayList<>();
-        List<LID> lid3 = new ArrayList<>();
+        List<Asset> asset1 = new ArrayList<>();
+        List<Asset> asset2 = new ArrayList<>();
+        List<Asset> asset3 = new ArrayList<>();
 
-        lid1.add(new LID("Outlet 1","Outlet"));
-        lid1.add(new LID("Spillway 1","Spillway"));
-        lid1.add(new LID("Channel 1","Channel"));
+        asset1.add(new Asset("Outlet 1","Outlet"));
+        asset1.add(new Asset("Spillway 1","Spillway"));
+        asset1.add(new Asset("Channel 1","Channel"));
 
-        lid2.add(new LID("Manhole 1","Manhole"));
-        lid2.add(new LID("Channel 2","SWM Channel"));
-        lid2.add(new LID("Manhole 2","Manhole"));
-        lid2.add(new LID("Outlet 2","Outlet"));
+        asset2.add(new Asset("Manhole 1","Manhole"));
+        asset2.add(new Asset("Channel 2","SWM Channel"));
+        asset2.add(new Asset("Manhole 2","Manhole"));
+        asset2.add(new Asset("Outlet 2","Outlet"));
 
-        lid3.add(new LID("Spillway 2","Spillway"));
-        lid3.add(new LID("Spillway 3","Spillway"));
-        lid3.add(new LID("Channel 3","Channel"));
+        asset3.add(new Asset("Spillway 2","Spillway"));
+        asset3.add(new Asset("Spillway 3","Spillway"));
+        asset3.add(new Asset("Channel 3","Channel"));
 
-        listHash.put(listPropertyHeader.get(0),lid1);
-        listHash.put(listPropertyHeader.get(1),lid2);
-        listHash.put(listPropertyHeader.get(2),lid3);
+        listHash.put(listPropertyHeader.get(0),asset1);
+        listHash.put(listPropertyHeader.get(1),asset2);
+        listHash.put(listPropertyHeader.get(2),asset3);
 
     }
 }

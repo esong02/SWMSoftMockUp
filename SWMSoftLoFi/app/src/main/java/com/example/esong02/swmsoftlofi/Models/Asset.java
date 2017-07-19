@@ -1,15 +1,15 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Models;
 
 /**
- * Created by esong02 on 2017-06-26.
+ * Created by esong02 on 2017-07-19.
  */
 
-public class LID {
+public class Asset {
 
     public String name;
     public String type;
 
-    public LID(String name, String type){
+    public Asset(String name, String type){
         this.name = name;
         this.type = type;
     }//end constructor
@@ -25,5 +25,4 @@ public class LID {
     public String getType(){
         return type;
     }
-
-}//end class
+}

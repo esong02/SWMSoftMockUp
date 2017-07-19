@@ -1,12 +1,10 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Adapters;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
-import android.support.design.widget.BottomSheetDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +24,9 @@ import java.util.List;
 /**
  * Created by esong02 on 2017-06-12.
  */
+
+import com.example.esong02.swmsoftlofi.Models.*;
+import com.example.esong02.swmsoftlofi.R;
 
 public class ItemListAdapter extends BaseExpandableListAdapter {
     private Context context;

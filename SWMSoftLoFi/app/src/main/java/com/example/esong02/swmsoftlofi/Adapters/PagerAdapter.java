@@ -1,11 +1,12 @@
-package com.example.esong02.swmsoftlofi;
+package com.example.esong02.swmsoftlofi.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
-import java.util.List;
+import com.example.esong02.swmsoftlofi.Tabs.FacilityTab;
+import com.example.esong02.swmsoftlofi.Tabs.LIDTab;
+import com.example.esong02.swmsoftlofi.Tabs.StructureTab;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;

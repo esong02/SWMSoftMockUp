@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:background="@color/transparent"
-    tools:context="com.example.esong02.swmsoftlofi.MainActivity">
+    tools:context="com.example.esong02.swmsoftlofi.Activities.MainActivity">
 
     <ViewFlipper
         android:layout_width="match_parent"
