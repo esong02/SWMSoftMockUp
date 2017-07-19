@@ -25,6 +25,13 @@
         </activity>
 
         <activity
+            android:name=".SampleForm.IconInspectionForm"
+            android:parentActivityName=".Activities.MainActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
+        <activity
             android:name=".Obsolete.MyTasksActivity"
             android:parentActivityName=".Activities.MainActivity"
             android:theme="@style/AppTheme"

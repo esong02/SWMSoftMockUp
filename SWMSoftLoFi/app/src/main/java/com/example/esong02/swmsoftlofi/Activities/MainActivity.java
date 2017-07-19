@@ -440,15 +440,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         myTaskL = new ArrayList<>();
 
         myTaskF.add("1 - Pondview2");
-        myTaskF.add("2 - Oakbank Thornbank Pond");
         myTaskF.add("16 - Keele/407");
         myTaskF.add("24 - Fieldgate ");
-        myTaskF.add("11 - Sugarbush Developments Ph 1");
 
-        myTaskS.add("2-10 - Culvert");
         myTaskS.add("10-3 - Bridge");
         myTaskS.add("10-5 - Bridge");
-        myTaskS.add("10-8 - Bridge");
         myTaskS.add("11-4 - Culvert");
 
         myTaskL.add("2 - Site 2");

@@ -17,6 +17,7 @@ import java.util.List;
 import com.example.esong02.swmsoftlofi.Activities.InspectionActivity;
 import com.example.esong02.swmsoftlofi.Models.*;
 import com.example.esong02.swmsoftlofi.R;
+import com.example.esong02.swmsoftlofi.SampleForm.IconInspectionForm;
 
 /**
  * Created by esong02 on 2017-06-10.
@@ -87,7 +88,7 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, final View convertView, ViewGroup parent) {
 
         //if (convertView == null){
         LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -114,7 +115,9 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, InspectionActivity.class);
+                //Intent intent = new Intent(context, InspectionActivity.class);
+
+                Intent intent = new Intent(context, IconInspectionForm.class);
                 intent.putExtra("Activity",txtListChild.getText());
                 intent.putExtra("Asset Type","LID");
                 context.startActivity(intent);
@@ -189,7 +192,9 @@ public class LIDListAdapter extends BaseExpandableListAdapter {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, InspectionActivity.class);
+                //Intent intent = new Intent(context, InspectionActivity.class);
+
+                Intent intent = new Intent(context, IconInspectionForm.class);
                 intent.putExtra("Activity",title2.getText());
                 intent.putExtra("Asset Type","LID");
                 context.startActivity(intent);

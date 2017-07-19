@@ -216,7 +216,7 @@ public class ItemListAdapter extends BaseExpandableListAdapter {
                 rating5.setTextColor(Color.BLUE);
             }
 
-            if (iTask.getPhoto()){
+            if (iTask.confirmPhoto()){
                 //photoBtn.setBackgroundResource(R.drawable.green_button);
                 photoBtn.setImageResource(R.drawable.ic_photo_camera_black_48dp);
             }

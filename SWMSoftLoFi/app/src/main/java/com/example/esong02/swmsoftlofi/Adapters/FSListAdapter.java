@@ -14,6 +14,7 @@ import android.widget.ViewFlipper;
 import java.util.List;
 
 import com.example.esong02.swmsoftlofi.Activities.InspectionActivity;
+import com.example.esong02.swmsoftlofi.SampleForm.IconInspectionForm;
 import com.example.esong02.swmsoftlofi.R;
 
 /**
@@ -98,7 +99,8 @@ public class FSListAdapter extends ArrayAdapter {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, InspectionActivity.class);
+                //Intent intent = new Intent(context, InspectionActivity.class);
+                Intent intent = new Intent(context, IconInspectionForm.class);
                 intent.putExtra("Activity",title.getText());
                 intent.putExtra("Asset Type",aType);
                 context.startActivity(intent);
@@ -135,7 +137,9 @@ public class FSListAdapter extends ArrayAdapter {
 
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, InspectionActivity.class);
+                //Intent intent = new Intent(context, InspectionActivity.class);
+
+                Intent intent = new Intent(context, IconInspectionForm.class);
                 intent.putExtra("Activity",title.getText());
                 intent.putExtra("Asset Type",aType);
                 context.startActivity(intent);

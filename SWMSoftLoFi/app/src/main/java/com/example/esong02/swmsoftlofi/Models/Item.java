@@ -55,7 +55,7 @@ public class Item {
         this.rating = rating;
     }
 
-    public boolean getPhoto(){
+    public boolean confirmPhoto(){
         return hasPhoto;
     }
 
