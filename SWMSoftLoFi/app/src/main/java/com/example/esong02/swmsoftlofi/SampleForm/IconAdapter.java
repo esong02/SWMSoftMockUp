@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -52,8 +54,9 @@ public class IconAdapter extends BaseAdapter {
     private ViewFlipper vf;
     private ViewFlipper ve;
 
-    public CardStackAdapter cardAdapter;
-    public ViewPager cardPager;
+    private CardStackAdapter cardAdapter;
+    private ViewPager cardPager;
+    private View taskView;
 
     public IconAdapter(Context context, int resource,List<Item> objects) {
         super();
@@ -95,7 +98,29 @@ public class IconAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 cardAdapter.setItem(items.get(position));
+                taskView.setVisibility(View.VISIBLE);
                 cardPager.setVisibility(View.VISIBLE);
+
+                ImageButton cancelBtn = (ImageButton) taskView.findViewById(R.id.cancelTaskButton);
+                ImageButton completeBtn = (ImageButton) taskView.findViewById(R.id.completeTaskButton);
+
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        cardAdapter.clearBundle();
+                        taskView.setVisibility(View.GONE);
+                        cardPager.setVisibility(View.GONE);
+                    }
+                });
+
+                completeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        taskView.setVisibility(View.GONE);
+                        cardPager.setVisibility(View.GONE);
+                    }
+                });
+
                 Toast.makeText(context, "Selected "+ items.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -105,6 +130,7 @@ public class IconAdapter extends BaseAdapter {
     }
 
     //Non Override method
+
 
     public void setCardAdapter(CardStackAdapter cAdapter){
         //Set CardAdapter
@@ -117,5 +143,9 @@ public class IconAdapter extends BaseAdapter {
         cardPager = pager;
     }
 
+
+    public void setTaskView(View tV){
+        taskView = tV;
+    }
 
 }

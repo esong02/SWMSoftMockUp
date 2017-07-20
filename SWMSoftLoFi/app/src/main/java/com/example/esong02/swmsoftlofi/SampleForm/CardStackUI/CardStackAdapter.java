@@ -16,6 +16,8 @@ import java.util.List;
 public class CardStackAdapter extends FragmentStatePagerAdapter {
 
     private Item items;
+    private List<Item> itemList;
+    private Bundle bundle = new Bundle();
 
     public CardStackAdapter(FragmentManager fm) {
         super(fm);
@@ -24,7 +26,6 @@ public class CardStackAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         Fragment cards = new CardStackFragment();
-        Bundle bundle = new Bundle();
 
         //Pass Information to Card as Bundle here;
         String description = items.getDescription();
@@ -41,6 +42,10 @@ public class CardStackAdapter extends FragmentStatePagerAdapter {
 
         return cards;
 
+    }
+
+    public void clearBundle(){
+        bundle.clear();
     }
 
     public void setItem(Item i){

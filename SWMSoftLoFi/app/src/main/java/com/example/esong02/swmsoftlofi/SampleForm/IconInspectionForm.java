@@ -7,12 +7,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -121,6 +123,8 @@ public class IconInspectionForm extends AppCompatActivity{
         cardPager.setPageTransformer(true, new CardStackTransformer());
         cardAdapter = new CardStackAdapter(getSupportFragmentManager());//has to be declared here due to fragment manager
 
+        View cardView = findViewById(R.id.dimScreen);
+        myAdapter.setTaskView(cardView);
         myAdapter.setCardPager(cardPager);
         myAdapter.setCardAdapter(cardAdapter);
 

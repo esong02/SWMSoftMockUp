@@ -5,6 +5,7 @@ package com.example.esong02.swmsoftlofi.Models;
  */
 
 public class LIDItems extends Item {
+
     public LIDItems(String name, String description, String comments, int rating, boolean hasPhoto) {
         super(name, description, comments, rating, hasPhoto);
     }
