@@ -77,14 +77,14 @@ public class IconInspectionForm extends AppCompatActivity{
 
         //Background
         if (assetType.equals("LID")){
-            lidData();
+            lidData2();
             relativeLayout.setBackgroundResource(R.color.light_blue);
         }else if (assetType.equals("Facility")){
             facilityData2();
             //facilityData
             relativeLayout.setBackgroundResource(R.color.orange_yellow);
         }else if (assetType.equals("Structure")){
-            structureData();
+            structureData2();
             relativeLayout.setBackgroundResource(R.color.lime_green);
         }else{
             error();
@@ -181,6 +181,15 @@ public class IconInspectionForm extends AppCompatActivity{
         listHash.put(componentHeader.get(0),component1);
         listHash.put(componentHeader.get(1),component2);
         listHash.put(componentHeader.get(2),component3);
+    }
+
+    private void structureData2(){
+        itemList = new ArrayList<>();
+        //List<Item> items2 = new ArrayList<>(Arrays.asList(new Item("Bench Mark","Make sure to record any offset from the actual bench mark", "", 0, false)));
+
+        itemList.add(new Item("Inlet","No obstruction/debris, standing water or sediment accumulation", "", 0, false));
+        itemList.add(new Item("Outlet","No obstruction/debris, standing water or sediment acumulation", "", 0, false));
+        itemList.add(new Item("Structure"," ","",0, false));
     }
 
     //List of Facilities
@@ -357,5 +366,48 @@ public class IconInspectionForm extends AppCompatActivity{
         listHash.put(componentHeader.get(5),component6);
         listHash.put(componentHeader.get(6),component7);
         listHash.put(componentHeader.get(7),component8);
+    }
+
+    private void lidData2(){
+        itemList = new ArrayList<>();
+
+        //component1.add(new Item("Contributing Drainage Area",new String[]{"Check for Contributing Drainage Area Conditon","Check for Trash and Debris"}, "Not much trash and debris", 2));
+        itemList.add(new Item("Contributing Drainage Area","Check for Contributing Drainage Area Conditon", "", 0, false));
+        itemList.add(new Item("Contributing Drainage Area","Trash and Debris", "", 0, false));
+
+        //component2.add(new Item("Inlet",new String[]{"Check for Structural Integrity","Check for Obstruction", "Check for Inlet Erosion","Check for Trash and Debris"},"Where is it",3));
+        itemList.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Structural Integrity","",0, false));
+        itemList.add(new Item("Inlet","Inlet/Flow Spreader/Outlet Obstruction","",0, false));
+        itemList.add(new Item("Inlet","Inlet Erosion", "",0, false));
+        itemList.add(new Item("Inlet","Trash and Debris", "",0, false));
+
+        //component3.add(new Item("Pretreatment",new String[]{"Check for Sediment Accumulation","Check for Trash and Debris"},  "",0));
+        itemList.add(new Item("Pretreatment","Check for Sediment Accumulation", "",0, false));
+        itemList.add(new Item("Pretreatment","Trash and Debris",  "",0, false));
+
+        //component4.add(new Item("Perimeter",new String[]{"Check for Trash and Debris"}, "I'm lost and stranded in the middle of nowhere",1));
+        itemList.add(new Item("Perimeter","Trash and Debris", "",0, false));
+
+        //component5.add(new Item("Filter Bed",new String[]{"Look for Standing Water","Check for Trash and Debris","Check for Filter Bed Erosion","Measure Mulch Depth","Filter Bed Sediment Accumulation","Filter Bed Surface Sinking","Check Dams","Sediment Accumulation Testing"}, "",0));
+        itemList.add(new Item("Filter Bed","Standing Water", "",0, false));
+        itemList.add(new Item("Filter Bed","Trash and Debris", "",0, false));
+        itemList.add(new Item("Filter Bed","Filter Bed Erosion", "",0, false));
+        itemList.add(new Item("Filter Bed","Mulch Depth", "",0, false));
+        itemList.add(new Item("Filter Bed","Filter Bed Sediment Accumulation", "",0, false));
+        itemList.add(new Item("Filter Bed","Filter Bed Surface Sinking", "",0, false));
+        itemList.add(new Item("Filter Bed","Check Dams", "",0, false));
+        itemList.add(new Item("Filter Bed","Sediment Accumulation Testing", "",0, false));
+
+        //component6.add(new Item("Vegetation",new String[]{"Vegetation Cover","Vegetation Condition","Vegetation Composition"},"",0));
+        itemList.add(new Item("Vegetation","Vegetation Cover", "",0, false));
+        itemList.add(new Item("Vegetation","Vegetation Condition", "",0, false));
+        itemList.add(new Item("Vegetation","Vegetation Composition",  "",0, false));
+
+        //component8.add(new Item("Overflow Outlets",new String[]{"Overflow Outlet Obstruction"}, "",0));
+        itemList.add(new Item("Overflow Outlets","Overflow Outlet Obstruction", "",0, false));
+
+        //component7.add(new Item("Monitoring Well",new String[]{"Monitoring Well Condition"}, "",0));
+        itemList.add(new Item("Monitoring Well","Monitoring Well Condition", "",0, false));
+
     }
 }

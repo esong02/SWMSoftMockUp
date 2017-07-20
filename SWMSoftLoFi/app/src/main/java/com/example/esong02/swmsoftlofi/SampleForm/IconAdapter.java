@@ -2,33 +2,23 @@ package com.example.esong02.swmsoftlofi.SampleForm;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.example.esong02.swmsoftlofi.Activities.InspectionActivity;
 import com.example.esong02.swmsoftlofi.Models.Item;
 import com.example.esong02.swmsoftlofi.R;
 import com.example.esong02.swmsoftlofi.SampleForm.CardStackUI.CardStackAdapter;
-import com.example.esong02.swmsoftlofi.SampleForm.CardStackUI.CardStackTransformer;
+import com.example.esong02.swmsoftlofi.SampleForm.CardStackUI.CardStackFragment;
 
-import java.io.LineNumberInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -98,16 +88,32 @@ public class IconAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 cardAdapter.setItem(items.get(position));
+
+                List<Fragment> fragments = cardAdapter.getFragments();
+
+                //populate fragments
+
+                for (Fragment frag : fragments){
+                    CardStackFragment card = (CardStackFragment) frag;
+                    card.descriptionTxt.setText(items.get(position).getDescription());
+                    card.cText.setText(items.get(position).getComments());
+                    card.rating = items.get(position).getRating();
+                }
+
+                //cardAdapter.notifyDataSetChanged();
+                //cardPager.findViewWithTag(position);
+                //Log.d("Pos","Item #" + position);
                 taskView.setVisibility(View.VISIBLE);
                 cardPager.setVisibility(View.VISIBLE);
 
-                ImageButton cancelBtn = (ImageButton) taskView.findViewById(R.id.cancelTaskButton);
+                final ImageButton cancelBtn = (ImageButton) taskView.findViewById(R.id.cancelTaskButton);
                 ImageButton completeBtn = (ImageButton) taskView.findViewById(R.id.completeTaskButton);
 
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        cardAdapter.clearBundle();
+                        //cardAdapter.setBundle();
+                        //cardAdapter.notifyDataSetChanged();
                         taskView.setVisibility(View.GONE);
                         cardPager.setVisibility(View.GONE);
                     }

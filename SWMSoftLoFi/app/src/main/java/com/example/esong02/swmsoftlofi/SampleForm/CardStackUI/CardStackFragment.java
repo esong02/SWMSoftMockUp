@@ -33,16 +33,14 @@ public class CardStackFragment extends Fragment {
     private Button rating4;
     private Button rating5;
     private ImageButton photoBtn;
+    private Bundle b;
+
+    //saved data
+    public TextView descriptionTxt;
+    public EditText cText;
+    public int rating;
 
     public void clearAllRatingBtn(){
-
-        /*
-        b1.setBackgroundResource(R.drawable.rating_button);
-        b2.setBackgroundResource(R.drawable.rating_button);
-        b3.setBackgroundResource(R.drawable.rating_button);
-        b4.setBackgroundResource(R.drawable.rating_button);
-        b5.setBackgroundResource(R.drawable.rating_button);
-        */
         rating1.setTextColor(Color.BLACK);
         rating2.setTextColor(Color.BLACK);
         rating3.setTextColor(Color.BLACK);
@@ -60,18 +58,18 @@ public class CardStackFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.task_item, null);
 
-        Bundle b = getArguments();
+        b = getArguments();
 
         String description = b.getString("Description");
-        int rating = b.getInt("Rating");
+        rating = b.getInt("Rating");
         String comments = b.getString("Comments");
         boolean hasPhoto = b.getBoolean("HasPhoto");
 
-        TextView descriptionTxt = (TextView) rootView.findViewById(R.id.componentDescription);
-        EditText cText = (EditText) rootView.findViewById(R.id.commentText);
+        descriptionTxt = (TextView) rootView.findViewById(R.id.componentDescription);
+        cText = (EditText) rootView.findViewById(R.id.commentText);
         ImageButton helpBtn = (ImageButton) rootView.findViewById(R.id.helpButton);
 
-       descriptionTxt.setText(description);
+        descriptionTxt.setText(description);
 
         // add button listener for Help Button
         helpBtn.setOnClickListener(new View.OnClickListener() {
