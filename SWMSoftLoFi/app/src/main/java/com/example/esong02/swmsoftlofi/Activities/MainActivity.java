@@ -111,22 +111,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         final ImageButton settingBtn = (ImageButton)toolbar.findViewById(R.id.action_settings);
-        ImageButton inspectionTypeBtn = (ImageButton)toolbar.findViewById(R.id.inspection_type);
         final ImageButton filterTaskBtn = (ImageButton)toolbar.findViewById(R.id.filter_tasks);
         ImageButton findBtn = (ImageButton)toolbar.findViewById(R.id.action_search);
         ImageButton syncBtn = (ImageButton)toolbar.findViewById(R.id.action_sync_db);
         final TextView filterTasklbl = (TextView)toolbar.findViewById(R.id.filterTaskLabel);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(MainActivity.this, R.layout.setting_spinner);
-        //arrayAdapter.add("");
         arrayAdapter.add("Help");
         arrayAdapter.add("About");
         arrayAdapter.add("Feedback");
-        arrayAdapter.add("");
 
         final Spinner settingSpn = (Spinner) findViewById(R.id.settingSpinner);
         settingSpn.setAdapter(arrayAdapter);
-        settingSpn.setSelection(3);
+        settingSpn.setSelection(2);
 
 
         settingBtn.setOnClickListener(new View.OnClickListener() {
@@ -153,33 +150,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        /*
-        inspectionTypeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Inspection Type
-                final Dialog iTypeDialog = new Dialog(MainActivity.this);
-                iTypeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                iTypeDialog.setContentView(R.layout.inspection_type_dialog);
-                iTypeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-                ImageButton cancelBtn = (ImageButton) iTypeDialog.findViewById(R.id.iTypeCancelButton);
-                cancelBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        iTypeDialog.dismiss();
-                    }
-                });
-
-                iTypeDialog.show();
-            }
-        });
-        */
-
         filterTaskBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.d("Filter State","Statesss");
                 if (filter == false) {
                     //Filtering Now
                     filter = true;
@@ -245,23 +218,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tab3.setCustomView(R.layout.lid_tab_header);
         tabLayout.addTab(tab3);
 
-        //tabLayout.addTab(tabLayout.newTab().setText("Facility"));
-        //tabLayout.addTab(tabLayout.newTab().setText("Structure"));
-        //tabLayout.addTab(tabLayout.newTab().setText("L.I.D."));
-
-
-
-
-        //View tabView2 = tabLayout.getChildAt(1);
-        //tabView2.setBackgroundResource(R.color.lime_green);
-
-        //View tabView3 = tabLayout.getChildAt(2);
-        //tabView3.setBackgroundResource(R.color.light_blue);
-
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        //adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(2);
@@ -276,7 +235,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viewPager.setCurrentItem(tab.getPosition());
                 setTabState(tab.getPosition());
                 setTabColor(tab.getPosition());
-                //Log.d("Tab"," #"+tab.getPosition());
             }
 
             @Override
@@ -289,8 +247,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
-
 
     }
 
@@ -309,101 +265,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void setTabColor(int position){
 
         if (tabState == 0){
-            //customBar.setBackgroundResource(R.color.orange_yellow);
-            //tabLayout.setBackgroundResource(R.color.orange_yellow);
-            //tabView.setBackgroundResource(R.color.orange_yellow);
             viewPager.setBackgroundResource(R.color.orange_yellow);
         }else if (tabState == 1){
-            //tabLayout.setBackgroundResource(R.color.lime_green);
-            //customBar.setBackgroundResource(R.color.lime_green);
             viewPager.setBackgroundResource(R.color.lime_green);
         }else if (tabState == 2){
-            //tabLayout.setBackgroundResource(R.color.light_blue);
-            //customBar.setBackgroundResource(R.color.light_blue);
             viewPager.setBackgroundResource(R.color.light_blue);
         }else{
             Toast.makeText(MainActivity.this, "Error on tab color", Toast.LENGTH_SHORT).show();
         }
     }
-
-/*
-    @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-
-            getMenuInflater().inflate(R.menu.listview_bar, menu);
-            //getMenuInflater().inflate(R.menu.gisview_bar, menu);
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowHomeEnabled(false);
-            return super.onCreateOptionsMenu(menu);
-
-        }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            switch (item.getItemId()) {
-
-                case R.id.filter_tasks:
-                    if (filter == false) {
-                        //Filtering Now
-                        filter = true;
-                        Toast.makeText(MainActivity.this, "Filtering by User's tasks", Toast.LENGTH_SHORT).show();
-                        adapter.tab1.filterNow();
-                        adapter.tab2.filterNow();
-                        adapter.tab3.filterNow();
-
-                        item.setIcon(R.drawable.ic_cancel_white_24dp);
-                    }else{
-                        //Already Filtered
-                        filter = false;
-                        Toast.makeText(MainActivity.this,"Clearing filter . . ", Toast.LENGTH_SHORT).show();
-                        adapter.tab1.clearFilter();
-                        adapter.tab2.clearFilter();
-                        adapter.tab3.clearFilter();
-                        item.setIcon(R.drawable.ic_assignment_ind_white_24dp);
-                    }
-
-                    return true;
-
-                case R.id.inspection_type:
-
-                    //Inspection Type
-                    final Dialog iTypeDialog = new Dialog(this);
-                    iTypeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    iTypeDialog.setContentView(R.layout.inspection_type_dialog);
-                    iTypeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-                    ImageButton cancelBtn = (ImageButton) iTypeDialog.findViewById(R.id.iType_Cancel_Button);
-                    cancelBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            iTypeDialog.dismiss();
-                        }
-                    });
-
-                    iTypeDialog.show();
-                    return true;
-
-                case R.id.action_gis_view:
-                    openDrawer();
-                    return true;
-
-                case R.id.action_sync_db:
-
-                    //Actual Sync DB function
-                    Dialog syncDialog = new Dialog(this);
-                    syncDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    syncDialog.setContentView(R.layout.sync_db);
-                    syncDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                    syncDialog.show();
-                    return true;
-
-                default:
-                    return super.onOptionsItemSelected(item);
-            }
-        }
-    */
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

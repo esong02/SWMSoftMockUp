@@ -29,8 +29,6 @@ import java.util.List;
  * 2. Creating an Adapter for each Sub List (Sub List will populate elements in a row)
  * 3. Creating an Adapter for the parent list to hold each sub list (Parent List will populate Sub Lists as rows)
  *
- *
- *
  */
 
 public class IconAdapter extends BaseAdapter {
@@ -136,11 +134,8 @@ public class IconAdapter extends BaseAdapter {
     }
 
     //Non Override method
-
-
     public void setCardAdapter(CardStackAdapter cAdapter){
         //Set CardAdapter
-
         cardAdapter = cAdapter;
 
     }

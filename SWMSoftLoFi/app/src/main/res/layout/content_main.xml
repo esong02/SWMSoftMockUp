@@ -9,6 +9,16 @@
     tools:context="com.example.esong02.swmsoftlofi.Activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="-26dp"
+        android:spinnerMode="dropdown"
+        android:id="@+id/settingSpinner"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"

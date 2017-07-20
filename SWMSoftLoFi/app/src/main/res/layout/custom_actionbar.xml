@@ -6,169 +6,128 @@
     android:background="@color/white"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:paddingTop="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:scaleType="centerInside"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/transparent"
-            android:id="@+id/action_sync_db"
-            android:src="@drawable/ic_sync_black"/>
-
-        <TextView
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:text="Sync DB"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:textSize="10dp"/>
-
-    </LinearLayout>
-
-    <!--LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:paddingTop="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerInside"
-            android:background="@color/transparent"
-            android:id="@+id/inspection_type"
-            android:src="@drawable/ic_assignment_black_24dp"/>
-
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:text="I. Types"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:textSize="10dp"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"/>
-
-    </LinearLayout-->
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:paddingTop="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="centerInside"
-            android:background="@color/transparent"
-            android:id="@+id/filter_tasks"
-            android:src="@drawable/ic_assignment_ind_black_24dp"/>
-
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:text="My Tasks"
-            android:id="@+id/filterTaskLabel"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:textSize="10dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:paddingTop="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:scaleType="centerInside"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/transparent"
-            android:src="@drawable/ic_search_black_24dp"
-            android:id="@+id/action_search"/>
-
-        <TextView
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="Find"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:background="@color/transparent"
-            android:gravity="center"
-            android:textSize="10dp"/>
-
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="32dp"
-        android:layout_weight="1">
-
-        <ImageButton
-            android:paddingTop="8dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:scaleType="centerInside"
-            android:paddingRight="5dp"
-            android:layout_centerHorizontal="true"
-            android:background="@color/transparent"
-            android:id="@+id/action_settings"
-            android:src="@drawable/ic_settings_black_24dp"/>
-
-        <TextView
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:layout_below="@id/action_settings"
+        <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Settings"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:background="@color/transparent"
-            android:layout_centerHorizontal="true"
-            android:paddingRight="5dp"
-            android:textSize="10dp"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <Spinner
-            android:layout_width="wrap_content"
+            <ImageButton
+                android:paddingTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/transparent"
+                android:id="@+id/action_sync_db"
+                android:src="@drawable/ic_sync_black"/>
+
+            <TextView
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="Sync DB"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_below="@id/action_settings"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:spinnerMode="dropdown"
-            android:gravity="center_horizontal"
-            android:id="@+id/settingSpinner"
-            android:visibility="invisible"/>
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <ImageButton
+                android:paddingTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerInside"
+                android:background="@color/transparent"
+                android:id="@+id/filter_tasks"
+                android:src="@drawable/ic_assignment_ind_black_24dp"/>
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="My Tasks"
+                android:id="@+id/filterTaskLabel"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:paddingTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_search_black_24dp"
+                android:id="@+id/action_search"/>
+
+            <TextView
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Find"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <ImageButton
+                android:paddingTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scaleType="centerInside"
+                android:paddingRight="5dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/transparent"
+                android:id="@+id/action_settings"
+                android:src="@drawable/ic_settings_black_24dp"/>
+
+            <TextView
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Settings"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:background="@color/transparent"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="5dp"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
 
 </LinearLayout>
