@@ -1,13 +1,10 @@
-package com.example.esong02.swmsoftlofi.SampleForm.CardStackUI;
+package com.example.esong02.swmsoftlofi.SampleFormOne.CardStackUI;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.esong02.swmsoftlofi.Models.Item;
 

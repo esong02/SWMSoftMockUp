@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi.SampleForm.CardStackUI;
+package com.example.esong02.swmsoftlofi.SampleFormOne.CardStackUI;
 
 import android.annotation.TargetApi;
 import android.os.Build;

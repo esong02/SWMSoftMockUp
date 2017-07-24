@@ -13,8 +13,7 @@ import android.widget.ViewFlipper;
 
 import java.util.List;
 
-import com.example.esong02.swmsoftlofi.Activities.InspectionActivity;
-import com.example.esong02.swmsoftlofi.SampleForm.IconInspectionForm;
+import com.example.esong02.swmsoftlofi.SampleFormOne.IconInspectionForm;
 import com.example.esong02.swmsoftlofi.R;
 
 /**

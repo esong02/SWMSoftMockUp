@@ -1,4 +1,4 @@
-package com.example.esong02.swmsoftlofi.SampleForm;
+package com.example.esong02.swmsoftlofi.SampleFormOne;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,8 +16,8 @@ import android.widget.ViewFlipper;
 
 import com.example.esong02.swmsoftlofi.Models.Item;
 import com.example.esong02.swmsoftlofi.R;
-import com.example.esong02.swmsoftlofi.SampleForm.CardStackUI.CardStackAdapter;
-import com.example.esong02.swmsoftlofi.SampleForm.CardStackUI.CardStackFragment;
+import com.example.esong02.swmsoftlofi.SampleFormOne.CardStackUI.CardStackAdapter;
+import com.example.esong02.swmsoftlofi.SampleFormOne.CardStackUI.CardStackFragment;
 
 import java.util.List;
 
